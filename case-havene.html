@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Case Study — Havéne · Wealth concierge agent · Growvate</title>
+<meta name="description" content="How Growvate built Havéne's AI wealth concierge — saving advisors 32 hours/week and shipping a fintech AI product in 28 days." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="cursor" aria-hidden="true"><div class="cursor__dot"></div><div class="cursor__ring"></div></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 60 60"><path fill="currentColor" d="M30 0 L36 24 L60 30 L36 36 L30 60 L24 36 L0 30 L24 24 Z"/><rect x="22" y="22" width="16" height="16" fill="#fff"/><rect x="26" y="26" width="8" height="8" fill="currentColor"/></symbol>
+  <symbol id="arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M5 12h14M13 5l7 7-7 7"/></symbol>
+  <symbol id="check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M5 13l4 4 10-11"/></symbol>
+</svg>
+
+<header class="nav" id="nav">
+  <a href="index.html" class="nav__logo"><svg class="nav__mark" viewBox="0 0 60 60"><use href="#mark"/></svg><span>GROWVATE</span></a>
+  <nav class="nav__links"><a href="index.html#about">About</a><a href="index.html#services">Services</a><a href="index.html#work">Portfolio</a><a href="index.html#journal">Blog</a></nav>
+  <a href="index.html#contact" class="nav__cta"><span>Book AI audit</span><svg viewBox="0 0 24 24"><use href="#arrow"/></svg></a>
+  <button class="nav__toggle" aria-label="Menu"><span></span><span></span></button>
+</header>
+
+<main>
+
+<section class="page-hero">
+  <a href="index.html#work" class="page-hero__back"><svg viewBox="0 0 24 24"><use href="#arrow"/></svg><span>All case studies</span></a>
+  <div class="page-hero__meta">
+    <span class="page-hero__tag">FinTech · AI</span>
+    <span class="page-hero__date">Shipped Jan 2026 · 28-day build</span>
+  </div>
+  <h1 class="page-hero__title">
+    <span class="split">A wealth concierge that</span>
+    <span class="split">drafts in <em>seconds, not days.</em></span>
+  </h1>
+  <p class="page-hero__lede reveal-up">
+    Havéne is a digital wealth advisory firm serving high-net-worth millennials. Their advisors were drowning in portfolio summary work. We built an AI agent that drafts every summary, performance report and client memo — at a quality their senior advisors approve in one pass.
+  </p>
+</section>
+
+<div class="page-banner" style="--bg: linear-gradient(135deg,#0a2540 0%, #1e3a5f 100%);" aria-hidden="true"></div>
+
+<section class="case-overview">
+  <div>
+    <h4>The Challenge</h4>
+    <p>Each advisor was spending 12+ hours/week on client-facing writeups — quarterly summaries, performance attribution, market commentary. The work was high-stakes (compliance-sensitive) and high-volume. It was also the work that paid the least.</p>
+  </div>
+  <div>
+    <h4>What we shipped</h4>
+    <ul>
+      <li>Portfolio summary generator (per-client tone-tuned)</li>
+      <li>Performance attribution AI</li>
+      <li>Compliance pre-flight checks (FINRA-aware)</li>
+      <li>One-click market commentary briefs</li>
+      <li>Advisor approval workflow</li>
+    </ul>
+  </div>
+  <div>
+    <h4>Stack</h4>
+    <ul>
+      <li>Python · FastAPI</li>
+      <li>Claude Opus 4 · GPT-4o for evals</li>
+      <li>Custom RAG over market data + prior writeups</li>
+      <li>Postgres · Redis · S3</li>
+      <li>AWS · Terraform</li>
+    </ul>
+  </div>
+</section>
+
+<section class="case-metrics">
+  <div class="case-metrics__inner">
+    <div class="case-metric"><strong>32h</strong><span>Saved / advisor / week</span></div>
+    <div class="case-metric"><strong>94%</strong><span>First-draft approval rate</span></div>
+    <div class="case-metric"><strong>28d</strong><span>From kickoff to live</span></div>
+    <div class="case-metric"><strong>0</strong><span>Compliance flags in 6 mo</span></div>
+  </div>
+</section>
+
+<article class="prose">
+
+  <h2>Why this was the hardest project we've shipped</h2>
+  <p>Finance is unforgiving. A wealth summary with a hallucinated number isn't a typo — it's a compliance event. We approached this knowing that "feels right" wasn't good enough; the system had to be <em>verifiable</em>.</p>
+
+  <blockquote>
+    "Our advisors were skeptical. The first draft I read, I tried to find something wrong with it. I couldn't. That's when I knew."
+    <cite>— Priya N., Chief Investment Officer, Havéne</cite>
+  </blockquote>
+
+  <h2>The trick: never let the model invent a number</h2>
+  <p>Every numeric claim in every draft is grounded in a structured source. The agent doesn't <em>generate</em> performance figures — it <em>retrieves</em> them, then writes prose around them. If a number isn't in the structured data, the agent writes "[need data: 12-month return]" instead of hallucinating.</p>
+  <p>This single architectural decision is why first-draft approval rate hit 94% — advisors trust the numbers because the numbers came from their own data, not the model.</p>
+
+  <h2>Compliance as a feature, not an afterthought</h2>
+  <p>Every draft passes through a compliance pre-flight layer trained on FINRA's marketing rule (Rule 2210) and Havéne's internal style guide. Flagged drafts are sent back with the offending phrase highlighted. After six months in production, zero compliance flags have made it to a client.</p>
+
+  <h2>What we'd do differently</h2>
+  <p>We'd build the eval suite before the agent. Half of the first 28 days was spent inventing ways to measure "is this draft good?" — questions a finance domain expert could have helped us specify upfront. On the next finance project, we did exactly that.</p>
+
+</article>
+
+<section class="case-quote">
+  <p>"This <em>gave us a third of our week back</em> — and the part of the week we hated. Our advisors now spend that time on actual client relationships."</p>
+  <footer><span>— Priya N.</span><span>CIO, Havéne</span></footer>
+</section>
+
+<section class="next-up">
+  <div>
+    <span class="next-up__lbl">Next case study →</span>
+    <h3 class="next-up__title">Vigor Beans — a D2C coffee brand running on cruise control</h3>
+  </div>
+  <a href="case-vigor.html"><span>Read next case</span><svg viewBox="0 0 24 24"><use href="#arrow"/></svg></a>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__top">
+    <a href="index.html" class="footer__brand"><svg class="footer__mark" viewBox="0 0 60 60"><use href="#mark"/></svg><span>GROWVATE</span></a>
+    <div class="footer__cols">
+      <div><span class="footer__h">Studio</span><a href="index.html#about">About</a><a href="index.html#services">Services</a><a href="index.html#process">Process</a></div>
+      <div><span class="footer__h">Work</span><a href="index.html#work">Portfolio</a><a href="index.html#journal">Journal</a><a href="index.html#contact">Contact</a></div>
+      <div><span class="footer__h">Social</span><a href="#">LinkedIn</a><a href="#">Instagram</a><a href="#">X / Twitter</a></div>
+      <div><span class="footer__h">Get in touch</span><a href="mailto:hello@growvate.com">hello@growvate.com</a><a href="index.html#contact">Book audit →</a></div>
+    </div>
+  </div>
+  <div class="footer__bottom"><span>© 2026 Growvate AI Studio.</span><span>Automating the boring. Quietly.</span></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

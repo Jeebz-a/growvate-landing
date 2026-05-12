@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Case Study — Vigor Beans · D2C coffee on autopilot · Growvate</title>
+<meta name="description" content="How Growvate fully automated a D2C coffee brand's ops — Shopify, inventory, support, email — running on zero ops headcount." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="cursor" aria-hidden="true"><div class="cursor__dot"></div><div class="cursor__ring"></div></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 60 60"><path fill="currentColor" d="M30 0 L36 24 L60 30 L36 36 L30 60 L24 36 L0 30 L24 24 Z"/><rect x="22" y="22" width="16" height="16" fill="#fff"/><rect x="26" y="26" width="8" height="8" fill="currentColor"/></symbol>
+  <symbol id="arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M5 12h14M13 5l7 7-7 7"/></symbol>
+  <symbol id="check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M5 13l4 4 10-11"/></symbol>
+</svg>
+
+<header class="nav" id="nav">
+  <a href="index.html" class="nav__logo"><svg class="nav__mark" viewBox="0 0 60 60"><use href="#mark"/></svg><span>GROWVATE</span></a>
+  <nav class="nav__links"><a href="index.html#about">About</a><a href="index.html#services">Services</a><a href="index.html#work">Portfolio</a><a href="index.html#journal">Blog</a></nav>
+  <a href="index.html#contact" class="nav__cta"><span>Book AI audit</span><svg viewBox="0 0 24 24"><use href="#arrow"/></svg></a>
+  <button class="nav__toggle" aria-label="Menu"><span></span><span></span></button>
+</header>
+
+<main>
+
+<section class="page-hero">
+  <a href="index.html#work" class="page-hero__back"><svg viewBox="0 0 24 24"><use href="#arrow"/></svg><span>All case studies</span></a>
+  <div class="page-hero__meta">
+    <span class="page-hero__tag">Retail · Automation</span>
+    <span class="page-hero__date">Shipped Nov 2025 · 19-day build</span>
+  </div>
+  <h1 class="page-hero__title">
+    <span class="split">A D2C coffee brand</span>
+    <span class="split">running on <em>zero ops.</em></span>
+  </h1>
+  <p class="page-hero__lede reveal-up">
+    Vigor Beans is a 3-person specialty coffee brand. They didn't want to hire ops staff — they wanted the business to run itself between roasts. We automated their entire back-of-house in 19 days.
+  </p>
+</section>
+
+<div class="page-banner" style="--bg: linear-gradient(135deg,#ff5a1f 0%, #ffb38a 100%);" aria-hidden="true"></div>
+
+<section class="case-overview">
+  <div>
+    <h4>The Challenge</h4>
+    <p>Three founders, all baristas, none ops people. They were spending 20 hours/week between them on order management, inventory updates, customer email, and shipping coordination. The business was profitable — but only on paper, given their time cost.</p>
+  </div>
+  <div>
+    <h4>What we shipped</h4>
+    <ul>
+      <li>Shopify ↔ inventory sync (real-time, multi-warehouse)</li>
+      <li>AI customer support inbox (Gorgias + Claude)</li>
+      <li>Auto-generated weekly newsletter (Klaviyo)</li>
+      <li>Roast scheduling agent (demand-forecast driven)</li>
+      <li>Subscription churn-prevention bot</li>
+    </ul>
+  </div>
+  <div>
+    <h4>Stack</h4>
+    <ul>
+      <li>n8n · custom Node webhooks</li>
+      <li>Shopify · Gorgias · Klaviyo · ShipStation</li>
+      <li>Claude Sonnet 4 for support + email</li>
+      <li>Supabase · Resend</li>
+      <li>Cloudflare Workers</li>
+    </ul>
+  </div>
+</section>
+
+<section class="case-metrics">
+  <div class="case-metrics__inner">
+    <div class="case-metric"><strong>$0</strong><span>Ops headcount needed</span></div>
+    <div class="case-metric"><strong>19h</strong><span>Reclaimed / week</span></div>
+    <div class="case-metric"><strong>−42%</strong><span>Subscription churn</span></div>
+    <div class="case-metric"><strong>19d</strong><span>From kickoff to live</span></div>
+  </div>
+</section>
+
+<article class="prose">
+
+  <h2>The unsexy 80%: integration, not models</h2>
+  <p>People expect AI case studies to be about clever models. The Vigor project was 80% integration plumbing and 20% AI. The win came from making 7 separate tools — Shopify, Gorgias, Klaviyo, ShipStation, QuickBooks, Slack, Google Sheets — talk to each other reliably.</p>
+
+  <blockquote>
+    "We thought we'd need to hire an ops manager. Instead Growvate built one. It's been running for four months and we forgot it existed — in the best way."
+    <cite>— Jordan K., Co-founder, Vigor Beans</cite>
+  </blockquote>
+
+  <h2>The five automations that did the work</h2>
+  <ol>
+    <li><strong>Inventory sync.</strong> Every Shopify sale decrements inventory across both warehouses, triggers reorder thresholds, and posts daily Slack summaries.</li>
+    <li><strong>Support inbox.</strong> 86% of customer emails (mostly "where is my order") are auto-answered with order-aware context pulled from Shopify and ShipStation.</li>
+    <li><strong>Newsletter generation.</strong> Every Sunday, a Claude prompt drafts that week's email — featured roast, customer story, brew tip — then posts to Klaviyo as a scheduled send. A founder approves in 60 seconds on Sunday night.</li>
+    <li><strong>Roast scheduling.</strong> The system pulls 30-day demand trends and pre-orders, then generates a roast schedule the founders approve each Monday.</li>
+    <li><strong>Subscription save bot.</strong> When a subscriber clicks "cancel", they get a Claude-powered short conversation offering a 1-month pause, a different roast, or a discount. Churn dropped from 11% to 6.4%.</li>
+  </ol>
+
+  <h2>What we'd do differently</h2>
+  <p>We'd build the founder approval surface first. Vigor's founders are hands-on — they wanted to <em>see</em> what the automations were doing, not just trust them. The first version we shipped without an approval dashboard, and they didn't trust it. Two days of building a one-screen "what AI did today" dashboard fixed that completely.</p>
+
+</article>
+
+<section class="case-quote">
+  <p>"Our business now feels <em>like a software product.</em> We focus on roasting and customers. The boring stuff runs itself."</p>
+  <footer><span>— Jordan K.</span><span>Co-founder, Vigor Beans</span></footer>
+</section>
+
+<section class="next-up">
+  <div>
+    <span class="next-up__lbl">Next case study →</span>
+    <h3 class="next-up__title">Madrah.com — an AI tutor that kids actually finish</h3>
+  </div>
+  <a href="case-madrah.html"><span>Read next case</span><svg viewBox="0 0 24 24"><use href="#arrow"/></svg></a>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__top">
+    <a href="index.html" class="footer__brand"><svg class="footer__mark" viewBox="0 0 60 60"><use href="#mark"/></svg><span>GROWVATE</span></a>
+    <div class="footer__cols">
+      <div><span class="footer__h">Studio</span><a href="index.html#about">About</a><a href="index.html#services">Services</a><a href="index.html#process">Process</a></div>
+      <div><span class="footer__h">Work</span><a href="index.html#work">Portfolio</a><a href="index.html#journal">Journal</a><a href="index.html#contact">Contact</a></div>
+      <div><span class="footer__h">Social</span><a href="#">LinkedIn</a><a href="#">Instagram</a><a href="#">X / Twitter</a></div>
+      <div><span class="footer__h">Get in touch</span><a href="mailto:hello@growvate.com">hello@growvate.com</a><a href="index.html#contact">Book audit →</a></div>
+    </div>
+  </div>
+  <div class="footer__bottom"><span>© 2026 Growvate AI Studio.</span><span>Automating the boring. Quietly.</span></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

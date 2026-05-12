@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Why most AI projects die in PowerPoint · Growvate Journal</title>
+<meta name="description" content="The five reasons enterprise AI never ships — and the studio model that fixes them." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="cursor" aria-hidden="true"><div class="cursor__dot"></div><div class="cursor__ring"></div></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 60 60"><path fill="currentColor" d="M30 0 L36 24 L60 30 L36 36 L30 60 L24 36 L0 30 L24 24 Z"/><rect x="22" y="22" width="16" height="16" fill="#fff"/><rect x="26" y="26" width="8" height="8" fill="currentColor"/></symbol>
+  <symbol id="arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M5 12h14M13 5l7 7-7 7"/></symbol>
+</svg>
+
+<header class="nav" id="nav">
+  <a href="index.html" class="nav__logo"><svg class="nav__mark" viewBox="0 0 60 60"><use href="#mark"/></svg><span>GROWVATE</span></a>
+  <nav class="nav__links"><a href="index.html#about">About</a><a href="index.html#services">Services</a><a href="index.html#work">Portfolio</a><a href="index.html#journal">Blog</a></nav>
+  <a href="index.html#contact" class="nav__cta"><span>Book AI audit</span><svg viewBox="0 0 24 24"><use href="#arrow"/></svg></a>
+  <button class="nav__toggle" aria-label="Menu"><span></span><span></span></button>
+</header>
+
+<main>
+
+<section class="page-hero">
+  <a href="index.html#journal" class="page-hero__back"><svg viewBox="0 0 24 24"><use href="#arrow"/></svg><span>All articles</span></a>
+  <div class="page-hero__meta">
+    <span class="page-hero__tag">Strategy</span>
+    <span class="page-hero__date">Apr 2026 · 6 min read</span>
+  </div>
+  <h1 class="page-hero__title">
+    <span class="split">Why most AI projects</span>
+    <span class="split">die <em>in PowerPoint.</em></span>
+  </h1>
+  <p class="page-hero__lede reveal-up">
+    The five reasons enterprise AI never ships — and the studio model that fixes them.
+    Written for anyone who's watched their company's "AI initiative" turn into a Notion graveyard.
+  </p>
+</section>
+
+<article class="prose">
+
+  <p>If you've worked inside any company larger than 80 people, you know the pattern. A "Head of AI" gets hired. An external consultancy gets engaged. Three workstreams kick off. Six months later, the workstreams have produced 140 slides and zero shipped systems.</p>
+
+  <p>This isn't laziness. It's structure. The structure that companies have for shipping software — committees, RFCs, vendor reviews, procurement, security sign-off, change management — is the right structure for ERP migrations. It is the <em>exact wrong structure</em> for AI projects, because AI work is irreducibly experimental.</p>
+
+  <h2>The five places AI projects die</h2>
+
+  <h3>1. The committee phase</h3>
+  <p>The first 6–10 weeks are spent in meetings. Stakeholders. Workshops. Discovery. Workshops about workshops. By the time the first prompt gets written, the original sponsor has rotated to a new role and the political weather has changed.</p>
+  <p><strong>Fix:</strong> compress the entire stakeholder phase into a single 4-hour session. Names on a brief. Decisions made in the room. Anyone who can't show up doesn't get a veto later.</p>
+
+  <h3>2. The vendor selection grand prix</h3>
+  <p>"We need to evaluate OpenAI vs Anthropic vs Google vs Cohere vs..." Three months later, three POCs are running, none have shipped, and the team has learned that all major LLMs are similarly competent for 80% of tasks.</p>
+  <p><strong>Fix:</strong> pick one model on day one based on cost and team familiarity. Switch if and only if you have a concrete eval failure that proves you need to.</p>
+
+  <h3>3. The "AI strategy" deck</h3>
+  <p>A 60-page deck about how AI will transform the company. It looks impressive. It commits to nothing measurable. It gets presented to the board. The board nods. Nothing happens.</p>
+  <p><strong>Fix:</strong> the only AI strategy that survives contact with reality is a list of three specific workflows you're going to automate this quarter, ranked by ROI, with a baseline and a target.</p>
+
+  <blockquote>
+    Strategy that doesn't end in someone owning a deliverable on a specific date isn't strategy. It's a wishlist.
+  </blockquote>
+
+  <h3>4. The "we need a platform first" trap</h3>
+  <p>Someone — usually a well-meaning architect — points out that all these AI projects need a shared "AI platform" before any of them can ship. The platform team gets formed. The platform takes 9 months. The original use case is now stale.</p>
+  <p><strong>Fix:</strong> ship the first three use cases without a platform. They'll be slightly redundant. That redundancy will teach you what the platform should actually be — instead of guessing.</p>
+
+  <h3>5. The handoff that never happens</h3>
+  <p>The most common death: the project actually ships, sort of, but it's owned by an external team. Nobody internal knows how the prompts work. When the model changes, the system breaks. Within a year, the AI feature is quietly turned off because nobody can maintain it.</p>
+  <p><strong>Fix:</strong> "shipped" means an internal person owns it. If you can't say <em>which</em> internal person owns it after launch, you haven't shipped.</p>
+
+  <h2>What the studio model looks like</h2>
+  <p>We borrow the pattern from architecture firms and design studios: a small, senior, multi-disciplinary team is fully accountable for a specific deliverable, in a fixed window, with a fixed price.</p>
+  <p>This works because:</p>
+  <ul>
+    <li><strong>One throat to choke.</strong> No vendor finger-pointing.</li>
+    <li><strong>Senior-only.</strong> No "we'll staff this with juniors" — the people pitching are the people shipping.</li>
+    <li><strong>Fixed scope.</strong> Scope creep is the enemy of shipping. We say no to expansion mid-sprint and bank it for sprint two.</li>
+    <li><strong>Fixed timeline.</strong> 30 days. Not "30 days plus discovery". Not "30 days plus contracting". 30 days.</li>
+  </ul>
+
+  <p>It's not the only model. But it's the only one we've seen work reliably across 40+ AI projects. The committee model has, in our admittedly biased experience, never produced a single shipped system on the timeline its authors promised.</p>
+
+  <hr/>
+  <p><em>If your AI initiative is stuck in PowerPoint and you want a sanity check, <a href="index.html#contact">book a 30-minute audit</a>. We'll tell you where it's stuck and what we'd do if it were ours.</em></p>
+
+</article>
+
+<section class="related-posts">
+  <h3>More from the journal</h3>
+  <div class="related-posts__grid">
+    <a class="post" href="post-playbook.html">
+      <span class="post__meta">May 2026 · Automation</span>
+      <h3>The 30-day AI implementation playbook</h3>
+      <p>The exact sprint structure we use with every client — day-by-day, week-by-week.</p>
+      <span class="post__more">Read article <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></span>
+    </a>
+    <a class="post" href="post-stack.html">
+      <span class="post__meta">Mar 2026 · Build</span>
+      <h3>Our default 2026 AI stack (opinionated)</h3>
+      <p>The exact models, tools and infrastructure we reach for on day one. With trade-offs.</p>
+      <span class="post__more">Read article <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__top">
+    <a href="index.html" class="footer__brand"><svg class="footer__mark" viewBox="0 0 60 60"><use href="#mark"/></svg><span>GROWVATE</span></a>
+    <div class="footer__cols">
+      <div><span class="footer__h">Studio</span><a href="index.html#about">About</a><a href="index.html#services">Services</a><a href="index.html#process">Process</a></div>
+      <div><span class="footer__h">Work</span><a href="index.html#work">Portfolio</a><a href="index.html#journal">Journal</a><a href="index.html#contact">Contact</a></div>
+      <div><span class="footer__h">Social</span><a href="#">LinkedIn</a><a href="#">Instagram</a><a href="#">X / Twitter</a></div>
+      <div><span class="footer__h">Get in touch</span><a href="mailto:hello@growvate.com">hello@growvate.com</a><a href="index.html#contact">Book audit →</a></div>
+    </div>
+  </div>
+  <div class="footer__bottom"><span>© 2026 Growvate AI Studio.</span><span>Automating the boring. Quietly.</span></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

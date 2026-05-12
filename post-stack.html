@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Our default 2026 AI stack · Growvate Journal</title>
+<meta name="description" content="The exact models, tools and infrastructure we reach for on day one of every AI project. Opinionated, with trade-offs." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="cursor" aria-hidden="true"><div class="cursor__dot"></div><div class="cursor__ring"></div></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 60 60"><path fill="currentColor" d="M30 0 L36 24 L60 30 L36 36 L30 60 L24 36 L0 30 L24 24 Z"/><rect x="22" y="22" width="16" height="16" fill="#fff"/><rect x="26" y="26" width="8" height="8" fill="currentColor"/></symbol>
+  <symbol id="arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M5 12h14M13 5l7 7-7 7"/></symbol>
+</svg>
+
+<header class="nav" id="nav">
+  <a href="index.html" class="nav__logo"><svg class="nav__mark" viewBox="0 0 60 60"><use href="#mark"/></svg><span>GROWVATE</span></a>
+  <nav class="nav__links"><a href="index.html#about">About</a><a href="index.html#services">Services</a><a href="index.html#work">Portfolio</a><a href="index.html#journal">Blog</a></nav>
+  <a href="index.html#contact" class="nav__cta"><span>Book AI audit</span><svg viewBox="0 0 24 24"><use href="#arrow"/></svg></a>
+  <button class="nav__toggle" aria-label="Menu"><span></span><span></span></button>
+</header>
+
+<main>
+
+<section class="page-hero">
+  <a href="index.html#journal" class="page-hero__back"><svg viewBox="0 0 24 24"><use href="#arrow"/></svg><span>All articles</span></a>
+  <div class="page-hero__meta">
+    <span class="page-hero__tag">Build</span>
+    <span class="page-hero__date">Mar 2026 · 10 min read</span>
+  </div>
+  <h1 class="page-hero__title">
+    <span class="split">Our default</span>
+    <span class="split">2026 <em>AI stack.</em></span>
+  </h1>
+  <p class="page-hero__lede reveal-up">
+    The exact tools, models and infrastructure we reach for on day one of every project.
+    Opinionated. With trade-offs. Updated as the landscape moves.
+  </p>
+</section>
+
+<article class="prose">
+
+  <p>People ask us this constantly: "what should I use?" The answer is always boring — pick the thing that will let your team ship, not the thing that will look best in a tech blog post. With that caveat, here's our default stack as of Q2 2026.</p>
+
+  <h2>The model layer</h2>
+
+  <h3>Primary: Claude Sonnet 4</h3>
+  <p>Our default for everything that involves reasoning, long context, or following complex instructions. It's better than GPT-4o at multi-step tasks, follows system prompts more reliably, and is significantly cheaper for high-volume use. We've shipped 28 of our last 30 projects on Sonnet 4.</p>
+
+  <h3>For deep reasoning: Claude Opus 4</h3>
+  <p>Used for the 5% of calls where you need real depth — financial analysis, legal reasoning, complex code review. We don't use Opus for production user-facing flows because of latency, but we use it inside async pipelines and offline evaluation.</p>
+
+  <h3>For dirt-cheap volume: Claude Haiku</h3>
+  <p>When you need to classify, route, or do quick extraction over millions of items, Haiku is 1/10th the cost of Sonnet and good enough. Use it for routing prompts to other models, summarising chunks, or doing first-pass labeling.</p>
+
+  <h3>What we use OpenAI for</h3>
+  <p>Whisper for speech-to-text (still the best), embeddings (text-embedding-3-large), and GPT-4o for tasks that specifically need image understanding inside a chat loop. We don't use GPT-4o as a primary text model anymore.</p>
+
+  <blockquote>
+    "Use Claude as your default, OpenAI for specific specialties, Google for specific specialties." That's our entire model strategy in 2026.
+  </blockquote>
+
+  <h2>The orchestration layer</h2>
+
+  <h3>For agent workflows: TypeScript + Anthropic SDK</h3>
+  <p>We don't use LangChain anymore. The abstractions get in the way for production work and the framework keeps reshaping itself. Plain TypeScript + the Anthropic SDK + good function-calling discipline is more code but significantly more maintainable.</p>
+
+  <h3>For non-engineering workflows: n8n</h3>
+  <p>When the workflow doesn't need custom code — connect Shopify to a model to Slack — n8n self-hosted is faster to ship and easier for the client's ops team to maintain after handoff. Zapier is fine for very simple flows; n8n is the right call once there are 4+ steps.</p>
+
+  <h3>For RAG: pgvector + custom</h3>
+  <p>We've migrated away from Pinecone for almost all client work. Postgres with pgvector handles up to ~5M embeddings comfortably, it's already in the client's stack, and it has zero per-query cost. Pinecone is still right for some very specific cases (multi-tenant SaaS embeddings at scale), but it's not the default anymore.</p>
+
+  <h2>The infrastructure layer</h2>
+
+  <ul>
+    <li><strong>Hosting:</strong> Vercel for Next.js apps, Cloudflare Workers for edge stuff. Fly.io if there's GPU work.</li>
+    <li><strong>Database:</strong> Postgres on Supabase or Neon. Both fine. We pick based on the client's existing relationships.</li>
+    <li><strong>Auth:</strong> Clerk for B2B SaaS. Supabase Auth if Postgres already there.</li>
+    <li><strong>Files:</strong> Cloudflare R2 or S3. R2 wins on cost for large objects.</li>
+    <li><strong>Observability:</strong> Sentry for errors, PostHog for product analytics, Datadog or BetterStack for infra.</li>
+    <li><strong>LLM observability:</strong> Langfuse self-hosted. We've tried most of them. Langfuse is currently the cleanest.</li>
+  </ul>
+
+  <h2>The eval layer</h2>
+  <p>This is where almost no one invests enough. We use:</p>
+  <ul>
+    <li><strong>Promptfoo</strong> for batch eval runs against a frozen test set</li>
+    <li><strong>Langfuse</strong> for production-trace-based evals</li>
+    <li><strong>LLM-as-judge</strong> with Claude Opus 4 for rubric-based scoring of generative outputs</li>
+    <li><strong>Human review queues</strong> for the top 5% most ambiguous outputs (a Slack-based mini-tool we built)</li>
+  </ul>
+
+  <h2>What we don't use (and why)</h2>
+  <ul>
+    <li><strong>LangChain.</strong> Abstractions don't match real-world failure modes. Hard to debug.</li>
+    <li><strong>AutoGen / CrewAI.</strong> Agent orchestration frameworks are still too unstable for production.</li>
+    <li><strong>Vector DBs other than pgvector and Pinecone.</strong> Most of the others solve problems most clients don't have.</li>
+    <li><strong>Fine-tuning by default.</strong> Sonnet 4 with a good system prompt + RAG beats fine-tuned smaller models in 90% of cases. Only fine-tune when the cost math forces it.</li>
+  </ul>
+
+  <h2>This will be wrong in 6 months</h2>
+  <p>Every line of this article will be revisable by Q4 2026. The stack churns. The principles don't:</p>
+  <ol>
+    <li>Pick the boring choice.</li>
+    <li>Optimise for ability to ship, not theoretical maximums.</li>
+    <li>Invest in evals before sophistication.</li>
+    <li>Stay one layer below the bleeding edge — last quarter's frontier is this quarter's stable.</li>
+  </ol>
+
+  <hr/>
+  <p><em>If you'd like our latest version of this list or want our take on a stack you're considering, <a href="index.html#contact">just ask</a> — happy to share what we've shipped.</em></p>
+
+</article>
+
+<section class="related-posts">
+  <h3>More from the journal</h3>
+  <div class="related-posts__grid">
+    <a class="post" href="post-playbook.html">
+      <span class="post__meta">May 2026 · Automation</span>
+      <h3>The 30-day AI implementation playbook</h3>
+      <p>The exact sprint structure we use with every client — day-by-day, week-by-week.</p>
+      <span class="post__more">Read article <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></span>
+    </a>
+    <a class="post" href="post-powerpoint.html">
+      <span class="post__meta">Apr 2026 · Strategy</span>
+      <h3>Why most AI projects die in PowerPoint</h3>
+      <p>The five reasons enterprise AI never ships — and the studio model that fixes them.</p>
+      <span class="post__more">Read article <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__top">
+    <a href="index.html" class="footer__brand"><svg class="footer__mark" viewBox="0 0 60 60"><use href="#mark"/></svg><span>GROWVATE</span></a>
+    <div class="footer__cols">
+      <div><span class="footer__h">Studio</span><a href="index.html#about">About</a><a href="index.html#services">Services</a><a href="index.html#process">Process</a></div>
+      <div><span class="footer__h">Work</span><a href="index.html#work">Portfolio</a><a href="index.html#journal">Journal</a><a href="index.html#contact">Contact</a></div>
+      <div><span class="footer__h">Social</span><a href="#">LinkedIn</a><a href="#">Instagram</a><a href="#">X / Twitter</a></div>
+      <div><span class="footer__h">Get in touch</span><a href="mailto:hello@growvate.com">hello@growvate.com</a><a href="index.html#contact">Book audit →</a></div>
+    </div>
+  </div>
+  <div class="footer__bottom"><span>© 2026 Growvate AI Studio.</span><span>Automating the boring. Quietly.</span></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Growvate — AI automation & implementation studio</title>
+<meta name="description" content="Growvate ships production AI — automation, agents, and intelligent features — into ambitious teams. Real systems live in 30 days. Not 18 months." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- custom cursor -->
+<div class="cursor" aria-hidden="true"><div class="cursor__dot"></div><div class="cursor__ring"></div></div>
+
+<!-- inline svg sprites -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 60 60">
+    <path fill="currentColor" d="M30 0 L36 24 L60 30 L36 36 L30 60 L24 36 L0 30 L24 24 Z"/>
+    <rect x="22" y="22" width="16" height="16" fill="#fff"/>
+    <rect x="26" y="26" width="8" height="8" fill="currentColor"/>
+  </symbol>
+  <symbol id="arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M5 12h14M13 5l7 7-7 7"/></symbol>
+  <symbol id="plus"  viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M5 13l4 4 10-11"/></symbol>
+  <symbol id="x"     viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M6 6l12 12M18 6l-12 12"/></symbol>
+  <symbol id="spark" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l1.7 6.3L20 10l-6.3 1.7L12 18l-1.7-6.3L4 10l6.3-1.7z"/></symbol>
+  <symbol id="bolt"  viewBox="0 0 24 24"><path fill="currentColor" d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
+</svg>
+
+<!-- announcement strip -->
+<div class="strip">
+  <div class="strip__inner">
+    <span class="strip__dot"></span>
+    <span>Now booking AI projects starting June 2026</span>
+    <a href="#contact" data-link>Reserve a slot →</a>
+  </div>
+</div>
+
+<!-- nav -->
+<header class="nav" id="nav">
+  <a href="#top" class="nav__logo" aria-label="Growvate home">
+    <svg class="nav__mark" viewBox="0 0 60 60"><use href="#mark"/></svg>
+    <span>GROWVATE</span>
+  </a>
+  <nav class="nav__links" aria-label="Primary">
+    <a href="#about" data-link>About</a>
+    <a href="#services" data-link>Services</a>
+    <a href="#work" data-link>Portfolio</a>
+    <a href="#journal" data-link>Blog</a>
+  </nav>
+  <a href="#contact" class="nav__cta" data-link>
+    <span>Book AI audit</span>
+    <svg viewBox="0 0 24 24"><use href="#arrow"/></svg>
+  </a>
+  <button class="nav__toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+</header>
+
+<main id="top">
+
+<!-- ─────────── HERO ─────────── -->
+<section class="hero hero--split">
+  <div class="hero__bg" aria-hidden="true">
+    <div class="hero__glow hero__glow--1"></div>
+    <div class="hero__glow hero__glow--2"></div>
+    <div class="hero__grid"></div>
+  </div>
+
+  <div class="hero__inner">
+    <div class="hero__left">
+      <span class="kicker reveal-up">
+        <span class="kicker__dot"></span>
+        AI automation & implementation studio
+      </span>
+      <h1 class="hero__title">
+        <span class="split">Make your</span>
+        <span class="split">business</span>
+        <span class="split"><em>run itself.</em></span>
+      </h1>
+      <p class="hero__lede reveal-up">
+        We ship production AI — <strong>automations, agents, and intelligent features</strong> —
+        directly into your operations and your product. Real systems. Real ROI.
+        Live in <span class="mark">30 days.</span>
+      </p>
+      <div class="hero__cta reveal-up">
+        <a href="#contact" class="btn btn--primary" data-link>
+          <span>Book a free AI audit</span>
+          <svg viewBox="0 0 24 24"><use href="#arrow"/></svg>
+        </a>
+        <a href="#work" class="btn btn--ghost" data-link>
+          <span>See what we've shipped</span>
+        </a>
+      </div>
+
+      <div class="hero__proof reveal-up">
+        <div class="avatars">
+          <span style="--c:#FF5A1F"></span>
+          <span style="--c:#0D0D0D"></span>
+          <span style="--c:#FFB38A"></span>
+          <span style="--c:#1E3A5F"></span>
+        </div>
+        <div>
+          <div class="hero__proof-rate">★ ★ ★ ★ ★ <span>4.9 / 5</span></div>
+          <div class="hero__proof-cap">from 38 founders, COOs and ops leaders</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- animated AI visual -->
+    <div class="hero__right" aria-hidden="true">
+      <div class="orbit">
+        <div class="orbit__ring orbit__ring--1"></div>
+        <div class="orbit__ring orbit__ring--2"></div>
+        <div class="orbit__ring orbit__ring--3"></div>
+        <div class="orbit__core">
+          <svg viewBox="0 0 60 60"><use href="#mark"/></svg>
+          <span>AI core</span>
+        </div>
+        <span class="orbit__node orbit__node--a">CRM</span>
+        <span class="orbit__node orbit__node--b">Email</span>
+        <span class="orbit__node orbit__node--c">Slack</span>
+        <span class="orbit__node orbit__node--d">DB</span>
+        <span class="orbit__node orbit__node--e">API</span>
+      </div>
+
+      <div class="card card--main">
+        <div class="card__row">
+          <span class="dot dot--live"></span>
+          <span class="card__h">Live workflows</span>
+          <span class="card__num">12</span>
+        </div>
+        <div class="bars">
+          <div class="bar"><span style="--w:78%"></span><label>Inbox triage</label><b>2,841</b></div>
+          <div class="bar"><span style="--w:62%"></span><label>Quotes drafted</label><b>187</b></div>
+          <div class="bar"><span style="--w:91%"></span><label>Data sync</label><b>99.8%</b></div>
+          <div class="bar"><span style="--w:54%"></span><label>Reports built</label><b>34</b></div>
+        </div>
+      </div>
+
+      <div class="card card--mini card--mini--a">
+        <span class="card__h">Hours saved this week</span>
+        <strong>247h</strong>
+        <span class="trend">↑ 18%</span>
+      </div>
+
+      <div class="card card--mini card--mini--b">
+        <span class="card__h">Avg. response time</span>
+        <strong>1.2s</strong>
+        <span class="trend trend--good">−84%</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="scroll-hint__line"></div>
+  </div>
+</section>
+
+<!-- ─────────── LOGOS / TRUST ─────────── -->
+<section class="logos">
+  <p class="logos__cap">Trusted by ops leaders, COOs and founders at —</p>
+  <div class="logos__row">
+    <span>NORTHSAIL</span>
+    <span>KAIVO</span>
+    <span>OPERATOR.io</span>
+    <span>MADRAH</span>
+    <span>HAVÉNE</span>
+    <span>VIGOR</span>
+    <span>STACKED</span>
+  </div>
+</section>
+
+<!-- ─────────── PAIN ─────────── -->
+<section class="section pain">
+  <div class="section__head">
+    <span class="eyebrow">(01) The problem</span>
+    <h2 class="section__title">
+      <span class="split">Still doing this</span>
+      <span class="split"><em>in 2026?</em></span>
+    </h2>
+  </div>
+
+  <div class="pain__grid">
+    <div class="pain__copy reveal-up">
+      <p>
+        If your team spends time on any of this every week,
+        <strong>you have a six-figure leak</strong>. Most teams know it.
+        Most agencies will quote you 18 months and a consulting bill to fix it.
+      </p>
+      <p>
+        We don't. We ship the actual system. Quietly. In weeks.
+      </p>
+    </div>
+
+    <ul class="pain__list">
+      <li><svg viewBox="0 0 24 24"><use href="#x"/></svg>Manual data entry across 4+ tools</li>
+      <li><svg viewBox="0 0 24 24"><use href="#x"/></svg>Support answering the same 5 tickets a hundred times</li>
+      <li><svg viewBox="0 0 24 24"><use href="#x"/></svg>Sales writing every proposal from scratch</li>
+      <li><svg viewBox="0 0 24 24"><use href="#x"/></svg>Reports that take a day to compile</li>
+      <li><svg viewBox="0 0 24 24"><use href="#x"/></svg>An AI feature that's been "on the roadmap" for 14 months</li>
+      <li><svg viewBox="0 0 24 24"><use href="#x"/></svg>Three tools that should talk to each other — but don't</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ─────────── SERVICES BENTO ─────────── -->
+<section class="section services" id="services">
+  <div class="section__head">
+    <span class="eyebrow">(02) What we ship</span>
+    <h2 class="section__title">
+      <span class="split">Three lanes.</span>
+      <span class="split">All <em>production-grade.</em></span>
+    </h2>
+  </div>
+
+  <div class="bento">
+
+    <article class="bento__cell bento__cell--hero">
+      <div class="bento__viz bento__viz--flow">
+        <div class="flow__node flow__node--in">Trigger</div>
+        <div class="flow__line"><span></span></div>
+        <div class="flow__node flow__node--ai"><svg viewBox="0 0 24 24"><use href="#spark"/></svg> AI agent</div>
+        <div class="flow__line"><span></span></div>
+        <div class="flow__node flow__node--out">Action</div>
+      </div>
+      <div class="bento__body">
+        <span class="bento__num">01</span>
+        <h3>AI Automation</h3>
+        <p>We replace your team's repetitive work with agents and pipelines that run quietly in the background. Email triage, data sync, reporting, ops — autonomous by month one.</p>
+        <ul class="bento__list">
+          <li><svg viewBox="0 0 24 24"><use href="#check"/></svg>Custom AI agents (Claude, GPT-4, Gemini)</li>
+          <li><svg viewBox="0 0 24 24"><use href="#check"/></svg>Workflow & tool integrations (Zapier, n8n, custom)</li>
+          <li><svg viewBox="0 0 24 24"><use href="#check"/></svg>Operations & support copilots</li>
+        </ul>
+        <a href="#contact" class="bento__link" data-link>Automate my ops <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></a>
+      </div>
+    </article>
+
+    <article class="bento__cell">
+      <div class="bento__viz bento__viz--code">
+        <div class="code-bg">
+          <span>POST <em>/api/embed</em></span>
+          <span>model: <em>claude-sonnet-4</em></span>
+          <span>vector: <em>[0.83, 0.21, ...]</em></span>
+          <span>status: <em>✓ shipped</em></span>
+        </div>
+      </div>
+      <div class="bento__body">
+        <span class="bento__num">02</span>
+        <h3>AI Implementation</h3>
+        <p>Embed real AI capabilities into your existing product. RAG, voice, generation, search — productionised, evaluated, and measurable.</p>
+        <ul class="bento__list">
+          <li><svg viewBox="0 0 24 24"><use href="#check"/></svg>LLM + RAG into your product</li>
+          <li><svg viewBox="0 0 24 24"><use href="#check"/></svg>Voice & multimodal features</li>
+          <li><svg viewBox="0 0 24 24"><use href="#check"/></svg>Evals, guardrails, observability</li>
+        </ul>
+        <a href="#contact" class="bento__link" data-link>Ship an AI feature <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></a>
+      </div>
+    </article>
+
+    <article class="bento__cell">
+      <div class="bento__viz bento__viz--roadmap">
+        <div class="roadmap">
+          <div class="roadmap__step"><span>1</span> Audit</div>
+          <div class="roadmap__step"><span>2</span> Prioritise</div>
+          <div class="roadmap__step"><span>3</span> Pilot</div>
+          <div class="roadmap__step is-on"><span>4</span> Scale</div>
+        </div>
+      </div>
+      <div class="bento__body">
+        <span class="bento__num">03</span>
+        <h3>AI Strategy</h3>
+        <p>A roadmap that actually ships. We audit your stack, find the highest-ROI AI moves, and execute. No 40-page decks — a plan, a price, a launch date.</p>
+        <ul class="bento__list">
+          <li><svg viewBox="0 0 24 24"><use href="#check"/></svg>AI readiness audit</li>
+          <li><svg viewBox="0 0 24 24"><use href="#check"/></svg>ROI-ranked opportunity map</li>
+          <li><svg viewBox="0 0 24 24"><use href="#check"/></svg>90-day execution plan</li>
+        </ul>
+        <a href="#contact" class="bento__link" data-link>Get a roadmap <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ─────────── OUTCOMES / INTERACTIVE CHART ─────────── -->
+<section class="section outcomes" id="outcomes">
+  <div class="outcomes__head">
+    <span class="eyebrow">(03) Outcomes</span>
+    <h2 class="section__title">
+      <span class="split">Receipts,</span>
+      <span class="split"><em>not promises.</em></span>
+    </h2>
+    <p class="reveal-up">Live numbers from real client deployments. Hover the chart to scrub month-by-month.</p>
+  </div>
+
+  <div class="chart" id="chart">
+    <div class="chart__head">
+      <div>
+        <span class="chart__lbl">Client hours saved · 2026</span>
+        <div class="chart__row">
+          <strong class="chart__value">580h</strong>
+          <span class="chart__delta">↑ 22% MoM</span>
+        </div>
+        <span class="chart__month">May 2026 · current</span>
+      </div>
+      <div class="chart__legend">
+        <span class="lgnd"><span class="dot dot--live"></span> Actuals</span>
+        <span class="lgnd"><span class="dot dot--forecast"></span> Forecast</span>
+      </div>
+    </div>
+
+    <div class="chart__plot">
+      <div class="cbars" id="cbars" role="img" aria-label="Bar chart showing client hours saved per month for 2026 — actuals January through May, forecast June through December.">
+        <div class="cbar" style="--h: 14.2%;" data-m="0"  data-v="220"  data-y="2026" data-l="Jan"><span class="cbar__v">220h</span><span class="cbar__lbl">Jan</span></div>
+        <div class="cbar" style="--h: 19%;"   data-m="1"  data-v="295"  data-y="2026" data-l="Feb"><span class="cbar__v">295h</span><span class="cbar__lbl">Feb</span></div>
+        <div class="cbar" style="--h: 24.8%;" data-m="2"  data-v="385"  data-y="2026" data-l="Mar"><span class="cbar__v">385h</span><span class="cbar__lbl">Mar</span></div>
+        <div class="cbar" style="--h: 30.6%;" data-m="3"  data-v="475"  data-y="2026" data-l="Apr"><span class="cbar__v">475h</span><span class="cbar__lbl">Apr</span></div>
+        <div class="cbar is-current" style="--h: 37.4%;" data-m="4" data-v="580" data-y="2026" data-l="May"><span class="cbar__v">580h</span><span class="cbar__lbl">May</span></div>
+        <div class="cbar is-forecast" style="--h: 44.8%;" data-m="5"  data-v="695"  data-y="2026" data-l="Jun"><span class="cbar__v">695h</span><span class="cbar__lbl">Jun</span></div>
+        <div class="cbar is-forecast" style="--h: 52.9%;" data-m="6"  data-v="820"  data-y="2026" data-l="Jul"><span class="cbar__v">820h</span><span class="cbar__lbl">Jul</span></div>
+        <div class="cbar is-forecast" style="--h: 61.3%;" data-m="7"  data-v="950"  data-y="2026" data-l="Aug"><span class="cbar__v">950h</span><span class="cbar__lbl">Aug</span></div>
+        <div class="cbar is-forecast" style="--h: 70%;"   data-m="8"  data-v="1085" data-y="2026" data-l="Sep"><span class="cbar__v">1085h</span><span class="cbar__lbl">Sep</span></div>
+        <div class="cbar is-forecast" style="--h: 79%;"   data-m="9"  data-v="1225" data-y="2026" data-l="Oct"><span class="cbar__v">1225h</span><span class="cbar__lbl">Oct</span></div>
+        <div class="cbar is-forecast" style="--h: 88.4%;" data-m="10" data-v="1370" data-y="2026" data-l="Nov"><span class="cbar__v">1370h</span><span class="cbar__lbl">Nov</span></div>
+        <div class="cbar is-forecast" style="--h: 98.1%;" data-m="11" data-v="1520" data-y="2026" data-l="Dec"><span class="cbar__v">1520h</span><span class="cbar__lbl">Dec</span></div>
+
+        <!-- gridlines overlay -->
+        <span class="cbars__grid" aria-hidden="true"></span>
+      </div>
+    </div>
+
+    <div class="chart__stats">
+      <div class="ostat"><span class="ostat__num"><span data-count="247">0</span>h</span><span class="ostat__lbl">Saved / client / month</span></div>
+      <div class="ostat"><span class="ostat__num"><span data-count="84">0</span>%</span><span class="ostat__lbl">Faster support response</span></div>
+      <div class="ostat"><span class="ostat__num"><span data-count="3.2">0</span>×</span><span class="ostat__lbl">Avg. team output</span></div>
+      <div class="ostat"><span class="ostat__num"><span data-count="30">0</span>d</span><span class="ostat__lbl">Time to first live system</span></div>
+    </div>
+  </div>
+
+  <p class="outcomes__bottom reveal-up">
+    Total impact across active clients: <strong>$4.2M+ in operating costs saved.</strong>
+  </p>
+</section>
+
+<!-- ─────────── PROCESS ─────────── -->
+<section class="section process" id="process">
+  <div class="process__sticky">
+    <span class="eyebrow">(04) How we work</span>
+    <h2 class="section__title">
+      <span class="split">A 30-day</span>
+      <span class="split">sprint to <em>live AI.</em></span>
+    </h2>
+    <p class="reveal-up">Four phases. Fixed scope. Fixed price. No "let's circle back" — we build.</p>
+  </div>
+
+  <ol class="process__steps">
+    <li class="step">
+      <span class="step__num">01</span>
+      <div class="step__body">
+        <h3>Audit</h3>
+        <p class="step__time">Week 1 · 5 days</p>
+        <p>We embed with your team, map the workflows, and identify the 3 highest-ROI AI moves. You get a written audit and a ranked opportunity map.</p>
+      </div>
+    </li>
+    <li class="step">
+      <span class="step__num">02</span>
+      <div class="step__body">
+        <h3>Design</h3>
+        <p class="step__time">Week 2 · 5 days</p>
+        <p>Architecture, model selection, evals, UX. You see exactly what you're getting — and how it'll be measured — before a line is written.</p>
+      </div>
+    </li>
+    <li class="step">
+      <span class="step__num">03</span>
+      <div class="step__body">
+        <h3>Build</h3>
+        <p class="step__time">Week 3 · 5 days</p>
+        <p>Engineering sprint. Production stack, real integrations, observability and guardrails baked in. We ship to staging by Friday.</p>
+      </div>
+    </li>
+    <li class="step">
+      <span class="step__num">04</span>
+      <div class="step__body">
+        <h3>Launch</h3>
+        <p class="step__time">Week 4 · 5 days</p>
+        <p>Pilot with real users, tune the prompts, set up dashboards. By day 30 you have a live system, a measurement plan, and a handoff doc.</p>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<!-- ─────────── PORTFOLIO ─────────── -->
+<section class="section work" id="work">
+  <div class="section__head">
+    <span class="eyebrow">(05) Recent work</span>
+    <h2 class="section__title">
+      <span class="split">AI systems</span>
+      <span class="split"><em>shipped & running.</em></span>
+    </h2>
+  </div>
+
+  <div class="work__grid">
+    <a class="case case--lg" href="case-madrah.html">
+      <div class="case__media" style="--bg: linear-gradient(135deg,#ff8a4c 0%, #ff5a1f 60%, #c43a0a 100%);">
+        <span class="case__tag">AI · EdTech</span>
+        <span class="case__title">Madrah.com</span>
+        <span class="case__cap">AI tutor for kids — personalised quizzes, adaptive lessons, voice narration in 5 languages.</span>
+        <span class="case__metric">↑ 4.1× lesson completion</span>
+      </div>
+      <div class="case__foot"><span>Read case</span><svg viewBox="0 0 24 24"><use href="#arrow"/></svg></div>
+    </a>
+
+    <a class="case" href="case-operator.html">
+      <div class="case__media" style="--bg: linear-gradient(135deg,#1a1a1a 0%, #2b2b2b 100%);">
+        <span class="case__tag">Ops · SaaS</span>
+        <span class="case__title">Operator.io</span>
+        <span class="case__cap">An autonomous ops agent that handles 71% of inbound support — built in 21 days.</span>
+        <span class="case__metric">−84% response time</span>
+      </div>
+      <div class="case__foot"><span>Read case</span><svg viewBox="0 0 24 24"><use href="#arrow"/></svg></div>
+    </a>
+
+    <a class="case" href="case-havene.html">
+      <div class="case__media" style="--bg: linear-gradient(135deg,#0a2540 0%, #1e3a5f 100%);">
+        <span class="case__tag">FinTech · AI</span>
+        <span class="case__title">Havéne</span>
+        <span class="case__cap">A wealth concierge agent that drafts portfolio summaries in seconds, not days.</span>
+        <span class="case__metric">32h saved / advisor / wk</span>
+      </div>
+      <div class="case__foot"><span>Read case</span><svg viewBox="0 0 24 24"><use href="#arrow"/></svg></div>
+    </a>
+
+    <a class="case case--lg" href="case-vigor.html">
+      <div class="case__media" style="--bg: linear-gradient(135deg,#ff5a1f 0%, #ffb38a 100%);">
+        <span class="case__tag">Retail · Automation</span>
+        <span class="case__title">Vigor Beans</span>
+        <span class="case__cap">End-to-end automation across Shopify, inventory and email — D2C coffee brand running on cruise control.</span>
+        <span class="case__metric">$0 ops headcount</span>
+      </div>
+      <div class="case__foot"><span>Read case</span><svg viewBox="0 0 24 24"><use href="#arrow"/></svg></div>
+    </a>
+  </div>
+
+  <a href="case-madrah.html" class="work__all">
+    <span>View all case studies</span>
+    <svg viewBox="0 0 24 24"><use href="#arrow"/></svg>
+  </a>
+</section>
+
+<!-- ─────────── TESTIMONIAL ─────────── -->
+<section class="testimonial">
+  <p class="testimonial__quote">
+    <span class="split">"Six months of consulting</span>
+    <span class="split">turned into <em>three weeks of shipping.</em></span>
+    <span class="split">Our ops team got their lives back."</span>
+  </p>
+  <footer class="testimonial__by">
+    <span>— Aisha M.</span><span>Founder, Madrah.com</span>
+  </footer>
+</section>
+
+<!-- ─────────── ABOUT (compressed) ─────────── -->
+<section class="section about" id="about">
+  <div class="section__head">
+    <span class="eyebrow">(06) About</span>
+    <h2 class="section__title">
+      <span class="split">A studio built</span>
+      <span class="split">to <em>actually ship.</em></span>
+    </h2>
+  </div>
+  <div class="about__grid">
+    <div class="about__copy reveal-up">
+      <p>Growvate is a senior team of AI engineers, designers and operators. We've shipped production AI into teams across edtech, fintech, ops, retail and SaaS — and we know which moves create real ROI and which create slide decks.</p>
+      <p>We work fixed-scope, fixed-price, fixed-timeline. You get one team, one Slack channel, one launch date.</p>
+    </div>
+    <div class="vs">
+      <div class="vs__col vs__col--them">
+        <span class="vs__h">Traditional agency</span>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><use href="#x"/></svg>6–18 month timelines</li>
+          <li><svg viewBox="0 0 24 24"><use href="#x"/></svg>Decks, not deployments</li>
+          <li><svg viewBox="0 0 24 24"><use href="#x"/></svg>Junior team behind a senior pitch</li>
+          <li><svg viewBox="0 0 24 24"><use href="#x"/></svg>Scope creep, surprise invoices</li>
+          <li><svg viewBox="0 0 24 24"><use href="#x"/></svg>Hand-off, then ghosted</li>
+        </ul>
+      </div>
+      <div class="vs__col vs__col--us">
+        <span class="vs__h"><svg viewBox="0 0 60 60"><use href="#mark"/></svg>Growvate</span>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><use href="#check"/></svg>30-day production sprint</li>
+          <li><svg viewBox="0 0 24 24"><use href="#check"/></svg>Live systems, measurable ROI</li>
+          <li><svg viewBox="0 0 24 24"><use href="#check"/></svg>Senior operators, end-to-end</li>
+          <li><svg viewBox="0 0 24 24"><use href="#check"/></svg>Fixed scope, fixed price</li>
+          <li><svg viewBox="0 0 24 24"><use href="#check"/></svg>30-day post-launch support included</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── FAQ ─────────── -->
+<section class="section faq">
+  <div class="section__head">
+    <span class="eyebrow">(07) Questions</span>
+    <h2 class="section__title">
+      <span class="split">Still wondering?</span>
+      <span class="split"><em>Read this.</em></span>
+    </h2>
+  </div>
+
+  <div class="faq__list">
+    <details class="faq__item" open>
+      <summary>How much does a Growvate engagement cost?</summary>
+      <p>Most engagements land between $18k–$60k for a 30-day sprint, depending on scope and integration complexity. You see a fixed quote before we start. No hourly billing, no surprise invoices.</p>
+    </details>
+    <details class="faq__item">
+      <summary>How long does it really take to ship?</summary>
+      <p>30 days from kickoff to a live production system, for the standard sprint. Larger multi-system implementations run as back-to-back sprints — but you always have something shipped by day 30.</p>
+    </details>
+    <details class="faq__item">
+      <summary>We don't have an AI strategy yet — can you start from scratch?</summary>
+      <p>Yes. Most clients start with our 5-day AI audit. You walk away with a ranked opportunity map, ROI estimates, and a 90-day execution plan — even if you don't continue with us.</p>
+    </details>
+    <details class="faq__item">
+      <summary>Will this replace my team?</summary>
+      <p>No. We replace your team's worst hours, not your team. The goal is to give your senior people back the 30–60% of their week spent on manual work, so they can do the work only they can do.</p>
+    </details>
+    <details class="faq__item">
+      <summary>Who owns the code and the models?</summary>
+      <p>You do. 100%. Every line of code, every prompt, every workflow lives in your stack, your cloud, your accounts. We hand off everything with full documentation on day 30.</p>
+    </details>
+    <details class="faq__item">
+      <summary>What if it doesn't work?</summary>
+      <p>Every sprint has measurable success criteria defined on day one. If we miss them at day 30, you don't pay the final milestone. We've never had to invoke this — but it's in writing.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ─────────── JOURNAL ─────────── -->
+<section class="section journal" id="journal">
+  <div class="section__head">
+    <span class="eyebrow">(08) Journal</span>
+    <h2 class="section__title">
+      <span class="split">Notes from</span>
+      <span class="split">the studio.</span>
+    </h2>
+  </div>
+
+  <div class="journal__grid">
+    <a class="post" href="post-playbook.html">
+      <span class="post__meta">May 2026 · Automation</span>
+      <h3>The 30-day AI implementation playbook (every team can use)</h3>
+      <p>The exact sprint structure we run with every client, day-by-day, week-by-week.</p>
+      <span class="post__more">Read article <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></span>
+    </a>
+    <a class="post" href="post-powerpoint.html">
+      <span class="post__meta">Apr 2026 · Strategy</span>
+      <h3>Why most AI projects die in PowerPoint</h3>
+      <p>The five reasons enterprise AI never ships — and the studio model that fixes them.</p>
+      <span class="post__more">Read article <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></span>
+    </a>
+    <a class="post" href="post-stack.html">
+      <span class="post__meta">Mar 2026 · Build</span>
+      <h3>Our default 2026 AI stack (opinionated)</h3>
+      <p>The exact models, tools and infrastructure we reach for on day one. With trade-offs.</p>
+      <span class="post__more">Read article <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></span>
+    </a>
+  </div>
+</section>
+
+<!-- ─────────── CONTACT ─────────── -->
+<section class="section contact" id="contact">
+  <div class="section__head">
+    <span class="eyebrow">(09) Let's build</span>
+    <h2 class="cta__title">
+      <span class="split">30 minutes</span>
+      <span class="split">to your first</span>
+      <span class="split"><em>AI win.</em></span>
+    </h2>
+    <p class="reveal-up contact__lede">
+      Pick a time on the calendar — or send us a brief.
+      Either way, you'll hear from a senior member of the team within 24h.
+    </p>
+  </div>
+
+  <div class="contact__grid">
+    <!-- contact form -->
+    <form class="contact__form" id="contactForm" onsubmit="event.preventDefault(); document.getElementById('formSent').hidden=false; this.querySelector('button[type=submit]').disabled=true; this.style.opacity=.6;">
+      <div class="contact__row">
+        <label>
+          <span>Your name</span>
+          <input type="text" name="name" required placeholder="Alex Founder" autocomplete="name" />
+        </label>
+        <label>
+          <span>Work email</span>
+          <input type="email" name="email" required placeholder="alex@company.com" autocomplete="email" />
+        </label>
+      </div>
+      <div class="contact__row">
+        <label>
+          <span>Company</span>
+          <input type="text" name="company" placeholder="Acme Inc." autocomplete="organization" />
+        </label>
+        <label>
+          <span>What do you need?</span>
+          <select name="need" required>
+            <option value="">Pick a lane —</option>
+            <option>AI Automation</option>
+            <option>AI Implementation (in our product)</option>
+            <option>AI Strategy / Audit</option>
+            <option>Not sure yet — let's talk</option>
+          </select>
+        </label>
+      </div>
+      <label class="contact__full">
+        <span>Tell us the rough brief</span>
+        <textarea name="brief" rows="4" placeholder="What are you trying to do? Where's the pain? Any timeline?"></textarea>
+      </label>
+      <div class="contact__bottom">
+        <button type="submit" class="btn btn--primary">
+          <span>Send the brief</span>
+          <svg viewBox="0 0 24 24"><use href="#arrow"/></svg>
+        </button>
+        <p class="contact__small">We reply within 24h, Mon–Fri.</p>
+      </div>
+      <div class="contact__sent" id="formSent" hidden>
+        <svg viewBox="0 0 24 24"><use href="#check"/></svg>
+        <strong>Brief received.</strong>
+        <span>We'll be in touch within 24h with two ROI ideas + a proposed call slot.</span>
+      </div>
+    </form>
+
+    <!-- calendar placeholder -->
+    <aside class="contact__calendar">
+      <div class="contact__calendar-head">
+        <span class="eyebrow eyebrow--inv">Or book directly</span>
+        <h3>30-minute AI audit call</h3>
+        <p>Free, no slides. We map two automation wins specific to your business.</p>
+      </div>
+
+      <!-- placeholder for embedded calendar (Calendly / Cal.com / Savvycal). Replace with real embed. -->
+      <div class="contact__calendar-embed" data-embed="calendar">
+        <div class="cal__mock">
+          <div class="cal__mock-head">
+            <span>May 2026</span>
+            <span class="cal__chev">‹  ›</span>
+          </div>
+          <div class="cal__mock-grid">
+            <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+            <i></i><i></i><i></i><i></i><i></i><i class="is-pad">1</i><i class="is-pad">2</i>
+            <i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i><i>9</i>
+            <i>10</i><i>11</i><i class="is-on">12</i><i>13</i><i>14</i><i>15</i><i>16</i>
+            <i>17</i><i>18</i><i>19</i><i>20</i><i>21</i><i>22</i><i>23</i>
+            <i>24</i><i>25</i><i>26</i><i>27</i><i>28</i><i>29</i><i>30</i>
+            <i>31</i>
+          </div>
+          <div class="cal__mock-slots">
+            <button type="button" class="cal__slot">9:00</button>
+            <button type="button" class="cal__slot is-on">10:30</button>
+            <button type="button" class="cal__slot">13:00</button>
+            <button type="button" class="cal__slot">15:30</button>
+          </div>
+        </div>
+
+        <a class="contact__cal-cta" href="https://cal.com/growvate" target="_blank" rel="noopener" data-link>
+          <span>Open full calendar</span>
+          <svg viewBox="0 0 24 24"><use href="#arrow"/></svg>
+        </a>
+        <p class="contact__cal-note">↑ replace this with your Calendly / Cal.com / Savvycal embed link.</p>
+      </div>
+    </aside>
+  </div>
+
+  <p class="contact__or reveal-up">
+    Or shoot us an email — <a href="mailto:hello@growvate.com">hello@growvate.com</a>. Replies within 24h.
+  </p>
+</section>
+
+</main>
+
+<!-- footer -->
+<footer class="footer">
+  <div class="footer__top">
+    <a href="#top" class="footer__brand" data-link>
+      <svg class="footer__mark" viewBox="0 0 60 60"><use href="#mark"/></svg>
+      <span>GROWVATE</span>
+    </a>
+    <div class="footer__cols">
+      <div>
+        <span class="footer__h">Studio</span>
+        <a href="#about" data-link>About</a>
+        <a href="#services" data-link>Services</a>
+        <a href="#process" data-link>Process</a>
+      </div>
+      <div>
+        <span class="footer__h">Work</span>
+        <a href="#work" data-link>Portfolio</a>
+        <a href="#journal" data-link>Journal</a>
+        <a href="#contact" data-link>Contact</a>
+      </div>
+      <div>
+        <span class="footer__h">Social</span>
+        <a href="#">LinkedIn</a>
+        <a href="#">Instagram</a>
+        <a href="#">X / Twitter</a>
+      </div>
+      <div>
+        <span class="footer__h">Get in touch</span>
+        <a href="mailto:hello@growvate.com">hello@growvate.com</a>
+        <a href="#contact" data-link>Book audit →</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>© 2026 Growvate AI Studio.</span>
+    <span>Automating the boring. Quietly.</span>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

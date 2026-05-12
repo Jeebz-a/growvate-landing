@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Case Study — Operator.io · Autonomous ops agent · Growvate</title>
+<meta name="description" content="How Growvate built Operator.io's autonomous support agent in 21 days, cutting response time by 84% and handling 71% of inbound." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="cursor" aria-hidden="true"><div class="cursor__dot"></div><div class="cursor__ring"></div></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 60 60"><path fill="currentColor" d="M30 0 L36 24 L60 30 L36 36 L30 60 L24 36 L0 30 L24 24 Z"/><rect x="22" y="22" width="16" height="16" fill="#fff"/><rect x="26" y="26" width="8" height="8" fill="currentColor"/></symbol>
+  <symbol id="arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M5 12h14M13 5l7 7-7 7"/></symbol>
+  <symbol id="check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M5 13l4 4 10-11"/></symbol>
+</svg>
+
+<header class="nav" id="nav">
+  <a href="index.html" class="nav__logo"><svg class="nav__mark" viewBox="0 0 60 60"><use href="#mark"/></svg><span>GROWVATE</span></a>
+  <nav class="nav__links"><a href="index.html#about">About</a><a href="index.html#services">Services</a><a href="index.html#work">Portfolio</a><a href="index.html#journal">Blog</a></nav>
+  <a href="index.html#contact" class="nav__cta"><span>Book AI audit</span><svg viewBox="0 0 24 24"><use href="#arrow"/></svg></a>
+  <button class="nav__toggle" aria-label="Menu"><span></span><span></span></button>
+</header>
+
+<main>
+
+<section class="page-hero">
+  <a href="index.html#work" class="page-hero__back"><svg viewBox="0 0 24 24"><use href="#arrow"/></svg><span>All case studies</span></a>
+  <div class="page-hero__meta">
+    <span class="page-hero__tag">Ops · SaaS</span>
+    <span class="page-hero__date">Shipped Feb 2026 · 21-day build</span>
+  </div>
+  <h1 class="page-hero__title">
+    <span class="split">An autonomous ops agent</span>
+    <span class="split">that handles <em>71% of inbound.</em></span>
+  </h1>
+  <p class="page-hero__lede reveal-up">
+    Operator.io is a B2B SaaS with 4,000+ customers and a 6-person support team drowning in tickets. We built them an AI agent that runs in front of every inbound — and resolves most of it without a human.
+  </p>
+</section>
+
+<div class="page-banner" style="--bg: linear-gradient(135deg,#1a1a1a 0%, #2b2b2b 100%);" aria-hidden="true"></div>
+
+<section class="case-overview">
+  <div>
+    <h4>The Challenge</h4>
+    <p>Support team was answering 2,400 tickets/week, 60% of which were the same 12 questions. Their average response time was 8 hours and trending up. Hiring more agents was a treadmill — they needed to break the loop.</p>
+  </div>
+  <div>
+    <h4>What we shipped</h4>
+    <ul>
+      <li>Tier-1 AI support agent (Claude-powered)</li>
+      <li>Real-time RAG over their help center + internal docs</li>
+      <li>Confidence scoring + auto-escalation</li>
+      <li>Slack + Zendesk + Intercom integration</li>
+      <li>Live analytics dashboard for ops leads</li>
+    </ul>
+  </div>
+  <div>
+    <h4>Stack</h4>
+    <ul>
+      <li>Node · TypeScript · Fastify</li>
+      <li>Claude Sonnet 4 · Anthropic API</li>
+      <li>Pinecone · Postgres</li>
+      <li>Zendesk + Intercom webhooks</li>
+      <li>Datadog · Sentry</li>
+    </ul>
+  </div>
+</section>
+
+<section class="case-metrics">
+  <div class="case-metrics__inner">
+    <div class="case-metric"><strong>71%</strong><span>Tickets auto-resolved</span></div>
+    <div class="case-metric"><strong>−84%</strong><span>Avg. response time</span></div>
+    <div class="case-metric"><strong>21d</strong><span>From kickoff to live</span></div>
+    <div class="case-metric"><strong>$340k</strong><span>Annual cost saved</span></div>
+  </div>
+</section>
+
+<article class="prose">
+
+  <h2>The signal: their best agent was a copy-paste</h2>
+  <p>When we audited Operator's support inbox, the pattern was obvious. Their top agent's "secret" wasn't expertise — it was a folder of 14 saved replies and 9 link templates. Most "support work" was pattern-matching a ticket to a saved reply. That's a job for an AI agent.</p>
+
+  <blockquote>
+    "Within 10 days we had something better than our average human. By day 21 it was outperforming our best agent on response time, with the same CSAT."
+    <cite>— Marcus T., Head of Ops, Operator.io</cite>
+  </blockquote>
+
+  <h2>Architecture: confidence scoring is the whole game</h2>
+  <p>The hard part of building an AI support agent isn't getting it to answer — it's getting it to <em>know when not to</em>. Every reply runs through a confidence scoring layer that uses three signals:</p>
+  <ol>
+    <li><strong>Embedding similarity</strong> to the closest matching question in the knowledge base</li>
+    <li><strong>Claude self-eval</strong> on its own answer ("how confident are you, 1-10?")</li>
+    <li><strong>Historical resolution rate</strong> for the matched intent</li>
+  </ol>
+  <p>If confidence drops below 0.78 on any axis, it escalates to a human with the draft answer pre-loaded. The human just edits and sends — and that edit becomes a new training signal.</p>
+
+  <h2>Results, week by week</h2>
+  <p>Week 1: 12% of tickets resolved without escalation. Week 2: 38%. Week 4: 64%. By month 3, holding steady at <strong>71% auto-resolution</strong> with CSAT actually <em>higher</em> than the pre-launch baseline.</p>
+  <p>The most surprising win: response time. Even escalated tickets are faster — because the human sees a draft, not a blank box. Average response time dropped from 8 hours to 1.2 seconds for auto-resolved, and from 8 hours to 38 minutes for escalations.</p>
+
+  <h2>What we'd do differently</h2>
+  <p>We'd ship the analytics dashboard on day one. Operator's ops team got religion about the agent's performance once they could see it in real time — and the dashboard exposed three categories of tickets we were under-serving, which became targeted improvements.</p>
+
+</article>
+
+<section class="case-quote">
+  <p>"This <em>quietly replaced</em> a $400k/year team expansion. The agent didn't replace anyone — it gave our existing team their afternoons back."</p>
+  <footer><span>— Marcus T.</span><span>Head of Ops, Operator.io</span></footer>
+</section>
+
+<section class="next-up">
+  <div>
+    <span class="next-up__lbl">Next case study →</span>
+    <h3 class="next-up__title">Havéne — a wealth concierge agent for advisors</h3>
+  </div>
+  <a href="case-havene.html"><span>Read next case</span><svg viewBox="0 0 24 24"><use href="#arrow"/></svg></a>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__top">
+    <a href="index.html" class="footer__brand"><svg class="footer__mark" viewBox="0 0 60 60"><use href="#mark"/></svg><span>GROWVATE</span></a>
+    <div class="footer__cols">
+      <div><span class="footer__h">Studio</span><a href="index.html#about">About</a><a href="index.html#services">Services</a><a href="index.html#process">Process</a></div>
+      <div><span class="footer__h">Work</span><a href="index.html#work">Portfolio</a><a href="index.html#journal">Journal</a><a href="index.html#contact">Contact</a></div>
+      <div><span class="footer__h">Social</span><a href="#">LinkedIn</a><a href="#">Instagram</a><a href="#">X / Twitter</a></div>
+      <div><span class="footer__h">Get in touch</span><a href="mailto:hello@growvate.com">hello@growvate.com</a><a href="index.html#contact">Book audit →</a></div>
+    </div>
+  </div>
+  <div class="footer__bottom"><span>© 2026 Growvate AI Studio.</span><span>Automating the boring. Quietly.</span></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

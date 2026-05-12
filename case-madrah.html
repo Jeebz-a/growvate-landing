@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Case Study — Madrah.com · AI tutor for kids · Growvate</title>
+<meta name="description" content="How Growvate built Madrah.com — an AI-powered Islamic learning platform — and 4.1×'d lesson completion in 6 weeks." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="cursor" aria-hidden="true"><div class="cursor__dot"></div><div class="cursor__ring"></div></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 60 60">
+    <path fill="currentColor" d="M30 0 L36 24 L60 30 L36 36 L30 60 L24 36 L0 30 L24 24 Z"/>
+    <rect x="22" y="22" width="16" height="16" fill="#fff"/>
+    <rect x="26" y="26" width="8" height="8" fill="currentColor"/>
+  </symbol>
+  <symbol id="arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M5 12h14M13 5l7 7-7 7"/></symbol>
+  <symbol id="check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M5 13l4 4 10-11"/></symbol>
+</svg>
+
+<!-- nav -->
+<header class="nav" id="nav">
+  <a href="index.html" class="nav__logo" aria-label="Growvate home">
+    <svg class="nav__mark" viewBox="0 0 60 60"><use href="#mark"/></svg>
+    <span>GROWVATE</span>
+  </a>
+  <nav class="nav__links" aria-label="Primary">
+    <a href="index.html#about">About</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#work">Portfolio</a>
+    <a href="index.html#journal">Blog</a>
+  </nav>
+  <a href="index.html#contact" class="nav__cta">
+    <span>Book AI audit</span>
+    <svg viewBox="0 0 24 24"><use href="#arrow"/></svg>
+  </a>
+  <button class="nav__toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+</header>
+
+<main>
+
+<!-- page hero -->
+<section class="page-hero">
+  <a href="index.html#work" class="page-hero__back">
+    <svg viewBox="0 0 24 24"><use href="#arrow"/></svg>
+    <span>All case studies</span>
+  </a>
+  <div class="page-hero__meta">
+    <span class="page-hero__tag">AI · EdTech</span>
+    <span class="page-hero__date">Shipped Aug 2025 · 6-week build</span>
+  </div>
+  <h1 class="page-hero__title">
+    <span class="split">Madrah.com — an AI tutor</span>
+    <span class="split">that kids <em>actually finish.</em></span>
+  </h1>
+  <p class="page-hero__lede reveal-up">
+    A personalised Islamic learning platform for families. We took it from PDF deck to
+    launched product, in production with 8,400 active families across 14 countries.
+  </p>
+</section>
+
+<!-- banner -->
+<div class="page-banner" style="--bg: linear-gradient(135deg,#ff8a4c 0%, #ff5a1f 60%, #c43a0a 100%);" aria-hidden="true"></div>
+
+<!-- overview -->
+<section class="case-overview">
+  <div>
+    <h4>The Challenge</h4>
+    <p>Madrah had a clear vision — Islamic learning that kids love — but no shipped product, no AI infrastructure, and a launch date 8 weeks out. Two prior dev shops had quoted 18 months.</p>
+  </div>
+  <div>
+    <h4>What we shipped</h4>
+    <ul>
+      <li>AI-personalised lesson engine</li>
+      <li>Adaptive quiz generation (Claude + RAG)</li>
+      <li>Voice narration in 5 languages</li>
+      <li>Parent dashboard + family progress tracking</li>
+      <li>Stripe billing + onboarding flow</li>
+    </ul>
+  </div>
+  <div>
+    <h4>Stack</h4>
+    <ul>
+      <li>Next.js 15 · TypeScript</li>
+      <li>Claude Sonnet 4 · OpenAI Whisper</li>
+      <li>Postgres · pgvector</li>
+      <li>Vercel · Cloudflare R2</li>
+      <li>Stripe · PostHog</li>
+    </ul>
+  </div>
+</section>
+
+<!-- metrics -->
+<section class="case-metrics">
+  <div class="case-metrics__inner">
+    <div class="case-metric"><strong>4.1×</strong><span>Lesson completion rate</span></div>
+    <div class="case-metric"><strong>8.4k</strong><span>Active families (month 3)</span></div>
+    <div class="case-metric"><strong>42d</strong><span>From kickoff to launch</span></div>
+    <div class="case-metric"><strong>14</strong><span>Countries served</span></div>
+  </div>
+</section>
+
+<!-- long form -->
+<article class="prose">
+
+  <h2>The brief: ship a learning product kids actually return to</h2>
+  <p>Madrah's founders had spent six months interviewing parents. The signal was clear: kids weren't engaging with traditional Islamic learning apps — the content was static, the design felt institutional, and there was no real personalisation. Parents loved the idea but bounced after one session.</p>
+  <p>They came to us with a 90-page Notion doc, a Figma file, and a promise to investors that the MVP would be live by end of Q3. Two agencies had already passed on the timeline.</p>
+
+  <blockquote>
+    "We needed someone who could see the whole thing — design, AI, engineering, content — and just <em>build it</em>. Growvate was the first team that didn't try to talk us out of the deadline."
+    <cite>— Aisha M., Founder, Madrah.com</cite>
+  </blockquote>
+
+  <h2>Week 1: audit, prioritise, kill scope</h2>
+  <p>We started with a 4-hour founder session and an internal audit of the brief. The Notion doc had 27 features. We cut it to 9 for v1, with a roadmap for the next 18 — measurable, sequenced, and tied to engagement metrics.</p>
+  <p>Three decisions saved the launch:</p>
+  <ol>
+    <li><strong>AI was the product, not a feature.</strong> Every lesson, quiz and feedback loop runs through Claude with a tuned system prompt. Static content was banned from v1.</li>
+    <li><strong>Voice from day one.</strong> Kids learn faster when content is read to them. Whisper for input, ElevenLabs for output, both available in 5 languages.</li>
+    <li><strong>Parent dashboard as the retention engine.</strong> Parents who saw weekly progress reports stayed. Kids whose parents stayed, stayed.</li>
+  </ol>
+
+  <h2>Week 2–3: design system + RAG architecture</h2>
+  <p>Two parallel sprints. The design team built a kid-friendly UI system (rounded shapes, generous spacing, motion-led feedback) while the AI team designed a RAG pipeline that could serve personalised content from a curated 12,000-document Islamic source library.</p>
+  <p>The hardest call was the model. Claude Sonnet 4 won — better at long-context reasoning over scriptural material than GPT-4o in our evals, and significantly cheaper per million tokens at the volume we projected.</p>
+
+  <h2>Week 4–5: building the loop</h2>
+  <p>This was the build week most agencies skip — the part where the AI feature isn't just <em>working</em> but actually <em>good</em>. We ran 400+ evaluation prompts through the lesson engine, tuned the personalisation logic, and built a feedback loop that gets stronger every time a kid completes a lesson.</p>
+  <p>By end of week 5, every part of the product was live in staging. Parent accounts, kid accounts, lessons, quizzes, progress tracking, billing, voice — all working end to end.</p>
+
+  <h2>Week 6: launch, observe, tune</h2>
+  <p>We soft-launched on a Tuesday to Madrah's existing waitlist of 1,200 families. By Friday, 642 had signed up. By the end of the month, 4,800. By month three, 8,400 active families across 14 countries.</p>
+  <p>The metric we obsessed over — lesson completion rate — landed at <strong>4.1× the industry baseline</strong> for kids' learning apps. We didn't reach it on launch day. We tuned our way there over the first 60 days, with weekly prompt iteration and A/B tests on the parent dashboard.</p>
+
+  <h2>What we'd do differently</h2>
+  <p>Two things. First, we'd invest in evaluation infrastructure earlier — the first three weeks of post-launch tuning would have taken half the time with a proper eval suite from day one. Second, we'd have started multilingual on day one rather than week 4 — retrofitting i18n into a fast-moving product is the single most painful kind of refactor.</p>
+  <p>Both are now standard parts of our 30-day sprint.</p>
+
+</article>
+
+<!-- testimonial-style quote -->
+<section class="case-quote">
+  <p>
+    "Six months of consulting <em>turned into three weeks of shipping.</em>
+    Our retention numbers don't look like a v1. They look like a product we've been
+    iterating on for two years."
+  </p>
+  <footer>
+    <span>— Aisha M.</span>
+    <span>Founder, Madrah.com</span>
+  </footer>
+</section>
+
+<!-- next case -->
+<section class="next-up">
+  <div>
+    <span class="next-up__lbl">Next case study →</span>
+    <h3 class="next-up__title">Operator.io — an autonomous ops agent for SMBs</h3>
+  </div>
+  <a href="case-operator.html">
+    <span>Read next case</span>
+    <svg viewBox="0 0 24 24"><use href="#arrow"/></svg>
+  </a>
+</section>
+
+</main>
+
+<!-- footer -->
+<footer class="footer">
+  <div class="footer__top">
+    <a href="index.html" class="footer__brand">
+      <svg class="footer__mark" viewBox="0 0 60 60"><use href="#mark"/></svg>
+      <span>GROWVATE</span>
+    </a>
+    <div class="footer__cols">
+      <div>
+        <span class="footer__h">Studio</span>
+        <a href="index.html#about">About</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#process">Process</a>
+      </div>
+      <div>
+        <span class="footer__h">Work</span>
+        <a href="index.html#work">Portfolio</a>
+        <a href="index.html#journal">Journal</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+      <div>
+        <span class="footer__h">Social</span>
+        <a href="#">LinkedIn</a>
+        <a href="#">Instagram</a>
+        <a href="#">X / Twitter</a>
+      </div>
+      <div>
+        <span class="footer__h">Get in touch</span>
+        <a href="mailto:hello@growvate.com">hello@growvate.com</a>
+        <a href="index.html#contact">Book audit →</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>© 2026 Growvate AI Studio.</span>
+    <span>Automating the boring. Quietly.</span>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

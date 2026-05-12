@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The 30-day AI implementation playbook · Growvate Journal</title>
+<meta name="description" content="The exact sprint structure we run with every client, day-by-day, week-by-week — written for any team that wants to ship AI in a month." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="cursor" aria-hidden="true"><div class="cursor__dot"></div><div class="cursor__ring"></div></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 60 60"><path fill="currentColor" d="M30 0 L36 24 L60 30 L36 36 L30 60 L24 36 L0 30 L24 24 Z"/><rect x="22" y="22" width="16" height="16" fill="#fff"/><rect x="26" y="26" width="8" height="8" fill="currentColor"/></symbol>
+  <symbol id="arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M5 12h14M13 5l7 7-7 7"/></symbol>
+</svg>
+
+<header class="nav" id="nav">
+  <a href="index.html" class="nav__logo"><svg class="nav__mark" viewBox="0 0 60 60"><use href="#mark"/></svg><span>GROWVATE</span></a>
+  <nav class="nav__links"><a href="index.html#about">About</a><a href="index.html#services">Services</a><a href="index.html#work">Portfolio</a><a href="index.html#journal">Blog</a></nav>
+  <a href="index.html#contact" class="nav__cta"><span>Book AI audit</span><svg viewBox="0 0 24 24"><use href="#arrow"/></svg></a>
+  <button class="nav__toggle" aria-label="Menu"><span></span><span></span></button>
+</header>
+
+<main>
+
+<section class="page-hero">
+  <a href="index.html#journal" class="page-hero__back"><svg viewBox="0 0 24 24"><use href="#arrow"/></svg><span>All articles</span></a>
+  <div class="page-hero__meta">
+    <span class="page-hero__tag">Automation</span>
+    <span class="page-hero__date">May 2026 · 8 min read</span>
+  </div>
+  <h1 class="page-hero__title">
+    <span class="split">The 30-day AI</span>
+    <span class="split">implementation <em>playbook.</em></span>
+  </h1>
+  <p class="page-hero__lede reveal-up">
+    The exact sprint structure we use with every client — day-by-day, week-by-week —
+    written so any in-house team can copy it. No theory. Just the moves that ship.
+  </p>
+</section>
+
+<article class="prose">
+
+  <p>Most AI projects fail in the same five places. We know because we've fixed them in 40+ engagements. This is the structure we run every time. It's not the only way to ship AI in 30 days, but it's the only one we've found that's reliably repeatable.</p>
+
+  <h2>Week 0 — the kickoff (1 day)</h2>
+  <p>Before week one starts, there's a single kickoff call. Two hours, four humans: the founder/sponsor, the operational lead, the AI lead, and your project owner. The deliverable from this call is a one-page brief that defines:</p>
+  <ul>
+    <li>The single workflow we're automating (no "we'll also do X")</li>
+    <li>The success metric, with current baseline and 30-day target</li>
+    <li>Three non-goals (things we'll explicitly <em>not</em> ship in this sprint)</li>
+    <li>Who decides what "done" means on day 30</li>
+  </ul>
+  <p>If you can't get this onto one page, the scope is too big. Cut.</p>
+
+  <h2>Week 1 — Audit</h2>
+  <p>Day 1–3: <strong>workflow shadowing</strong>. You sit with the person currently doing the work. Watch them, ask why, record everything. The goal is not to redesign the workflow — it's to understand it.</p>
+  <p>Day 4: <strong>data audit</strong>. What information feeds the workflow? Is it accessible programmatically? Is it clean? Does it live in tools we can integrate with? This is where most projects discover they need a week of data plumbing before AI can do anything useful.</p>
+  <p>Day 5: <strong>write the spec</strong>. One document. Inputs, outputs, edge cases, evals, escalation paths. If a stakeholder can't read this and tell you what the system will do, rewrite it until they can.</p>
+
+  <h2>Week 2 — Design</h2>
+  <p>Day 6–8: <strong>architecture + model selection</strong>. Pick the model. Pick the framework. Pick the eval harness. Don't get clever — boring choices ship faster.</p>
+  <p>Day 9–10: <strong>build the eval suite first</strong>. Yes, before any prompt-engineering. You need 50–100 test cases that represent real production traffic. Without this, you can't tell if your tuning is making things better or worse. We learned this the hard way.</p>
+
+  <blockquote>
+    The best teams we work with treat evals like tests — not as a "we'll add them later" but as the actual definition of done.
+  </blockquote>
+
+  <h2>Week 3 — Build</h2>
+  <p>This is the sprint week. Mornings: prompt + model work. Afternoons: integration. Evenings: nothing — don't burn out in week 3, you need week 4 to be good.</p>
+  <p>The order matters:</p>
+  <ol>
+    <li><strong>Get the dumbest end-to-end working</strong> first. A working pipeline that gives bad answers beats a great prompt that's not wired up.</li>
+    <li><strong>Run it against the eval suite</strong>. Look at the worst 10 failures.</li>
+    <li><strong>Iterate prompts to fix those 10</strong>. Don't get distracted by edge cases until the common path is solid.</li>
+    <li><strong>Add observability</strong>. Every model call logged with input, output, latency, cost.</li>
+    <li><strong>Ship to staging</strong> by Friday.</li>
+  </ol>
+
+  <h2>Week 4 — Launch</h2>
+  <p>Day 22–24: <strong>shadow mode</strong>. The AI runs alongside the human, generating draft outputs. The human still acts. You're collecting comparison data and trust.</p>
+  <p>Day 25–27: <strong>limited rollout</strong>. Turn on AI for 10% of traffic. Monitor. Iterate.</p>
+  <p>Day 28–30: <strong>full rollout + handoff</strong>. By day 30 you have a live system, a dashboard, a runbook, and someone internal who can iterate on prompts. If you can't say "Sarah from ops now owns this", you haven't shipped.</p>
+
+  <h2>What kills these sprints</h2>
+  <p>Three things, in order of frequency:</p>
+  <ul>
+    <li><strong>Scope creep</strong> — usually disguised as "while we're at it, can we also...". Don't.</li>
+    <li><strong>No baseline metric</strong> — you can't celebrate a 4× improvement if no one wrote down where you started.</li>
+    <li><strong>Skipping the eval suite</strong> — you'll skip it, and then spend week 4 firefighting failures you could have caught in week 2.</li>
+  </ul>
+
+  <hr/>
+  <p><em>If this is useful and you want help running it in your team, we book one strategy call a week for in-house teams. <a href="index.html#contact">Grab a slot here</a>.</em></p>
+
+</article>
+
+<section class="related-posts">
+  <h3>More from the journal</h3>
+  <div class="related-posts__grid">
+    <a class="post" href="post-powerpoint.html">
+      <span class="post__meta">Apr 2026 · Strategy</span>
+      <h3>Why most AI projects die in PowerPoint</h3>
+      <p>The five reasons enterprise AI never ships — and the studio model that fixes them.</p>
+      <span class="post__more">Read article <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></span>
+    </a>
+    <a class="post" href="post-stack.html">
+      <span class="post__meta">Mar 2026 · Build</span>
+      <h3>Our default 2026 AI stack (opinionated)</h3>
+      <p>The exact models, tools and infrastructure we reach for on day one. With trade-offs.</p>
+      <span class="post__more">Read article <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__top">
+    <a href="index.html" class="footer__brand"><svg class="footer__mark" viewBox="0 0 60 60"><use href="#mark"/></svg><span>GROWVATE</span></a>
+    <div class="footer__cols">
+      <div><span class="footer__h">Studio</span><a href="index.html#about">About</a><a href="index.html#services">Services</a><a href="index.html#process">Process</a></div>
+      <div><span class="footer__h">Work</span><a href="index.html#work">Portfolio</a><a href="index.html#journal">Journal</a><a href="index.html#contact">Contact</a></div>
+      <div><span class="footer__h">Social</span><a href="#">LinkedIn</a><a href="#">Instagram</a><a href="#">X / Twitter</a></div>
+      <div><span class="footer__h">Get in touch</span><a href="mailto:hello@growvate.com">hello@growvate.com</a><a href="index.html#contact">Book audit →</a></div>
+    </div>
+  </div>
+  <div class="footer__bottom"><span>© 2026 Growvate AI Studio.</span><span>Automating the boring. Quietly.</span></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
