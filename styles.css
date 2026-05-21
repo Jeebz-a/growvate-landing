@@ -998,11 +998,11 @@ body {
   align-items: center;
   justify-content: center;
   padding: 20px;
-  opacity: 0;
-  transition: opacity .35s var(--ease);
 }
-.modal.is-open { opacity: 1; }
 .modal[hidden] { display: none !important; }
+/* fade in via backdrop only — panel handles the visible motion via scale */
+.modal__backdrop { opacity: 0; transition: opacity .3s var(--ease); }
+.modal.is-open .modal__backdrop { opacity: 1; }
 
 .modal__backdrop {
   position: absolute;
