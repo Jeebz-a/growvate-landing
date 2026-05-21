@@ -17,6 +17,8 @@ const NOTIFY_EMAILS = 'growvatestudio@gmail.com';
 const NOTIFY_ENABLED = true;
 // ───────────────────────────────────────────────────────────
 
+// Column order. Adding a new column? Append to the END of this array so
+// existing rows stay aligned. syncHeaders() will widen the sheet on next call.
 const HEADERS = [
   'Timestamp',
   'Name',
@@ -25,7 +27,8 @@ const HEADERS = [
   'Resource',
   'Mode',
   'User Agent',
-  'Raw IP/Referrer (best-effort)'
+  'Raw IP/Referrer (best-effort)',
+  'Company Name'
 ];
 
 /**
@@ -45,34 +48,23 @@ function authorizeMail() {
 function doPost(e) {
   try {
     const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-
-    // First-run: write header row + freeze it
-    if (sheet.getLastRow() === 0) {
-      sheet.appendRow(HEADERS);
-      sheet.setFrozenRows(1);
-      // Light formatting on header row
-      const headerRange = sheet.getRange(1, 1, 1, HEADERS.length);
-      headerRange.setFontWeight('bold');
-      headerRange.setBackground('#0d0d0d');
-      headerRange.setFontColor('#ffffff');
-      sheet.autoResizeColumns(1, HEADERS.length);
-    }
+    syncHeaders(sheet);
 
     const raw = e && e.postData && e.postData.contents ? e.postData.contents : '{}';
     const data = JSON.parse(raw);
 
     sheet.appendRow([
-      data.timestamp || new Date().toISOString(),
-      data.name      || '',
-      data.email     || '',
-      data.useType   || '',
-      data.resource  || '',
-      data.mode      || '',
-      data.userAgent || '',
-      ''
+      data.timestamp   || new Date().toISOString(),
+      data.name        || '',
+      data.email       || '',
+      data.useType     || '',
+      data.resource    || '',
+      data.mode        || '',
+      data.userAgent   || '',
+      '',
+      data.companyName || ''
     ]);
 
-    // Email notification on every new lead
     if (NOTIFY_ENABLED) {
       notify(data, sheet);
     }
@@ -88,6 +80,45 @@ function doPost(e) {
 }
 
 /**
+ * Ensures the sheet's header row matches the HEADERS array.
+ * On first run, writes the full header and freezes it.
+ * If a new column has been added to HEADERS (e.g. "Company Name"),
+ * the header row is extended to match without touching existing data.
+ */
+function syncHeaders(sheet) {
+  const lastRow = sheet.getLastRow();
+  const lastCol = sheet.getLastColumn();
+
+  if (lastRow === 0) {
+    sheet.appendRow(HEADERS);
+    sheet.setFrozenRows(1);
+    formatHeader(sheet);
+    return;
+  }
+
+  if (lastCol < HEADERS.length) {
+    // widen the sheet so new columns become writable
+    sheet.insertColumnsAfter(lastCol, HEADERS.length - lastCol);
+  }
+
+  // rewrite header row if mismatched (only the row, not data)
+  const current = sheet.getRange(1, 1, 1, HEADERS.length).getValues()[0];
+  const same = HEADERS.every((h, i) => current[i] === h);
+  if (!same) {
+    sheet.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]);
+    formatHeader(sheet);
+  }
+}
+
+function formatHeader(sheet) {
+  const range = sheet.getRange(1, 1, 1, HEADERS.length);
+  range.setFontWeight('bold');
+  range.setBackground('#0d0d0d');
+  range.setFontColor('#ffffff');
+  try { sheet.autoResizeColumns(1, HEADERS.length); } catch (_) {}
+}
+
+/**
  * Send a plain-text notification email about a captured lead.
  * Wrapped in try/catch so a mail failure never breaks the sheet write.
  */
@@ -100,14 +131,15 @@ function notify(data, sheet) {
     const body = [
       'A new lead just came in from growvate.com — ' + verb + ' "' + (data.resource || '—') + '".',
       '',
-      'Name:       ' + (data.name      || '—'),
-      'Email:      ' + (data.email     || '—'),
-      'Use type:   ' + (data.useType   || '—'),
-      'Resource:   ' + (data.resource  || '—'),
-      'Mode:       ' + (data.mode      || '—'),
-      'Time:       ' + (data.timestamp || new Date().toISOString()),
+      'Name:        ' + (data.name        || '—'),
+      'Email:       ' + (data.email       || '—'),
+      'Use type:    ' + (data.useType     || '—'),
+      'Company:     ' + (data.companyName || '—'),
+      'Resource:    ' + (data.resource    || '—'),
+      'Mode:        ' + (data.mode        || '—'),
+      'Time:        ' + (data.timestamp   || new Date().toISOString()),
       '',
-      'User agent: ' + (data.userAgent || '—'),
+      'User agent:  ' + (data.userAgent   || '—'),
       '',
       'View all leads in the sheet:',
       sheetUrl,
@@ -122,7 +154,6 @@ function notify(data, sheet) {
       name: 'Growvate Leads'
     });
   } catch (err) {
-    // Log only; never throw from notify(). Row is already saved.
     console.error('notify() failed:', err);
   }
 }

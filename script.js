@@ -405,6 +405,22 @@ function resourceGate() {
     });
   });
 
+  // conditional company-name field (revealed when "A business" is picked)
+  const companyField = modal.querySelector('#modalCompanyField');
+  const companyInput = companyField ? companyField.querySelector('input[name="companyName"]') : null;
+  const syncCompany = () => {
+    if (!companyField || !companyInput) return;
+    const isBusiness = (form.elements['useType'] && form.elements['useType'].value) === 'business';
+    companyField.classList.toggle('is-shown', isBusiness);
+    companyField.setAttribute('aria-hidden', String(!isBusiness));
+    companyInput.required = isBusiness;
+    if (!isBusiness) companyInput.value = '';
+  };
+  form.querySelectorAll('input[name="useType"]').forEach((r) => r.addEventListener('change', syncCompany));
+  // also re-sync after open/reset (called below from close())
+  form.addEventListener('reset', () => setTimeout(syncCompany, 0));
+  syncCompany();
+
   // close triggers
   modal.querySelectorAll('[data-close]').forEach((el) => {
     el.addEventListener('click', close);

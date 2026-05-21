@@ -813,8 +813,22 @@
     <form class="modal__form" id="resourceForm" novalidate>
       <header class="modal__form-head">
         <h4 id="resourceModalHeading">Get the PDF</h4>
-        <p id="resourceModalSub">Tell us where to send it — we'll start your download right now and email a copy too.</p>
+        <p id="resourceModalSub">Tell us how you'll use it — we'll start the download and email a copy too.</p>
       </header>
+
+      <fieldset class="modal__toggle">
+        <legend>Are you downloading for —</legend>
+        <div class="modal__toggle-options">
+          <label>
+            <input type="radio" name="useType" value="personal" required checked />
+            <span>Personal use</span>
+          </label>
+          <label>
+            <input type="radio" name="useType" value="business" />
+            <span>A business</span>
+          </label>
+        </div>
+      </fieldset>
 
       <label>
         <span>Your name</span>
@@ -826,19 +840,14 @@
         <input type="email" name="email" required autocomplete="email" placeholder="alex@company.com" />
       </label>
 
-      <fieldset class="modal__toggle">
-        <legend>How will you use this?</legend>
-        <div class="modal__toggle-options">
+      <div class="modal__cond" id="modalCompanyField" aria-hidden="true">
+        <div class="modal__cond-inner">
           <label>
-            <input type="radio" name="useType" value="personal" required checked />
-            <span>Personal</span>
-          </label>
-          <label>
-            <input type="radio" name="useType" value="company" />
-            <span>Company</span>
+            <span>Company name</span>
+            <input type="text" name="companyName" autocomplete="organization" placeholder="Acme Inc." />
           </label>
         </div>
-      </fieldset>
+      </div>
 
       <button type="submit" class="btn btn--primary modal__submit">
         <span id="resourceModalCta">Download PDF</span>

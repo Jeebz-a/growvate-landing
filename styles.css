@@ -1305,6 +1305,26 @@ body {
 }
 .modal__toggle-options label:has(input:focus-visible) { box-shadow: 0 0 0 3px rgba(255,90,31,.25); }
 
+/* conditional field (Company name when Business is selected) */
+.modal__cond {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .4s var(--ease);
+}
+.modal__cond-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+.modal__cond-inner > label {
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity .25s var(--ease) .05s, transform .35s var(--ease) .05s;
+  display: flex; flex-direction: column; gap: 6px;
+  padding-top: 2px;
+}
+.modal__cond.is-shown { grid-template-rows: 1fr; }
+.modal__cond.is-shown .modal__cond-inner > label { opacity: 1; transform: none; }
+
 .modal__submit { margin-top: 4px; width: 100%; justify-content: center; }
 .modal__legal {
   font-size: 11px;
