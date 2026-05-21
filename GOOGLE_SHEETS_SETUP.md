@@ -76,14 +76,7 @@ The first submission also writes the header row automatically and styles it.
 - **Rate limit:** Apps Script gives ~20k executions/day on free Google accounts. Plenty for landing-page leads.
 - **No CORS issues:** the site sends as `text/plain` so the browser doesn't need a preflight.
 - **Privacy:** Apps Script doesn't expose source IPs, so we don't capture them. If you want IPs, route through a Vercel serverless function instead — let me know.
-- **Email notifications:** to get emailed on every new lead, add this to the bottom of `doPost` before the `return`:
-  ```js
-  MailApp.sendEmail(
-    'you@example.com',
-    'New Growvate lead: ' + data.name,
-    `Resource: ${data.resource}\nEmail: ${data.email}\nUse type: ${data.useType}`
-  );
-  ```
+- **Email notifications:** the script already includes a `notify()` function that emails `NOTIFY_EMAILS` on every new lead. To turn off, set `NOTIFY_ENABLED = false` at the top of the script. To re-authorize the mail scope (or test mail end-to-end), run the `authorizeMail()` function once from the editor.
 
 ## When it stops working
 
