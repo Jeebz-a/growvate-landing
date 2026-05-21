@@ -306,6 +306,144 @@ function cursor() {
   });
 }
 
+/* ───────── resources gate modal ──────── */
+function resourceGate() {
+  const modal = document.getElementById('resourceModal');
+  if (!modal) return;
+  const form     = modal.querySelector('#resourceForm');
+  const success  = modal.querySelector('#resourceSuccess');
+  const titleEl  = modal.querySelector('#resourceModalTitle');
+  const summaryEl= modal.querySelector('#resourceModalSummary');
+  const headingEl= modal.querySelector('#resourceModalHeading');
+  const subEl    = modal.querySelector('#resourceModalSub');
+  const ctaEl    = modal.querySelector('#resourceModalCta');
+  const successH = modal.querySelector('#resourceSuccessH');
+  const successP = modal.querySelector('#resourceSuccessP');
+
+  let currentFile = null;
+  let currentFilename = null;
+  let currentMode = 'download';
+
+  const open = (cfg) => {
+    currentFile = cfg.file || null;
+    currentFilename = cfg.filename || null;
+    currentMode = cfg.mode || 'download';
+    titleEl.textContent = cfg.title || 'Free guide';
+    summaryEl.textContent = cfg.summary || '';
+
+    if (currentMode === 'notify') {
+      headingEl.textContent = 'Get notified when it drops';
+      subEl.textContent = `Drop your details and we'll email you the moment "${cfg.title}" goes live.`;
+      ctaEl.textContent = 'Notify me';
+    } else {
+      headingEl.textContent = 'Get the PDF';
+      subEl.textContent = "Tell us where to send it — we'll start the download now and email you a copy too.";
+      ctaEl.textContent = 'Download PDF';
+    }
+
+    form.hidden = false;
+    success.hidden = true;
+    modal.hidden = false;
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    requestAnimationFrame(() => modal.classList.add('is-open'));
+    // focus first input
+    setTimeout(() => form.querySelector('input[name="name"]')?.focus(), 220);
+    // pause lenis scroll while modal is open
+    if (typeof lenis !== 'undefined') lenis.stop?.();
+  };
+
+  const close = () => {
+    modal.classList.remove('is-open');
+    setTimeout(() => {
+      modal.hidden = true;
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      form.reset();
+      if (typeof lenis !== 'undefined') lenis.start?.();
+    }, 320);
+  };
+
+  // open buttons (delegated to ensure dynamic content works too)
+  document.querySelectorAll('[data-open-resource]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      open({
+        file: btn.dataset.file,
+        filename: btn.dataset.filename,
+        title: btn.dataset.title,
+        summary: btn.dataset.summary,
+        mode: btn.dataset.mode,
+      });
+    });
+  });
+
+  // close triggers
+  modal.querySelectorAll('[data-close]').forEach((el) => {
+    el.addEventListener('click', close);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.hidden) close();
+  });
+
+  // form submit
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const data = Object.fromEntries(new FormData(form));
+    data.resource = titleEl.textContent;
+    data.mode = currentMode;
+    data.timestamp = new Date().toISOString();
+    data.userAgent = navigator.userAgent;
+
+    // store in localStorage as a lightweight lead log (placeholder for real backend)
+    try {
+      const leads = JSON.parse(localStorage.getItem('growvate_leads') || '[]');
+      leads.push(data);
+      localStorage.setItem('growvate_leads', JSON.stringify(leads));
+    } catch (_) { /* ignore quota errors */ }
+
+    // dev visibility
+    console.log('[Growvate · lead captured]', data);
+
+    // ─────────────────────────────────────────────────────────
+    // BACKEND HOOK — replace with your real lead-capture endpoint
+    // Examples:
+    //   • Formspark:  fetch('https://submit-form.com/YOUR-FORM-ID', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data) });
+    //   • Getform:    fetch('https://getform.io/f/YOUR-FORM-ID',     { method:'POST', headers:{'Accept':'application/json','Content-Type':'application/json'}, body: JSON.stringify(data) });
+    //   • Vercel API: fetch('/api/lead', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data) });
+    // Uncomment one and configure it:
+    // fetch('/api/lead', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data) }).catch(()=>{});
+    // ─────────────────────────────────────────────────────────
+
+    // trigger PDF download (only in download mode)
+    if (currentMode !== 'notify' && currentFile) {
+      const a = document.createElement('a');
+      a.href = currentFile;
+      a.download = currentFilename || '';
+      a.rel = 'noopener';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    // success state
+    if (currentMode === 'notify') {
+      successH.textContent = "You're on the list ✦";
+      successP.textContent = `We'll email you the moment "${data.resource}" goes live. No spam — just the guide.`;
+    } else {
+      successH.textContent = 'Downloading now ✦';
+      successP.textContent = "Your guide is on its way. Keep an eye on your inbox — we'll email the link too.";
+    }
+    form.hidden = true;
+    success.hidden = false;
+  });
+}
+
 /* ───────── boot ──────── */
 function kickoff() {
   document.body.classList.add('js-ready');
@@ -324,6 +462,7 @@ function kickoff() {
   faq();
   chart();
   calendarMock();
+  resourceGate();
   // ensure any elements already in view get revealed immediately
   setTimeout(() => ScrollTrigger.refresh(), 60);
 }
