@@ -3,9 +3,37 @@
    GSAP + ScrollTrigger + Lenis smooth scroll
    ============================================================ */
 
+// ─── CONFIG ──────────────────────────────────────────────────
+// Paste your deployed Google Apps Script Web App URL here.
+// (See GOOGLE_SHEETS_SETUP.md for the 2-minute setup.)
+const LEAD_ENDPOINT = 'PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE';
+// ─────────────────────────────────────────────────────────────
+
 gsap.registerPlugin(ScrollTrigger);
 
 const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/**
+ * Send a captured lead to the configured Google Sheets endpoint.
+ * Uses text/plain so the request stays a "simple" CORS request
+ * (no preflight needed against Apps Script).
+ */
+function sendLead(data) {
+  if (!LEAD_ENDPOINT || LEAD_ENDPOINT.startsWith('PASTE_')) {
+    console.warn('[Growvate] LEAD_ENDPOINT not configured — skipping remote send. See GOOGLE_SHEETS_SETUP.md');
+    return Promise.resolve({ ok: false, reason: 'not-configured' });
+  }
+  return fetch(LEAD_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(data),
+    redirect: 'follow',
+    keepalive: true,
+  }).catch((err) => {
+    console.error('[Growvate] Lead send failed:', err);
+    return { ok: false, reason: 'network', error: err };
+  });
+}
 
 /* ───────── lenis smooth scroll ──────── */
 const lenis = new Lenis({
@@ -410,15 +438,8 @@ function resourceGate() {
     // dev visibility
     console.log('[Growvate · lead captured]', data);
 
-    // ─────────────────────────────────────────────────────────
-    // BACKEND HOOK — replace with your real lead-capture endpoint
-    // Examples:
-    //   • Formspark:  fetch('https://submit-form.com/YOUR-FORM-ID', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data) });
-    //   • Getform:    fetch('https://getform.io/f/YOUR-FORM-ID',     { method:'POST', headers:{'Accept':'application/json','Content-Type':'application/json'}, body: JSON.stringify(data) });
-    //   • Vercel API: fetch('/api/lead', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data) });
-    // Uncomment one and configure it:
-    // fetch('/api/lead', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data) }).catch(()=>{});
-    // ─────────────────────────────────────────────────────────
+    // ship to Google Sheets (fire-and-forget; download still triggers regardless)
+    sendLead(data);
 
     // trigger PDF download (only in download mode)
     if (currentMode !== 'notify' && currentFile) {
