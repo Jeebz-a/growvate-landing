@@ -6,7 +6,7 @@
 // ─── CONFIG ──────────────────────────────────────────────────
 // Paste your deployed Google Apps Script Web App URL here.
 // (See GOOGLE_SHEETS_SETUP.md for the 2-minute setup.)
-const LEAD_ENDPOINT = 'PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE';
+const LEAD_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyyqvDNigBkwmvqGbp2xhKXSu3Jf4TSwLPztxdoSd1wcBwBbIN_z_9l3aT_kgLaOrY/exec';
 // ─────────────────────────────────────────────────────────────
 
 gsap.registerPlugin(ScrollTrigger);
