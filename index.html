@@ -51,7 +51,7 @@
     <a href="#about" data-link>About</a>
     <a href="#services" data-link>Services</a>
     <a href="#work" data-link>Portfolio</a>
-    <a href="#resources" data-link>Resources</a>
+    <a href="resources.html">Resources</a>
     <a href="#journal" data-link>Blog</a>
   </nav>
   <a href="#contact" class="nav__cta" data-link>
@@ -575,7 +575,7 @@
   </div>
 </section>
 
-<!-- ─────────── RESOURCES (gated downloads) ─────────── -->
+<!-- ─────────── RESOURCES TEASER (one card + link to full library) ─────────── -->
 <section class="section resources" id="resources">
   <div class="section__head">
     <span class="eyebrow">(09) Resources</span>
@@ -583,10 +583,10 @@
       <span class="split">Free guides we</span>
       <span class="split">wish we had <em>earlier.</em></span>
     </h2>
-    <p class="reveal-up">Battle-tested playbooks, frameworks and checklists for founders, ops leaders and local business owners. No fluff — just what works. Drop your details to grab the PDF.</p>
+    <p class="reveal-up">Battle-tested playbooks and checklists distilled from real client work. The library grows every month — peek at the latest below, or hit the link to see everything.</p>
   </div>
 
-  <div class="resources__grid">
+  <div class="resources__feature">
 
     <article class="resource">
       <div class="resource__cover">
@@ -594,7 +594,7 @@
           <span></span><span></span><span></span>
         </div>
         <div class="resource__cover-inner">
-          <span class="resource__tag">Free guide · PDF</span>
+          <span class="resource__tag">Featured · Free PDF</span>
           <h3>If you are not online,<br><em>you do not exist.</em></h3>
           <p>The local business owner's guide to getting found, building trust, and winning customers in a digital-first world.</p>
         </div>
@@ -623,39 +623,20 @@
       </div>
     </article>
 
-    <article class="resource resource--soon">
-      <div class="resource__cover resource__cover--alt">
-        <div class="resource__rings" aria-hidden="true">
-          <span></span><span></span>
-        </div>
-        <div class="resource__cover-inner">
-          <span class="resource__tag">Coming soon</span>
-          <h3>The 30-day AI <em>implementation</em> playbook.</h3>
-          <p>From audit to live system in 30 days. The exact day-by-day sprint we run with every client.</p>
-        </div>
-      </div>
-      <div class="resource__body">
-        <span class="resource__meta">
-          <svg viewBox="0 0 24 24"><use href="#file"/></svg>
-          Coming Jun 2026 · PDF
-        </span>
-        <h4>AI Implementation Playbook</h4>
-        <p>Day-by-day sprint structure, eval templates, prompt patterns and the production stack we deploy with.</p>
-        <ul class="resource__highlights">
-          <li>Day-by-day, 30-day timeline</li>
-          <li>Eval suite template + RAG architecture</li>
-          <li>Our default 2026 stack with trade-offs</li>
-        </ul>
-        <button class="btn btn--ghost" type="button"
-                data-open-resource
-                data-mode="notify"
-                data-title="AI Implementation Playbook"
-                data-summary="Drops June 2026 · we'll email you the moment it does">
-          <span>Notify me when it drops</span>
-          <svg viewBox="0 0 24 24"><use href="#arrow"/></svg>
-        </button>
-      </div>
-    </article>
+    <aside class="resources__more-card">
+      <span class="eyebrow">Resource library</span>
+      <h3>3 guides. More dropping monthly.</h3>
+      <p>Playbooks, checklists and cheatsheets — distilled from 40+ shipped AI projects. Subscribe to get new drops in your inbox.</p>
+      <a href="resources.html" class="btn btn--primary">
+        <span>Browse all resources</span>
+        <svg viewBox="0 0 24 24"><use href="#arrow"/></svg>
+      </a>
+      <ul class="resources__more-list">
+        <li><span class="dot dot--live"></span>Digital Foundation Guide <em>· Live</em></li>
+        <li><span class="dot dot--forecast"></span>AI Implementation Playbook <em>· Jun 2026</em></li>
+        <li><span class="dot dot--forecast"></span>2026 AI Stack Cheatsheet <em>· Jul 2026</em></li>
+      </ul>
+    </aside>
 
   </div>
 </section>
@@ -787,7 +768,7 @@
       <div>
         <span class="footer__h">Work</span>
         <a href="#work" data-link>Portfolio</a>
-        <a href="#resources" data-link>Resources</a>
+        <a href="resources.html">Resources</a>
         <a href="#journal" data-link>Journal</a>
         <a href="#contact" data-link>Contact</a>
       </div>
