@@ -1506,7 +1506,8 @@ body {
 .eyebrow--inv { color: var(--orange-soft); }
 .eyebrow--inv::after { background: rgba(255,179,138,.4); }
 
-.contact__calendar-embed { display: flex; flex-direction: column; gap: 16px; }
+.contact__calendar-embed { display: flex; flex-direction: column; gap: 16px; flex: 1; min-height: 640px; }
+.contact__calendar-embed #my-cal-inline-30min { flex: 1; min-height: 640px; border-radius: 12px; overflow: hidden; background: rgba(255,255,255,.02); }
 
 .cal__mock {
   background: var(--ink-2);

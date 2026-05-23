@@ -714,35 +714,23 @@
         <p>Free, no slides. We map two automation wins specific to your business.</p>
       </div>
 
-      <!-- placeholder for embedded calendar (Calendly / Cal.com / Savvycal). Replace with real embed. -->
+      <!-- Cal.com inline embed -->
       <div class="contact__calendar-embed" data-embed="calendar">
-        <div class="cal__mock">
-          <div class="cal__mock-head">
-            <span>May 2026</span>
-            <span class="cal__chev">‹  ›</span>
-          </div>
-          <div class="cal__mock-grid">
-            <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
-            <i></i><i></i><i></i><i></i><i></i><i class="is-pad">1</i><i class="is-pad">2</i>
-            <i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i><i>9</i>
-            <i>10</i><i>11</i><i class="is-on">12</i><i>13</i><i>14</i><i>15</i><i>16</i>
-            <i>17</i><i>18</i><i>19</i><i>20</i><i>21</i><i>22</i><i>23</i>
-            <i>24</i><i>25</i><i>26</i><i>27</i><i>28</i><i>29</i><i>30</i>
-            <i>31</i>
-          </div>
-          <div class="cal__mock-slots">
-            <button type="button" class="cal__slot">9:00</button>
-            <button type="button" class="cal__slot is-on">10:30</button>
-            <button type="button" class="cal__slot">13:00</button>
-            <button type="button" class="cal__slot">15:30</button>
-          </div>
-        </div>
+        <!-- Cal inline embed code begins -->
+        <div style="width:100%;min-height:640px;height:100%;overflow:auto" id="my-cal-inline-30min"></div>
+        <script type="text/javascript">
+          (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+          Cal("init", "30min", {origin:"https://app.cal.com"});
 
-        <a class="contact__cal-cta" href="https://cal.com/growvate" target="_blank" rel="noopener" data-link>
-          <span>Open full calendar</span>
-          <svg viewBox="0 0 24 24"><use href="#arrow"/></svg>
-        </a>
-        <p class="contact__cal-note">↑ replace this with your Calendly / Cal.com / Savvycal embed link.</p>
+          Cal.ns["30min"]("inline", {
+            elementOrSelector:"#my-cal-inline-30min",
+            config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"dark"},
+            calLink: "growvate/30min",
+          });
+
+          Cal.ns["30min"]("ui", {"theme":"dark","cssVarsPerTheme":{"dark":{"cal-brand":"#ff5911"}},"hideEventTypeDetails":false,"layout":"month_view"});
+        </script>
+        <!-- Cal inline embed code ends -->
       </div>
     </aside>
   </div>
