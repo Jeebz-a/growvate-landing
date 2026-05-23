@@ -23,12 +23,12 @@ const HEADERS = [
   'Timestamp',
   'Name',
   'Email',
+  'Company Name',
   'Use Type',
   'Resource',
   'Mode',
   'User Agent',
-  'Raw IP/Referrer (best-effort)',
-  'Company Name'
+  'Raw IP/Referrer (best-effort)'
 ];
 
 /**
@@ -57,12 +57,12 @@ function doPost(e) {
       data.timestamp   || new Date().toISOString(),
       data.name        || '',
       data.email       || '',
+      data.companyName || '',
       data.useType     || '',
       data.resource    || '',
       data.mode        || '',
       data.userAgent   || '',
-      '',
-      data.companyName || ''
+      ''
     ]);
 
     if (NOTIFY_ENABLED) {
@@ -133,8 +133,8 @@ function notify(data, sheet) {
       '',
       'Name:        ' + (data.name        || '—'),
       'Email:       ' + (data.email       || '—'),
-      'Use type:    ' + (data.useType     || '—'),
       'Company:     ' + (data.companyName || '—'),
+      'Use type:    ' + (data.useType     || '—'),
       'Resource:    ' + (data.resource    || '—'),
       'Mode:        ' + (data.mode        || '—'),
       'Time:        ' + (data.timestamp   || new Date().toISOString()),
