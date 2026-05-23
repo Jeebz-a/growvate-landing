@@ -486,6 +486,10 @@ function kickoff() {
   document.body.classList.add('js-ready');
   wrapSplits();
   if (!prefersReduced) {
+    // Pre-mark hero reveal-up elements visible so GSAP .from() reads
+    // opacity:1 as the "to" state. Otherwise GSAP measures CSS opacity:0
+    // (set by `.js-ready .reveal-up`) and animates "from 0 to 0" — invisible.
+    document.querySelectorAll('.hero .reveal-up').forEach(el => el.classList.add('is-in'));
     heroEntrance();
     sectionTitles();
     caseParallax();
