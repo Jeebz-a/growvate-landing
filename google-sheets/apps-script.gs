@@ -26,7 +26,6 @@ const HEADERS = [
   'Company Name',
   'Use Type',
   'Resource',
-  'Document File',
   'Mode',
   'User Agent',
   'Raw IP/Referrer (best-effort)'
@@ -55,15 +54,14 @@ function doPost(e) {
     const data = JSON.parse(raw);
 
     sheet.appendRow([
-      data.timestamp    || new Date().toISOString(),
-      data.name         || '',
-      data.email        || '',
-      data.companyName  || '',
-      data.useType      || '',
-      data.resource     || '',
-      data.documentFile || '',
-      data.mode         || '',
-      data.userAgent    || '',
+      data.timestamp   || new Date().toISOString(),
+      data.name        || '',
+      data.email       || '',
+      data.companyName || '',
+      data.useType     || '',
+      data.resource    || '',
+      data.mode        || '',
+      data.userAgent   || '',
       ''
     ]);
 
@@ -135,11 +133,10 @@ function notify(data, sheet) {
       '',
       'Name:        ' + (data.name        || '—'),
       'Email:       ' + (data.email       || '—'),
-      'Company:     ' + (data.companyName  || '—'),
-      'Use type:    ' + (data.useType      || '—'),
-      'Resource:    ' + (data.resource     || '—'),
-      'File:        ' + (data.documentFile || '—'),
-      'Mode:        ' + (data.mode         || '—'),
+      'Company:     ' + (data.companyName || '—'),
+      'Use type:    ' + (data.useType     || '—'),
+      'Resource:    ' + (data.resource    || '—'),
+      'Mode:        ' + (data.mode        || '—'),
       'Time:        ' + (data.timestamp   || new Date().toISOString()),
       '',
       'User agent:  ' + (data.userAgent   || '—'),
