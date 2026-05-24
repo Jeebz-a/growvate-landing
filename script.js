@@ -440,6 +440,7 @@ function resourceGate() {
 
     const data = Object.fromEntries(new FormData(form));
     data.resource = titleEl.textContent;
+    data.documentFile = currentFilename || ''; // actual PDF filename downloaded
     data.mode = currentMode;
     data.timestamp = new Date().toISOString();
     data.userAgent = navigator.userAgent;
