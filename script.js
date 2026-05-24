@@ -350,11 +350,13 @@ function resourceGate() {
 
   let currentFile = null;
   let currentFilename = null;
+  let currentCategory = '';
   let currentMode = 'download';
 
   const open = (cfg) => {
     currentFile = cfg.file || null;
     currentFilename = cfg.filename || null;
+    currentCategory = cfg.category || '';
     currentMode = cfg.mode || 'download';
     titleEl.textContent = cfg.title || 'Free guide';
     summaryEl.textContent = cfg.summary || '';
@@ -399,6 +401,7 @@ function resourceGate() {
         file: btn.dataset.file,
         filename: btn.dataset.filename,
         title: btn.dataset.title,
+        category: btn.dataset.category,
         summary: btn.dataset.summary,
         mode: btn.dataset.mode,
       });
@@ -440,6 +443,7 @@ function resourceGate() {
 
     const data = Object.fromEntries(new FormData(form));
     data.resource = titleEl.textContent;
+    data.category = currentCategory;
     data.mode = currentMode;
     data.timestamp = new Date().toISOString();
     data.userAgent = navigator.userAgent;

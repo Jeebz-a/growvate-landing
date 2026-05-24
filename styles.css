@@ -1068,6 +1068,21 @@ body {
   flex-direction: column;
   gap: 14px;
 }
+.resource__cat {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 100px;
+  margin-bottom: 2px;
+}
 .resource__meta {
   font-family: var(--f-display);
   font-size: 12px;
