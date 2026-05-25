@@ -361,7 +361,11 @@ body {
   .orbit__ring--3 { display: none; }
 }
 @media (max-width: 560px) {
-  .hero__right { display: none; }
+  /* hero__right shows the workflow viz — keep it visible on mobile,
+     just give it less vertical room and let the SVG scale down */
+  .hero__right { min-height: 420px; margin-top: 12px; }
+  .hero-flow { min-height: 420px; }
+  .hero-flow__svg { max-height: 460px; }
 }
 
 .scroll-hint {
@@ -739,7 +743,13 @@ body {
    PROCESS — sticky scroll
    ============================================================ */
 .process { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 8vw, 120px); align-items: start; }
-@media (max-width: 980px) { .process { grid-template-columns: 1fr; } }
+@media (max-width: 980px) {
+  .process { grid-template-columns: 1fr; }
+  /* drop sticky on single-column mobile — otherwise the title pins
+     itself at the top and the steps scroll up underneath it, hiding
+     the 01-04 numbers behind the headline */
+  .process__sticky { position: static; top: auto; margin-bottom: 8px; }
+}
 .process__sticky { position: sticky; top: 120px; display: flex; flex-direction: column; gap: 18px; }
 .process__sticky p { font-size: 16px; color: var(--muted); margin: 0; max-width: 42ch; }
 .process__steps { display: flex; flex-direction: column; }
