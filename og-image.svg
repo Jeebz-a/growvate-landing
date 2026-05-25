@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <radialGradient id="g1" cx="80%" cy="20%" r="60%">
+      <stop offset="0%" stop-color="#FF5A1F" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#FF5A1F" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g2" cx="15%" cy="100%" r="50%">
+      <stop offset="0%" stop-color="#FFB38A" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#FFB38A" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M 64 0 L 0 0 0 64" fill="none" stroke="#0D0D0D" stroke-width="1" opacity="0.04"/>
+    </pattern>
+  </defs>
+
+  <!-- background -->
+  <rect width="1200" height="630" fill="#F5F1EA"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#g1)"/>
+  <rect width="1200" height="630" fill="url(#g2)"/>
+
+  <!-- top-left logo -->
+  <g transform="translate(60, 60)">
+    <path fill="#FF5A1F" d="M30 0 L36 24 L60 30 L36 36 L30 60 L24 36 L0 30 L24 24 Z"/>
+    <rect x="22" y="22" width="16" height="16" fill="#fff"/>
+    <rect x="26" y="26" width="8" height="8" fill="#FF5A1F"/>
+    <text x="76" y="40" font-family="Space Grotesk, sans-serif" font-size="22" font-weight="700" fill="#0D0D0D" letter-spacing="2">GROWVATE</text>
+  </g>
+
+  <!-- kicker pill -->
+  <g transform="translate(60, 220)">
+    <rect width="500" height="36" rx="18" fill="#0D0D0D"/>
+    <circle cx="22" cy="18" r="4" fill="#FF5A1F"/>
+    <text x="40" y="23" font-family="Inter, sans-serif" font-size="12" letter-spacing="2" font-weight="500" fill="#fff">AI AUTOMATION &amp; IMPLEMENTATION STUDIO · 30 DAYS</text>
+  </g>
+
+  <!-- big headline -->
+  <text x="60" y="346" font-family="Space Grotesk, sans-serif" font-size="76" font-weight="700" fill="#0D0D0D" letter-spacing="-2">Stop spending</text>
+  <text x="60" y="424" font-family="Space Grotesk, sans-serif" font-size="76" font-weight="700" fill="#0D0D0D" letter-spacing="-2">30 hours a week</text>
+  <text x="60" y="502" font-family="Space Grotesk, sans-serif" font-size="76" font-weight="700" fill="#FF5A1F" letter-spacing="-2">doing AI's work.</text>
+
+  <!-- subline / proof -->
+  <text x="60" y="568" font-family="Inter, sans-serif" font-size="22" fill="#1A1A1A">Production AI implementation studio. 40+ shipped builds. Live in 30 days.</text>
+
+  <!-- url -->
+  <text x="60" y="600" font-family="Space Grotesk, sans-serif" font-size="14" letter-spacing="3" fill="#6B6B6B">GROWVATE.COM</text>
+
+  <!-- decorative workflow on right -->
+  <g transform="translate(740, 180)">
+    <!-- left input chip -->
+    <rect x="0" y="40" width="140" height="50" rx="12" fill="#fff" stroke="#0D0D0D" stroke-width="1.5"/>
+    <text x="70" y="71" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" fill="#0D0D0D">Customer message</text>
+    <rect x="0" y="130" width="140" height="50" rx="12" fill="#fff" stroke="#0D0D0D" stroke-width="1.5"/>
+    <text x="70" y="161" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" fill="#0D0D0D">New lead</text>
+    <rect x="0" y="220" width="140" height="50" rx="12" fill="#fff" stroke="#0D0D0D" stroke-width="1.5"/>
+    <text x="70" y="251" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" fill="#0D0D0D">Routine work</text>
+
+    <!-- arrows -->
+    <path d="M150 65 L200 155" stroke="#0D0D0D" stroke-width="1.5" stroke-dasharray="3 4"/>
+    <path d="M150 155 L200 155" stroke="#0D0D0D" stroke-width="1.5" stroke-dasharray="3 4"/>
+    <path d="M150 245 L200 155" stroke="#0D0D0D" stroke-width="1.5" stroke-dasharray="3 4"/>
+
+    <!-- AI core -->
+    <circle cx="270" cy="155" r="78" fill="#0D0D0D" stroke="#FF5A1F" stroke-width="3"/>
+    <text x="270" y="150" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="20" font-weight="700" fill="#fff">Growvate AI</text>
+    <text x="270" y="173" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" letter-spacing="2" fill="#FFB38A">30-DAY SPRINT</text>
+
+    <!-- arrows -->
+    <path d="M340 155 L390 65" stroke="#0D0D0D" stroke-width="1.5" stroke-dasharray="3 4"/>
+    <path d="M340 155 L390 155" stroke="#0D0D0D" stroke-width="1.5" stroke-dasharray="3 4"/>
+    <path d="M340 155 L390 245" stroke="#0D0D0D" stroke-width="1.5" stroke-dasharray="3 4"/>
+
+    <!-- outputs -->
+    <rect x="390" y="40" width="120" height="50" rx="12" fill="#0D0D0D" stroke="#FF5A1F" stroke-width="1.5"/>
+    <text x="450" y="71" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" fill="#fff">Auto-reply</text>
+    <rect x="390" y="130" width="120" height="50" rx="12" fill="#0D0D0D" stroke="#FF5A1F" stroke-width="1.5"/>
+    <text x="450" y="161" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" fill="#fff">Lead booked</text>
+    <rect x="390" y="220" width="120" height="50" rx="12" fill="#0D0D0D" stroke="#FF5A1F" stroke-width="1.5"/>
+    <text x="450" y="251" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="13" font-weight="600" fill="#fff">Hours saved</text>
+  </g>
+</svg>

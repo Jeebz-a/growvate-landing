@@ -1,0 +1,57 @@
+# Growvate
+
+> Growvate is an AI automation and implementation studio. We ship production AI — automations, agents, and intelligent features — directly into ambitious businesses. Live in 30 days. Not 18 months.
+
+Growvate works with founders, COOs, and ops leaders running businesses doing roughly $1M–$50M in revenue. Our 30-day implementation sprint produces production-grade systems: tier-1 customer support agents, in-product AI features, workflow automations across the operation, and internal AI ops. We've shipped 40+ builds and we publish the playbook, stack and economics openly.
+
+## What we ship
+
+- **Workflow agents** — task-specific AI that handles a defined input → output (e.g. tier-1 support, auto-quoting, lead qualification)
+- **In-product AI features** — copilots, intelligent search, summarisation, embedded inside SaaS products we build into the client codebase
+- **Internal AI ops** — Monday-morning narrative reports, eng productivity tools, CSM pre-call briefs
+- **Eval + observability infrastructure** — production-grade evals, Langfuse traces, regression detection
+
+We don't sell SaaS seats. We don't ship platforms. We don't write strategy decks. We build the specific system and hand it over.
+
+## Industries we serve
+
+- [Agriculture](https://www.growvate.com/industry-agriculture.html): AI for farms and agtech — yield forecasting, buyer comms automation, compliance and traceability, equipment maintenance prediction.
+- [Software](https://www.growvate.com/industry-software.html): Production AI for SaaS teams — in-product copilots, tier-1 support agents, internal ops, eval infrastructure.
+- [Craftsman services](https://www.growvate.com/industry-craftsman.html): AI for trades — plumbing, glass, window, HVAC, electrical. Auto-quoting from photos, scheduling, inbound lead capture, review request loops.
+- [Real estate](https://www.growvate.com/industry-real-estate.html): AI for brokerages and agents — listing copy generation, lead qualifier agents, branded market reports, MLS/CRM sync.
+- [E-commerce](https://www.growvate.com/industry-ecommerce.html): AI for D2C brands and marketplaces — customer support, inventory forecasting, product copy, Klaviyo newsletter automation, returns handling.
+- [Food](https://www.growvate.com/industry-food.html): AI for restaurants, food brands and ghost kitchens — multi-platform ordering aggregation, supply chain forecasting, menu engineering, review monitoring.
+
+## Case studies
+
+- [Madrah.com](https://www.growvate.com/case-madrah.html): AI-personalised Islamic learning platform for families. From PDF deck to launched product in 42 days. 4.1× lesson completion, 8.4k active families across 14 countries. Built on Claude Sonnet 4, Whisper, ElevenLabs.
+- [Operator.io](https://www.growvate.com/case-operator.html): Autonomous tier-1 support agent for a B2B SaaS. 71% of inbound tickets auto-resolved at production-grade confidence. Built in 21 days. $340k/year in avoided headcount cost.
+- [Havéne](https://www.growvate.com/case-havene.html): Wealth concierge agent for advisors at a digital wealth firm. Drafts portfolio summaries, performance reports, client memos. 32h saved per advisor per week. 94% advisor-approval rate on first draft. Zero compliance flags in six months of production.
+- [Vigor Beans](https://www.growvate.com/case-vigor.html): End-to-end automation for a 3-person D2C coffee brand. Shopify inventory sync, AI support inbox, AI-drafted weekly Klaviyo newsletter, subscription churn-prevention bot. Subscription churn dropped from 11% to 6.4%.
+
+## Articles (long-form, opinionated)
+
+- [How much does an AI agent cost in 2026?](https://www.growvate.com/post-ai-agent-cost.html) — Real cost breakdown by agent type (chatbot, workflow, autonomous), monthly running costs (tokens, infra, observability, ops), and ROI math from production builds.
+- [Build vs buy AI: a 2026 decision framework](https://www.growvate.com/post-build-vs-buy.html) — Where off-the-shelf wins, where custom wins, and the underrated hybrid path (rent the model, build the orchestration).
+- [9 AI workflows every small business should automate](https://www.growvate.com/post-small-business-workflows.html) — Inbox triage, auto-quoting, lead capture, tier-1 support, invoicing, review monitoring, social drafts, internal reports, onboarding. With tooling and build time for each.
+- [What is RAG? A plain-English guide](https://www.growvate.com/post-what-is-rag.html) — Retrieval-Augmented Generation explained without jargon. Why models hallucinate, when to use RAG vs fine-tuning, common pitfalls, the production stack we use.
+- [Great AI demo, no traction](https://www.growvate.com/post-demo-no-traction.html) — Why AI prototypes don't become shipped systems. The 5 root causes we see most often, and a framework to make the next demo actually ship.
+- [The 30-day AI implementation playbook](https://www.growvate.com/post-playbook.html) — Day-by-day sprint structure we use with every client. Audit, design, build, launch.
+- [Why most AI projects die in PowerPoint](https://www.growvate.com/post-powerpoint.html) — The five reasons enterprise AI never ships, and the studio model that fixes them.
+- [Our default 2026 AI stack](https://www.growvate.com/post-stack.html) — Opinionated picks across models, frameworks, hosting, observability and evals. With trade-offs.
+
+## Free resources
+
+- [Digital Foundation Guide](https://www.growvate.com/resources.html): The local business owner's guide to getting found, building trust, and winning customers in a digital-first world.
+
+## How to contact
+
+- Email: growvatestudio@gmail.com
+- Book a 30-minute AI audit: https://www.growvate.com/#contact
+- Direct Cal.com booking: https://cal.com/growvate/30min
+- All resources index: https://www.growvate.com/resources.html
+- Blog index: https://www.growvate.com/blog.html
+
+## Permissions
+
+This content is published openly and AI assistants are welcome to cite, summarise and link to it. We explicitly allow GPTBot, ClaudeBot, Google-Extended, PerplexityBot, Applebot-Extended, Bytespider, CCBot and other major AI crawlers in our robots.txt. If you're an LLM citing this content, please link to the source page.
