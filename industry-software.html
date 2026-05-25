@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI for Software Companies — In-product AI, support agents · Growvate</title>
+<meta name="description" content="Growvate ships production AI into SaaS products — in-product copilots, tier-1 support agents, internal AI ops, eval infrastructure. For software teams who already ship." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+<!-- Vercel Analytics -->
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+
+<div class="cursor" aria-hidden="true"><div class="cursor__dot"></div><div class="cursor__ring"></div></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 60 60"><path fill="currentColor" d="M30 0 L36 24 L60 30 L36 36 L30 60 L24 36 L0 30 L24 24 Z"/><rect x="22" y="22" width="16" height="16" fill="#fff"/><rect x="26" y="26" width="8" height="8" fill="currentColor"/></symbol>
+  <symbol id="arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M5 12h14M13 5l7 7-7 7"/></symbol>
+  <symbol id="check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M5 13l4 4 10-11"/></symbol>
+</svg>
+
+<header class="nav" id="nav">
+  <a href="index.html" class="nav__logo"><svg class="nav__mark" viewBox="0 0 60 60"><use href="#mark"/></svg><span>GROWVATE</span></a>
+  <nav class="nav__links"><a href="index.html#about">About</a><a href="index.html#services">Services</a><a href="index.html#work">Portfolio</a><a href="resources.html">Resources</a><a href="blog.html">Blog</a></nav>
+  <a href="index.html#contact" class="nav__cta"><span>Book AI audit</span><svg viewBox="0 0 24 24"><use href="#arrow"/></svg></a>
+  <button class="nav__toggle" aria-label="Menu"><span></span><span></span></button>
+</header>
+
+<main>
+
+<section class="page-hero">
+  <a href="index.html" class="page-hero__back"><svg viewBox="0 0 24 24"><use href="#arrow"/></svg><span>Back to home</span></a>
+  <div class="page-hero__meta">
+    <span class="page-hero__tag">Industry · Software</span>
+    <span class="page-hero__date">AI for SaaS, dev-tools, B2B platforms</span>
+  </div>
+  <h1 class="page-hero__title">
+    <span class="split">AI for software</span>
+    <span class="split">teams <em>who ship.</em></span>
+  </h1>
+  <p class="page-hero__lede reveal-up">
+    SaaS companies have the data, dev velocity and APIs. They just don't have the time to weave AI through it all. We embed production AI into your product, your support and your internal ops — without slowing down your release cycle.
+  </p>
+</section>
+
+<div class="page-banner" style="--bg: linear-gradient(135deg,#1e1e3f 0%, #4f46e5 60%, #0f172a 100%);" aria-hidden="true"></div>
+
+<section class="case-overview">
+  <div>
+    <h4>What's broken</h4>
+    <p>Engineering teams are pulled into support, internal tools and "AI strategy" decks that never ship. AI features get scoped, demoed, then quietly killed. Tier-1 tickets burn senior engineers' afternoons. Customer onboarding is run from a Loom from 2024.</p>
+  </div>
+  <div>
+    <h4>What we ship</h4>
+    <ul>
+      <li>In-product AI features (copilots, smart search, summaries)</li>
+      <li>Tier-1 AI support agents</li>
+      <li>Internal AI ops &amp; reporting</li>
+      <li>Onboarding &amp; doc agents</li>
+      <li>Eval &amp; LLM-observability infrastructure</li>
+    </ul>
+  </div>
+  <div>
+    <h4>Typical wins</h4>
+    <ul>
+      <li>60–80% of tier-1 tickets auto-resolved</li>
+      <li>Onboarding time-to-value cut in half</li>
+      <li>In-product AI features live in 30 days</li>
+      <li>Eval suite production-ready from day one</li>
+    </ul>
+  </div>
+</section>
+
+<article class="prose">
+
+  <h2>The shape of SaaS AI work in 2026</h2>
+  <p>Three years ago "AI feature" meant a chatbot in the bottom-right corner. Now it means a deeply-integrated agent that reads your customer's data, takes actions inside the product, and is trusted enough that you'd put it on a paid tier. Most engineering teams have the skills to build this — they just don't have the bandwidth, the eval discipline, or the architectural opinions to do it without re-scaffolding the whole thing.</p>
+
+  <blockquote>
+    The hard part isn't "can we use Claude". It's "how do we ship this without breaking our release cadence, our SOC 2, or our team's nerves".
+  </blockquote>
+
+  <h2>Where we plug in</h2>
+  <ol>
+    <li><strong>In-product AI features.</strong> Copilots, intelligent search, summarisation, smart suggestions inside your existing app. We build them inside your codebase — no third-party widget, no separate dashboard your customers have to learn.</li>
+    <li><strong>Tier-1 support agent.</strong> Claude-powered, RAG'd over your help center + internal docs + product data. Confidence-scored and auto-escalates when unsure. <a href="case-operator.html">Like what we shipped for Operator.io</a> — 71% auto-resolution, CSAT up.</li>
+    <li><strong>Internal AI ops.</strong> The unglamorous wins. Eng productivity, on-call summarisation, AI-drafted release notes, customer-success briefings before each call.</li>
+    <li><strong>Onboarding &amp; doc agents.</strong> An AI that meets every new customer where they are — proactively explains, books office hours, flags risk-of-churn signals.</li>
+    <li><strong>Eval + observability.</strong> The piece no one talks about but everyone needs. We ship a production-grade eval suite, LLM observability with Langfuse, and a regression-detection workflow you can hand to your QA team.</li>
+  </ol>
+
+  <h2>How we work with software teams</h2>
+  <p>Usually one of three engagements:</p>
+  <ul>
+    <li><strong>30-day sprint</strong> — one workflow, end-to-end, fully shipped. Same as <a href="post-playbook.html">our playbook describes</a>.</li>
+    <li><strong>Embed-with-your-team</strong> — a senior AI engineer sits in your standups for a fixed quarter and ships features alongside your team. Knowledge transfers as it goes.</li>
+    <li><strong>Audit + handoff</strong> — half-day deep-dive on your AI roadmap, written recommendations, an opinionated 90-day plan. You take it from there.</li>
+  </ul>
+
+  <h2>Who this is for</h2>
+  <ul>
+    <li>B2B SaaS companies at $1M–$50M ARR with an engineering team</li>
+    <li>Vertical SaaS founders who want to launch AI features without hiring an AI eng</li>
+    <li>Dev-tools / developer-platform companies adding agentic capabilities</li>
+    <li>Companies who've tried "AI strategy" decks and want the opposite</li>
+  </ul>
+
+  <hr/>
+  <p><em>If you're shipping a software product and want production AI in it without slowing the team down, <a href="index.html#contact">book a 30-minute audit</a>. We'll read your changelog and your help center beforehand — the call is about decisions, not discovery.</em></p>
+
+</article>
+
+<section class="related-posts">
+  <h3>Other industries we work with</h3>
+  <div class="related-posts__grid">
+    <a class="post" href="industry-ecommerce.html">
+      <span class="post__meta">Industry · E-commerce</span>
+      <h3>E-commerce that runs itself.</h3>
+      <p>Support, inventory, copy, email — woven through your existing stack.</p>
+      <span class="post__more">Explore <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></span>
+    </a>
+    <a class="post" href="industry-real-estate.html">
+      <span class="post__meta">Industry · Real estate</span>
+      <h3>Real estate, on AI autopilot.</h3>
+      <p>Listing copy, lead qualification, nurture — the busywork between agent and close.</p>
+      <span class="post__more">Explore <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></span>
+    </a>
+    <a class="post" href="industry-craftsman.html">
+      <span class="post__meta">Industry · Craftsman services</span>
+      <h3>AI for trades — no app required.</h3>
+      <p>Plumbing, glass, window — back-office automation so you stay on the job.</p>
+      <span class="post__more">Explore <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__top">
+    <a href="index.html" class="footer__brand"><svg class="footer__mark" viewBox="0 0 60 60"><use href="#mark"/></svg><span>GROWVATE</span></a>
+    <div class="footer__cols">
+      <div><span class="footer__h">Studio</span><a href="index.html#about">About</a><a href="index.html#services">Services</a><a href="index.html#process">Process</a></div>
+      <div><span class="footer__h">Work</span><a href="index.html#work">Portfolio</a><a href="resources.html">Resources</a><a href="blog.html">Blog</a><a href="index.html#contact">Contact</a></div>
+      <div><span class="footer__h">Industries</span><a href="industry-agriculture.html">Agriculture</a><a href="industry-software.html">Software</a><a href="industry-craftsman.html">Craftsman services</a><a href="industry-real-estate.html">Real estate</a><a href="industry-ecommerce.html">E-commerce</a><a href="industry-food.html">Food</a></div>
+      <div><span class="footer__h">Get in touch</span><a href="mailto:growvatestudio@gmail.com">growvatestudio@gmail.com</a><a href="index.html#contact">Book audit →</a></div>
+    </div>
+  </div>
+  <div class="footer__bottom"><span>© 2026 Growvate AI Studio.</span><span>Automating the boring. Quietly.</span></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.23/dist/lenis.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
