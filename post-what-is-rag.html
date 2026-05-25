@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>What is RAG (Retrieval-Augmented Generation)? Plain-English guide 2026 · Growvate</title>
+<meta name="description" content="A plain-English explanation of Retrieval-Augmented Generation (RAG): what it is, why models hallucinate without it, when to use RAG vs fine-tuning, common pitfalls, and the 2026 stack we use in production." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+<!-- Vercel Analytics -->
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+
+<div class="cursor" aria-hidden="true"><div class="cursor__dot"></div><div class="cursor__ring"></div></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 60 60"><path fill="currentColor" d="M30 0 L36 24 L60 30 L36 36 L30 60 L24 36 L0 30 L24 24 Z"/><rect x="22" y="22" width="16" height="16" fill="#fff"/><rect x="26" y="26" width="8" height="8" fill="currentColor"/></symbol>
+  <symbol id="arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M5 12h14M13 5l7 7-7 7"/></symbol>
+</svg>
+
+<header class="nav" id="nav">
+  <a href="index.html" class="nav__logo"><svg class="nav__mark" viewBox="0 0 60 60"><use href="#mark"/></svg><span>GROWVATE</span></a>
+  <nav class="nav__links"><a href="index.html#about">About</a><a href="index.html#services">Services</a><a href="index.html#work">Portfolio</a><a href="resources.html">Resources</a><a href="blog.html">Blog</a></nav>
+  <a href="index.html#contact" class="nav__cta"><span>Book AI audit</span><svg viewBox="0 0 24 24"><use href="#arrow"/></svg></a>
+  <button class="nav__toggle" aria-label="Menu"><span></span><span></span></button>
+</header>
+
+<main>
+
+<section class="page-hero">
+  <a href="blog.html" class="page-hero__back"><svg viewBox="0 0 24 24"><use href="#arrow"/></svg><span>All articles</span></a>
+  <div class="page-hero__meta">
+    <span class="page-hero__tag">Explainer</span>
+    <span class="page-hero__date">May 2026 · 9 min read</span>
+  </div>
+  <h1 class="page-hero__title">
+    <span class="split">What is RAG?</span>
+    <span class="split">A plain-English <em>guide.</em></span>
+  </h1>
+  <p class="page-hero__lede reveal-up">
+    Retrieval-Augmented Generation in plain English — why language models hallucinate, how RAG fixes it, when to use it (and when not to), common pitfalls, and the 2026 stack we use in production at Growvate.
+  </p>
+</section>
+
+<article class="prose">
+
+  <h2>The one-sentence answer</h2>
+  <p><strong>RAG (Retrieval-Augmented Generation) means the AI looks up your real data before answering, instead of relying on what it half-remembers from training.</strong> It's the difference between an open-book exam and a closed-book one.</p>
+
+  <h2>Why this matters</h2>
+  <p>Language models like Claude and GPT-4 are trained on huge slices of the public internet — but they don't know your company's order history, your latest pricing, your internal SOPs, or any document written after their training cutoff. Ask one a question about something it doesn't know and it doesn't say "I don't know" — it confidently makes something up. That's hallucination.</p>
+  <p>RAG fixes this by adding a step before the model answers:</p>
+  <ol>
+    <li>You ask a question.</li>
+    <li>The system looks through your documents/database to find the most relevant snippets.</li>
+    <li>It hands those snippets to the model, along with your question.</li>
+    <li>The model answers using <em>those snippets</em> as the source of truth.</li>
+  </ol>
+  <p>Result: the model can answer about your specific data, with citations, and is much less likely to invent facts.</p>
+
+  <h2>The open-book exam analogy</h2>
+  <p>Imagine a brilliant student who's read a lot of books but never seen your textbook. Ask them a question about your textbook and they'll guess plausibly — and sometimes wrongly.</p>
+  <p>Now give them the textbook and let them open it before answering. Same student, dramatically better answers. That's RAG.</p>
+
+  <h2>The four pieces of a RAG system</h2>
+
+  <h3>1. Documents</h3>
+  <p>Whatever you want the AI to be able to "read" — help-center articles, product specs, internal SOPs, customer history, contracts, anything. RAG starts with you having something worth retrieving from. Garbage in, garbage out applies harder than usual here.</p>
+
+  <h3>2. Embeddings</h3>
+  <p>Each chunk of your documents gets converted into a vector — a list of numbers — that captures its meaning. Similar meanings end up at similar coordinates in vector space. "Customer can't login" and "user has trouble signing in" end up near each other even though the words barely overlap.</p>
+  <p>Today (Q2 2026), most teams use OpenAI's <code>text-embedding-3-large</code> for English, or Voyage AI for multilingual / domain-specific use cases.</p>
+
+  <h3>3. Vector database</h3>
+  <p>Where the embeddings live. When a question comes in, you embed the question, then search the database for the closest matching document chunks. Common choices:</p>
+  <ul>
+    <li><strong>pgvector</strong> — a Postgres extension. Free, fast for up to ~5M embeddings, lives where your data already lives. <a href="post-stack.html">Our default</a>.</li>
+    <li><strong>Pinecone</strong> — managed vector DB. Convenient, more expensive, right for multi-tenant SaaS at scale.</li>
+    <li><strong>Weaviate / Qdrant / LanceDB</strong> — alternatives with their own tradeoffs.</li>
+  </ul>
+
+  <h3>4. Generation</h3>
+  <p>The retrieved snippets get inserted into the prompt sent to the model. The model then answers using those snippets as context. This is the "generation" part — the model is generating an answer, augmented by retrieval.</p>
+
+  <h2>RAG vs fine-tuning vs prompt-only</h2>
+  <p>These get conflated a lot. They're three different tools:</p>
+  <ul>
+    <li><strong>Prompt-only:</strong> stuff everything in the prompt. Works if your data fits in the context window (~200k tokens for Sonnet 4) and changes rarely. Pricey at scale because you pay per token every call.</li>
+    <li><strong>RAG:</strong> retrieve relevant snippets per query. Works when your data is big, changes often, or differs per user. Most production "AI on your data" systems are RAG.</li>
+    <li><strong>Fine-tuning:</strong> train the model on your data. Best for teaching <em>style</em> (brand voice, code style) rather than <em>facts</em>. Expensive, slow to iterate, and won't pick up tomorrow's documents.</li>
+  </ul>
+  <p>Most production systems use <strong>RAG for facts + light prompt-tuning for style</strong>. Fine-tuning is rarely the right first move.</p>
+
+  <h2>When RAG is the right pattern</h2>
+  <ul>
+    <li><strong>Customer support automation</strong> — the AI needs to know your help articles, product changes, customer history. <a href="case-operator.html">Case in point</a>.</li>
+    <li><strong>Internal Q&amp;A</strong> over policies, SOPs, runbooks.</li>
+    <li><strong>Legal / compliance research</strong> across your own document corpus.</li>
+    <li><strong>Sales enablement</strong> — AI that can pull case studies, pricing, ICP fit from your library.</li>
+    <li><strong>Personalised recommendations</strong> using your customer/product data as context.</li>
+  </ul>
+
+  <h2>When RAG is the wrong pattern</h2>
+  <ul>
+    <li>The task doesn't need your data (general writing, summarisation of <em>this conversation</em>, translation). Skip RAG.</li>
+    <li>You need the AI to <em>do</em> things, not <em>know</em> things. That's agentic tool use, not RAG.</li>
+    <li>Your "documents" are tiny and static enough to just paste in the prompt. RAG adds latency and complexity for no benefit.</li>
+  </ul>
+
+  <h2>Five common RAG pitfalls (and what we do about them)</h2>
+
+  <h3>1. Bad chunking</h3>
+  <p>Documents get split into chunks (usually 200–800 tokens). Cut them wrong and you split mid-sentence, mid-table, mid-thought. Retrieval recall plummets. Use overlap (10–20% of chunk size) and respect natural boundaries (headings, list items).</p>
+
+  <h3>2. Retrieving too much / too little</h3>
+  <p>Retrieve 1 chunk and you miss context. Retrieve 50 and you bury the model in noise. We tune K (number of retrieved chunks) per workflow — usually 5–15.</p>
+
+  <h3>3. No re-ranking</h3>
+  <p>Vector similarity is good at "topic-relevant", not always at "answer-relevant". A re-ranker (Cohere, Voyage, or a small Claude pass) reorders the top-K and dramatically improves quality. Often the single biggest quality jump for the least work.</p>
+
+  <h3>4. No evals</h3>
+  <p>"Did the answer use the right document?" is a checkable question. Build a test set of question-answer-source triples and measure retrieval accuracy independently from generation accuracy. Without this you're guessing at quality.</p>
+
+  <h3>5. Static index, stale answers</h3>
+  <p>Your help articles update; your RAG index doesn't notice. Build a sync pipeline from day one. Most teams skip this and discover three months later that half their answers cite outdated content.</p>
+
+  <blockquote>
+    The unglamorous secret of production RAG: 70% of the work is the eval suite and the data-quality pipeline, not the model. Teams that nail those two beat teams with fancier models.
+  </blockquote>
+
+  <h2>The 2026 RAG stack we use at Growvate</h2>
+  <ul>
+    <li><strong>Documents:</strong> Markdown / clean HTML, normalised by a preprocessing step we own</li>
+    <li><strong>Chunking:</strong> heading-aware, ~500 tokens with 10% overlap</li>
+    <li><strong>Embeddings:</strong> OpenAI <code>text-embedding-3-large</code> (English) or Voyage Multilingual (when needed)</li>
+    <li><strong>Storage:</strong> pgvector inside the client's existing Postgres (no new vendor)</li>
+    <li><strong>Retrieval:</strong> hybrid (vector + BM25 keyword), K=15</li>
+    <li><strong>Re-ranking:</strong> Cohere Rerank 3, top 5 forward to the model</li>
+    <li><strong>Generation:</strong> Claude Sonnet 4 by default, Haiku for high-volume / cost-sensitive flows</li>
+    <li><strong>Evals:</strong> Promptfoo for offline, Langfuse for production traces</li>
+  </ul>
+  <p>The full stack lives in <a href="post-stack.html">our default 2026 AI stack post</a>.</p>
+
+  <h2>How long does it take to build a production RAG system?</h2>
+  <p>For a focused use case (e.g., "AI support agent over our help center + order data"):</p>
+  <ul>
+    <li>Week 1: data audit, chunking pipeline, eval set creation</li>
+    <li>Week 2: embedding + retrieval pipeline, first generation prompt</li>
+    <li>Week 3: re-ranking, prompt iteration against evals, integration with your app</li>
+    <li>Week 4: production hardening, observability, rollout</li>
+  </ul>
+  <p>30 days is realistic. Most teams take longer because they skip the eval suite — which is the one thing they shouldn't.</p>
+
+  <hr/>
+  <p><em>Building something that needs to "know your data"? <a href="index.html#contact">Book a 30-minute audit</a>. We'll go through what you have and tell you whether RAG, fine-tuning, prompt-engineering, or just buying a SaaS is the right call for your specific use case.</em></p>
+
+</article>
+
+<section class="related-posts">
+  <h3>More from the journal</h3>
+  <div class="related-posts__grid">
+    <a class="post" href="post-stack.html">
+      <span class="post__meta">Mar 2026 · Build</span>
+      <h3>Our default 2026 AI stack</h3>
+      <p>The exact tools, models and infrastructure we reach for on day one of every project.</p>
+      <span class="post__more">Read article <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></span>
+    </a>
+    <a class="post" href="post-ai-agent-cost.html">
+      <span class="post__meta">May 2026 · Economics</span>
+      <h3>How much does an AI agent cost?</h3>
+      <p>Real cost breakdowns by agent type, monthly running costs, and ROI math from production builds.</p>
+      <span class="post__more">Read article <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></span>
+    </a>
+    <a class="post" href="post-build-vs-buy.html">
+      <span class="post__meta">May 2026 · Strategy</span>
+      <h3>Build vs buy AI: a 2026 framework</h3>
+      <p>When off-the-shelf wins, when custom wins, and the underrated hybrid path.</p>
+      <span class="post__more">Read article <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__top">
+    <a href="index.html" class="footer__brand"><svg class="footer__mark" viewBox="0 0 60 60"><use href="#mark"/></svg><span>GROWVATE</span></a>
+    <div class="footer__cols">
+      <div><span class="footer__h">Studio</span><a href="index.html#about">About</a><a href="index.html#services">Services</a><a href="index.html#process">Process</a></div>
+      <div><span class="footer__h">Work</span><a href="index.html#work">Portfolio</a><a href="resources.html">Resources</a><a href="blog.html">Blog</a><a href="index.html#contact">Contact</a></div>
+      <div><span class="footer__h">Industries</span><a href="industry-agriculture.html">Agriculture</a><a href="industry-software.html">Software</a><a href="industry-craftsman.html">Craftsman services</a><a href="industry-real-estate.html">Real estate</a><a href="industry-ecommerce.html">E-commerce</a><a href="industry-food.html">Food</a></div>
+      <div><span class="footer__h">Get in touch</span><a href="mailto:growvatestudio@gmail.com">growvatestudio@gmail.com</a><a href="index.html#contact">Book audit →</a></div>
+    </div>
+  </div>
+  <div class="footer__bottom"><span>© 2026 Growvate AI Studio.</span><span>Automating the boring. Quietly.</span></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.23/dist/lenis.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

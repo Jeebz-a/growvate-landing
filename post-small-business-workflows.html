@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>9 AI workflows every small business should automate in 2026 · Growvate</title>
+<meta name="description" content="The nine AI workflows that pay back fastest for small businesses in 2026 — from inbox triage to auto-quoting to customer support. With tooling, build time and first step for each." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+<!-- Vercel Analytics -->
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+
+<div class="cursor" aria-hidden="true"><div class="cursor__dot"></div><div class="cursor__ring"></div></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 60 60"><path fill="currentColor" d="M30 0 L36 24 L60 30 L36 36 L30 60 L24 36 L0 30 L24 24 Z"/><rect x="22" y="22" width="16" height="16" fill="#fff"/><rect x="26" y="26" width="8" height="8" fill="currentColor"/></symbol>
+  <symbol id="arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M5 12h14M13 5l7 7-7 7"/></symbol>
+</svg>
+
+<header class="nav" id="nav">
+  <a href="index.html" class="nav__logo"><svg class="nav__mark" viewBox="0 0 60 60"><use href="#mark"/></svg><span>GROWVATE</span></a>
+  <nav class="nav__links"><a href="index.html#about">About</a><a href="index.html#services">Services</a><a href="index.html#work">Portfolio</a><a href="resources.html">Resources</a><a href="blog.html">Blog</a></nav>
+  <a href="index.html#contact" class="nav__cta"><span>Book AI audit</span><svg viewBox="0 0 24 24"><use href="#arrow"/></svg></a>
+  <button class="nav__toggle" aria-label="Menu"><span></span><span></span></button>
+</header>
+
+<main>
+
+<section class="page-hero">
+  <a href="blog.html" class="page-hero__back"><svg viewBox="0 0 24 24"><use href="#arrow"/></svg><span>All articles</span></a>
+  <div class="page-hero__meta">
+    <span class="page-hero__tag">Automation</span>
+    <span class="page-hero__date">May 2026 · 14 min read</span>
+  </div>
+  <h1 class="page-hero__title">
+    <span class="split">9 AI workflows every</span>
+    <span class="split">small business should <em>automate.</em></span>
+  </h1>
+  <p class="page-hero__lede reveal-up">
+    The nine workflows that pay back fastest for small and mid-sized businesses in 2026. Each one with what it does, how long to build, what tools you actually need, and the first step you can take this week.
+  </p>
+</section>
+
+<article class="prose">
+
+  <p>Most small businesses don't need a "strategy". They need a list of 3–5 specific automations that will buy back the most time. After running 40+ AI projects for businesses doing $500k to $50M revenue, the same workflows keep delivering outsized ROI. Here are the nine that come up most often, in roughly the order we'd ship them.</p>
+
+  <h2>1. Inbox triage</h2>
+  <p><strong>What it does:</strong> reads every inbound email (info@, sales@, support@, founder@) and labels, routes and drafts a response. You see a clean inbox with pre-written drafts; you approve or edit and send.</p>
+  <p><strong>Why it matters:</strong> founders typically spend 90 minutes a day in their inbox. This workflow cuts that to 20 minutes. <a href="post-ai-agent-cost.html">At a senior founder hourly rate</a>, that's $30k–$50k of time back per year.</p>
+  <p><strong>Tools:</strong> Claude API or GPT-4o · Gmail/Outlook API · Your CRM. Optional: a thin web UI for approvals.</p>
+  <p><strong>Build time:</strong> 1–2 weeks for a polished version.</p>
+  <p><strong>First step this week:</strong> count how many emails per day you write that are 80% formulaic. If it's more than 10, this is your first build.</p>
+
+  <h2>2. Auto-quoting</h2>
+  <p><strong>What it does:</strong> a customer sends a photo and a few lines of context — broken window, leaking tap, sized cabinet — and AI drafts a quote within minutes. You review on your phone and send.</p>
+  <p><strong>Why it matters:</strong> in trades and services, the fastest quote wins. Quote turnaround under 10 minutes versus 24+ hours is a 30–50% win-rate uplift in our data. <a href="industry-craftsman.html">More on this in the craftsman services industry guide</a>.</p>
+  <p><strong>Tools:</strong> Claude API (with vision) · SMS gateway · Your pricing rules in a config file.</p>
+  <p><strong>Build time:</strong> 2–3 weeks.</p>
+  <p><strong>First step:</strong> write down your 10 most-quoted services and their typical price ranges. That's the rule book.</p>
+
+  <h2>3. Lead capture &amp; AI qualification</h2>
+  <p><strong>What it does:</strong> every web form, missed call, Google Local lead, and "send me a quote" email gets an instant response from an AI agent. It asks the qualifying questions, books a call only with people who match your ICP, and posts the rest to a "not yet" follow-up list.</p>
+  <p><strong>Why it matters:</strong> the average B2B response time to a web lead is 47 hours. The lead that gets a response in under 5 minutes converts 9× more often. AI agents can do under 2 minutes, 24/7.</p>
+  <p><strong>Tools:</strong> Claude API · webhook endpoints for your form sources · calendar API (Cal.com, Calendly).</p>
+  <p><strong>Build time:</strong> 2–4 weeks depending on integration complexity.</p>
+  <p><strong>First step:</strong> measure your current average response time. The baseline you don't measure is the one you can't celebrate beating.</p>
+
+  <h2>4. Tier-1 customer support automation</h2>
+  <p><strong>What it does:</strong> AI agent reads inbound support tickets, looks up customer order/account data, retrieves relevant help-center articles, drafts a response and either sends it (high confidence) or escalates with the draft pre-loaded (low confidence). Your team handles the edge cases.</p>
+  <p><strong>Why it matters:</strong> 60–70% of tickets at most companies are the same 20 questions. Auto-resolving them saves 1.5–2 full headcounts at the typical SMB. <a href="case-operator.html">For Operator.io, this was $340k/year in avoided headcount</a>.</p>
+  <p><strong>Tools:</strong> Claude API · Zendesk/Gorgias/Intercom/Helpscout API · pgvector for RAG over your docs · Langfuse for monitoring.</p>
+  <p><strong>Build time:</strong> 3–4 weeks for a confident production version.</p>
+  <p><strong>First step:</strong> tag your last 200 tickets by category. The top 5 categories are 80% of your volume.</p>
+
+  <h2>5. Invoicing &amp; finance automation</h2>
+  <p><strong>What it does:</strong> voice-note from the job → structured invoice in Xero/QuickBooks/Wave → email to client with payment link → polite chase if not paid in 14 days → reconciliation when paid. End to end.</p>
+  <p><strong>Why it matters:</strong> the average tradesperson or consultant spends 4–8 hours a week on invoicing and chase. That's a working day a week, gone.</p>
+  <p><strong>Tools:</strong> Claude API · Whisper (voice-to-text) · Xero/QuickBooks/Wave API · Stripe/payment processor.</p>
+  <p><strong>Build time:</strong> 2–3 weeks.</p>
+  <p><strong>First step:</strong> time-track your invoicing for a week. Most people are shocked.</p>
+
+  <h2>6. Review monitoring &amp; response</h2>
+  <p><strong>What it does:</strong> watches Google Business, Yelp, TripAdvisor, Trustpilot, App Store / Play Store. Drafts an AI response in your brand voice for every review. Alerts you on negatives with context. Auto-requests reviews from happy customers after a job/purchase.</p>
+  <p><strong>Why it matters:</strong> review rate is the single highest-leverage local SEO signal. AI 3–5×s your review request response rate. Negative review response time also matters disproportionately.</p>
+  <p><strong>Tools:</strong> Claude API · Google Business / Yelp APIs · SMS or email gateway.</p>
+  <p><strong>Build time:</strong> 1–2 weeks.</p>
+  <p><strong>First step:</strong> count your reviews per month and compare to your nearest competitor.</p>
+
+  <h2>7. Social &amp; marketing content drafts</h2>
+  <p><strong>What it does:</strong> every week, AI drafts 5–10 social posts in your brand voice — Instagram, LinkedIn, TikTok scripts, your newsletter. You review, edit lightly, approve in 5 minutes Sunday night. They schedule automatically.</p>
+  <p><strong>Why it matters:</strong> the businesses that show up consistently win. Most don't, because nobody has time to write. AI doesn't make you a content creator, it removes the "what do I post today" tax.</p>
+  <p><strong>Tools:</strong> Claude API · your past content for voice tuning (RAG) · Buffer/Later/Hypefury for scheduling.</p>
+  <p><strong>Build time:</strong> 1–2 weeks.</p>
+  <p><strong>First step:</strong> dump your 20 best past posts into a doc. That's your voice training set.</p>
+
+  <h2>8. Internal report generation</h2>
+  <p><strong>What it does:</strong> every Monday, an AI agent pulls your weekend's data (Shopify orders, ad spend, support tickets, hours billed, whatever matters) and posts a one-page narrative report in Slack. Not a dashboard with 47 charts — a paragraph that says "here's what happened, here's what changed, here's what to look at this week".</p>
+  <p><strong>Why it matters:</strong> dashboards demand attention. Narrative reports get read. We've seen Monday morning standup time drop from an hour to ten minutes because everyone already read the AI brief.</p>
+  <p><strong>Tools:</strong> Claude API · your data sources (Shopify, Stripe, Google Ads, etc.) · Slack webhook.</p>
+  <p><strong>Build time:</strong> 1–3 weeks depending on data sources.</p>
+  <p><strong>First step:</strong> write down the 5 numbers you actually check each Monday. That's the report.</p>
+
+  <h2>9. Customer onboarding agent</h2>
+  <p><strong>What it does:</strong> when a new customer signs up, an AI agent guides them through onboarding — explaining the product, answering questions, booking the first call, sending the right materials. Personalised based on what they entered at signup.</p>
+  <p><strong>Why it matters:</strong> "time to first value" predicts retention more than any other metric. An always-on AI shepherd doesn't replace your customer success team — it covers nights, weekends and the 3am sign-ups they couldn't catch.</p>
+  <p><strong>Tools:</strong> Claude API · your product docs (RAG) · CRM API · email + Slack.</p>
+  <p><strong>Build time:</strong> 2–4 weeks.</p>
+  <p><strong>First step:</strong> identify your activation event (the first thing a customer does that predicts they'll stick). Optimise for that.</p>
+
+  <blockquote>
+    The mistake is choosing your favourite of these. The right one to build first is the one that's eating the most time in your current operation, not the one that sounds coolest.
+  </blockquote>
+
+  <h2>A simple prioritisation framework</h2>
+  <p>For each workflow on your shortlist, score it 1–5 on:</p>
+  <ul>
+    <li><strong>Hours saved per week</strong> (you and your team's, combined)</li>
+    <li><strong>Revenue protected / generated</strong> (lost leads, missed quotes, lost reviews)</li>
+    <li><strong>Ease of integration</strong> (do the tools have APIs we can call?)</li>
+    <li><strong>Reversibility</strong> (if it breaks, what breaks with it?)</li>
+  </ul>
+  <p>Sum the four scores. Build the highest-scoring one first. Don't stack.</p>
+
+  <h2>The compounding effect (why one is never enough)</h2>
+  <p>Each automation buys back time. That time goes into building the next one. Within a year, businesses that ship one automation per quarter end up with 4–6 quietly humming systems, none of which is dramatic on its own, but together they remove the entire "operations" headache from the founder's plate.</p>
+  <p>This is why we built the <a href="resources.html">Digital Foundation Guide</a> — it's a free starting point for the businesses earliest in this journey. And for everyone else, we run a 30-day sprint that ships the highest-leverage one of these for your specific operation.</p>
+
+  <hr/>
+  <p><em>Want to know which of these would pay back fastest in your business? <a href="index.html#contact">Book a 30-minute audit</a>. We'll go through your week and shortlist the 1–3 automations that would give you the most time back, with realistic build cost and timeline.</em></p>
+
+</article>
+
+<section class="related-posts">
+  <h3>More from the journal</h3>
+  <div class="related-posts__grid">
+    <a class="post" href="post-ai-agent-cost.html">
+      <span class="post__meta">May 2026 · Economics</span>
+      <h3>How much does an AI agent cost?</h3>
+      <p>Real numbers from production builds — by agent type, monthly running costs, and ROI math.</p>
+      <span class="post__more">Read article <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></span>
+    </a>
+    <a class="post" href="post-build-vs-buy.html">
+      <span class="post__meta">May 2026 · Strategy</span>
+      <h3>Build vs buy AI: a 2026 framework</h3>
+      <p>When off-the-shelf wins, when custom wins, and the underrated hybrid path.</p>
+      <span class="post__more">Read article <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></span>
+    </a>
+    <a class="post" href="post-playbook.html">
+      <span class="post__meta">May 2026 · Automation</span>
+      <h3>The 30-day AI implementation playbook</h3>
+      <p>The exact sprint structure we run with every client.</p>
+      <span class="post__more">Read article <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__top">
+    <a href="index.html" class="footer__brand"><svg class="footer__mark" viewBox="0 0 60 60"><use href="#mark"/></svg><span>GROWVATE</span></a>
+    <div class="footer__cols">
+      <div><span class="footer__h">Studio</span><a href="index.html#about">About</a><a href="index.html#services">Services</a><a href="index.html#process">Process</a></div>
+      <div><span class="footer__h">Work</span><a href="index.html#work">Portfolio</a><a href="resources.html">Resources</a><a href="blog.html">Blog</a><a href="index.html#contact">Contact</a></div>
+      <div><span class="footer__h">Industries</span><a href="industry-agriculture.html">Agriculture</a><a href="industry-software.html">Software</a><a href="industry-craftsman.html">Craftsman services</a><a href="industry-real-estate.html">Real estate</a><a href="industry-ecommerce.html">E-commerce</a><a href="industry-food.html">Food</a></div>
+      <div><span class="footer__h">Get in touch</span><a href="mailto:growvatestudio@gmail.com">growvatestudio@gmail.com</a><a href="index.html#contact">Book audit →</a></div>
+    </div>
+  </div>
+  <div class="footer__bottom"><span>© 2026 Growvate AI Studio.</span><span>Automating the boring. Quietly.</span></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.23/dist/lenis.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

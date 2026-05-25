@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Great AI demo, no traction: why your AI feature never shipped · Growvate</title>
+<meta name="description" content="The 'great demo, no traction' problem in AI projects — why a polished demo doesn't translate into a shipped feature, and the framework we use to make demos that actually become production systems." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+<!-- Vercel Analytics -->
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+
+<div class="cursor" aria-hidden="true"><div class="cursor__dot"></div><div class="cursor__ring"></div></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 60 60"><path fill="currentColor" d="M30 0 L36 24 L60 30 L36 36 L30 60 L24 36 L0 30 L24 24 Z"/><rect x="22" y="22" width="16" height="16" fill="#fff"/><rect x="26" y="26" width="8" height="8" fill="currentColor"/></symbol>
+  <symbol id="arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M5 12h14M13 5l7 7-7 7"/></symbol>
+</svg>
+
+<header class="nav" id="nav">
+  <a href="index.html" class="nav__logo"><svg class="nav__mark" viewBox="0 0 60 60"><use href="#mark"/></svg><span>GROWVATE</span></a>
+  <nav class="nav__links"><a href="index.html#about">About</a><a href="index.html#services">Services</a><a href="index.html#work">Portfolio</a><a href="resources.html">Resources</a><a href="blog.html">Blog</a></nav>
+  <a href="index.html#contact" class="nav__cta"><span>Book AI audit</span><svg viewBox="0 0 24 24"><use href="#arrow"/></svg></a>
+  <button class="nav__toggle" aria-label="Menu"><span></span><span></span></button>
+</header>
+
+<main>
+
+<section class="page-hero">
+  <a href="blog.html" class="page-hero__back"><svg viewBox="0 0 24 24"><use href="#arrow"/></svg><span>All articles</span></a>
+  <div class="page-hero__meta">
+    <span class="page-hero__tag">Lessons</span>
+    <span class="page-hero__date">May 2026 · 8 min read</span>
+  </div>
+  <h1 class="page-hero__title">
+    <span class="split">Great AI demo,</span>
+    <span class="split"><em>no traction.</em></span>
+  </h1>
+  <p class="page-hero__lede reveal-up">
+    Your team built an AI demo. The room loved it. Six months later, it's not in the product. Here's why this pattern is so common, the five root causes we see, and the framework to make sure your next demo actually becomes a shipped system.
+  </p>
+</section>
+
+<article class="prose">
+
+  <h2>The pattern</h2>
+  <p>You've seen this play out, or you've lived it. A small team — sometimes just one ambitious engineer — builds an AI prototype over a weekend. It's slick. It's working on a real-ish dataset. The Loom video circulates. Leadership says "ship this." The team says "give us a month." Six months later, nothing has shipped.</p>
+  <p>This isn't a story about lazy teams. The engineers who build great demos are usually the best engineers in the company. The problem is structural: <strong>demos and production systems are different objects with different requirements, and treating one as a draft of the other is the bug.</strong></p>
+
+  <h2>Why demos demo so well</h2>
+  <p>The demo runs on:</p>
+  <ul>
+    <li>A hand-picked happy-path input</li>
+    <li>Fresh model weights (the latest Claude / GPT)</li>
+    <li>A creator-curated knowledge base of a few hundred documents</li>
+    <li>Zero authentication, zero rate-limiting, zero compliance review</li>
+    <li>The engineer driving the demo, who knows where every rough edge is</li>
+  </ul>
+  <p>None of that is true in production. The real input is messy. Customers ask weird things. Knowledge bases are 50,000 documents with stale entries. Authentication, audit logs, observability, escalation paths — all need to exist. And no engineer is in the loop guiding away from the rough edges.</p>
+
+  <h2>The 5 root causes we see most often</h2>
+
+  <h3>1. The demo was built without an eval set</h3>
+  <p>The prototype works for the 5 prompts the engineer tried. The team has no idea if it works for the 50 representative cases of real production traffic. When they start testing, half the cases fail, the team falls into a "tune one, break two" loop, and momentum dies.</p>
+  <p><strong>The fix:</strong> build the eval set <em>before</em> the second iteration of the prompt. Even 20 hand-graded cases is dramatically better than 0.</p>
+
+  <h3>2. The data was clean. The real data isn't.</h3>
+  <p>The demo ran on a curated sample. Production data is dirty: misformatted, inconsistent, duplicated, sometimes missing. The team didn't budget for the data-cleaning work because the demo data was already clean.</p>
+  <p><strong>The fix:</strong> in week one, take a random sample of <em>real</em> production data through the pipeline. Don't sample-clean. Find out how dirty it is.</p>
+
+  <h3>3. The integration work scared everyone</h3>
+  <p>The demo speaks to a local file. The production version needs to authenticate against your CRM, write back to your invoicing system, post to Slack, log to your observability pipe, and respect your data-residency rules. That's 8 weeks of integration on top of "the demo."</p>
+  <p><strong>The fix:</strong> scope the integration in the brief, before the demo is built. The demo should mock the integrations but assume they'll be real.</p>
+
+  <h3>4. Ownership was never handed over</h3>
+  <p>The engineer who built the demo is now on the next thing. The product team owns the roadmap but can't maintain the prompts. The data team owns the data but doesn't understand the model. Nobody picks up the work and the project quietly stalls.</p>
+  <p><strong>The fix:</strong> name the owner before the demo is built. "Sarah on the customer success team owns this after week 4" — and Sarah should be in the room during the demo, asking questions.</p>
+
+  <h3>5. The success metric was vibes</h3>
+  <p>"The demo went well" is not a metric. Two months in, leadership asks "is this working?" — and the team can't answer with numbers. Confidence erodes. Budget gets pulled.</p>
+  <p><strong>The fix:</strong> define the success metric on day one, with a numeric baseline and target. <em>"Auto-resolve 60% of tier-1 tickets with CSAT no lower than current baseline of 4.3"</em>. That sentence is more valuable than the entire demo.</p>
+
+  <blockquote>
+    Demos answer "can we?". Production answers "should we, will we, and how will we know?". They are not the same question and they require different work.
+  </blockquote>
+
+  <h2>The shape of a demo that ships</h2>
+  <p>The demos that survive contact with production share four properties:</p>
+
+  <ol>
+    <li><strong>They run on real data from day one.</strong> Not curated. Not happy-path. The engineer ran a sample of last week's actual customer traffic through the pipeline and the demo addresses what came out, not what would have been ideal.</li>
+    <li><strong>They include an eval report.</strong> Not "it works" — a one-page document that says "we tested 50 cases representative of production, 38 passed, here are the 12 failures, here's our hypothesis on each." Investors of internal time love this; founders should require it.</li>
+    <li><strong>They name the owner.</strong> Who maintains the prompts in month two? Who escalates when the model deprecates? If the answer is "the engineer who built it", the project will fail in month four when that engineer moves to something else.</li>
+    <li><strong>They include the scope of integration work.</strong> The demo shows "model in, model out". The plan shows the systems it has to talk to, the SLAs, the security review. Nobody loves this slide, but every project that ships had it.</li>
+  </ol>
+
+  <h2>The "90% before / 100% on demo day" rule</h2>
+  <p>Most demo-day failures are presentation failures. The system is fine but something specific breaks on stage. To prevent this we run a "90% before" rule:</p>
+  <ul>
+    <li>Two days before the demo, the system has to work end-to-end with 90% of test cases passing.</li>
+    <li>The day of the demo, the team has only made cosmetic and prompt changes — no architecture changes since the 90% gate.</li>
+    <li>If the 90% gate isn't met by two days out, the demo is moved. No exceptions.</li>
+  </ul>
+  <p>This sounds bureaucratic; it eliminates 90% of the "the demo broke 5 minutes before the meeting" disasters.</p>
+
+  <h2>What we do with clients</h2>
+  <p>When we run <a href="post-playbook.html">our 30-day sprint</a>, week 4 is dedicated to making the demo into a production system, not the other way around. The demo happens at the <em>end</em> of the sprint, when the system has already been hardened, evaluated and integrated. The demo is a milestone, not a goal.</p>
+  <p>For clients who come to us <em>after</em> a stuck demo, the work is usually: rebuild the eval suite, harden the integrations, name an internal owner, and rewrite the brief with a real success metric. About 60% of the time the original prototype is salvageable; 40% of the time we re-architect to a degree.</p>
+
+  <h2>What this means for you, today</h2>
+  <p>If you have an AI demo that's been sitting in "we'll ship it soon" land for more than two months:</p>
+  <ul>
+    <li>Audit it against the 5 root causes above. Which one applies?</li>
+    <li>Build an eval set this week. Even a small one.</li>
+    <li>Name the production owner. Not the demo's creator — the operational owner who will maintain it.</li>
+    <li>Write the success metric in one sentence with a number and a date.</li>
+  </ul>
+  <p>If you do those four things, your demo has dramatically better odds of becoming a shipped system in the next 60 days.</p>
+
+  <hr/>
+  <p><em>Have an AI demo that's been stuck? <a href="index.html#contact">Book a 30-minute audit</a>. We'll look at where it's stuck and tell you, honestly, whether it's worth pushing through, refactoring, or starting over.</em></p>
+
+</article>
+
+<section class="related-posts">
+  <h3>More from the journal</h3>
+  <div class="related-posts__grid">
+    <a class="post" href="post-powerpoint.html">
+      <span class="post__meta">Apr 2026 · Strategy</span>
+      <h3>Why most AI projects die in PowerPoint</h3>
+      <p>The five reasons enterprise AI never ships — and the studio model that fixes them.</p>
+      <span class="post__more">Read article <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></span>
+    </a>
+    <a class="post" href="post-playbook.html">
+      <span class="post__meta">May 2026 · Automation</span>
+      <h3>The 30-day AI implementation playbook</h3>
+      <p>The exact sprint structure we run with every client — day-by-day, week-by-week.</p>
+      <span class="post__more">Read article <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></span>
+    </a>
+    <a class="post" href="post-small-business-workflows.html">
+      <span class="post__meta">May 2026 · Automation</span>
+      <h3>9 AI workflows every small business should automate</h3>
+      <p>The nine workflows that pay back fastest — with build times and first steps.</p>
+      <span class="post__more">Read article <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__top">
+    <a href="index.html" class="footer__brand"><svg class="footer__mark" viewBox="0 0 60 60"><use href="#mark"/></svg><span>GROWVATE</span></a>
+    <div class="footer__cols">
+      <div><span class="footer__h">Studio</span><a href="index.html#about">About</a><a href="index.html#services">Services</a><a href="index.html#process">Process</a></div>
+      <div><span class="footer__h">Work</span><a href="index.html#work">Portfolio</a><a href="resources.html">Resources</a><a href="blog.html">Blog</a><a href="index.html#contact">Contact</a></div>
+      <div><span class="footer__h">Industries</span><a href="industry-agriculture.html">Agriculture</a><a href="industry-software.html">Software</a><a href="industry-craftsman.html">Craftsman services</a><a href="industry-real-estate.html">Real estate</a><a href="industry-ecommerce.html">E-commerce</a><a href="industry-food.html">Food</a></div>
+      <div><span class="footer__h">Get in touch</span><a href="mailto:growvatestudio@gmail.com">growvatestudio@gmail.com</a><a href="index.html#contact">Book audit →</a></div>
+    </div>
+  </div>
+  <div class="footer__bottom"><span>© 2026 Growvate AI Studio.</span><span>Automating the boring. Quietly.</span></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.23/dist/lenis.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

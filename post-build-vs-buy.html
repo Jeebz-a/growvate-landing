@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Build vs buy AI: when to build your own vs use ChatGPT or Claude · Growvate</title>
+<meta name="description" content="A 2026 decision framework for AI build vs buy. When off-the-shelf wins, when custom wins, and the underrated hybrid path. With cost ranges, examples and a decision tree from production builds." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+<!-- Vercel Analytics -->
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+
+<div class="cursor" aria-hidden="true"><div class="cursor__dot"></div><div class="cursor__ring"></div></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 60 60"><path fill="currentColor" d="M30 0 L36 24 L60 30 L36 36 L30 60 L24 36 L0 30 L24 24 Z"/><rect x="22" y="22" width="16" height="16" fill="#fff"/><rect x="26" y="26" width="8" height="8" fill="currentColor"/></symbol>
+  <symbol id="arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M5 12h14M13 5l7 7-7 7"/></symbol>
+</svg>
+
+<header class="nav" id="nav">
+  <a href="index.html" class="nav__logo"><svg class="nav__mark" viewBox="0 0 60 60"><use href="#mark"/></svg><span>GROWVATE</span></a>
+  <nav class="nav__links"><a href="index.html#about">About</a><a href="index.html#services">Services</a><a href="index.html#work">Portfolio</a><a href="resources.html">Resources</a><a href="blog.html">Blog</a></nav>
+  <a href="index.html#contact" class="nav__cta"><span>Book AI audit</span><svg viewBox="0 0 24 24"><use href="#arrow"/></svg></a>
+  <button class="nav__toggle" aria-label="Menu"><span></span><span></span></button>
+</header>
+
+<main>
+
+<section class="page-hero">
+  <a href="blog.html" class="page-hero__back"><svg viewBox="0 0 24 24"><use href="#arrow"/></svg><span>All articles</span></a>
+  <div class="page-hero__meta">
+    <span class="page-hero__tag">Strategy</span>
+    <span class="page-hero__date">May 2026 · 10 min read</span>
+  </div>
+  <h1 class="page-hero__title">
+    <span class="split">Build vs buy AI:</span>
+    <span class="split">a 2026 <em>decision framework.</em></span>
+  </h1>
+  <p class="page-hero__lede reveal-up">
+    Should you build your own AI or use ChatGPT, Claude, or an off-the-shelf SaaS? The question is harder than it used to be. Here's the framework we use with every client — with concrete examples of where each path wins and the underrated hybrid almost no one talks about.
+  </p>
+</section>
+
+<article class="prose">
+
+  <h2>The TL;DR</h2>
+  <ul>
+    <li><strong>Buy off-the-shelf</strong> when the task is generic (drafting, summarising, transcription), low-stakes, and the value is in saving 1–2 hours per person per week.</li>
+    <li><strong>Build custom</strong> when AI is the product (or a strategic part of it), when proprietary data is the moat, when integration with your stack is non-trivial, or when the output sits in a regulated workflow.</li>
+    <li><strong>Hybrid wins more often than people realise</strong> — use the model APIs (Claude, OpenAI) as the engine, but build the orchestration, prompts, RAG and evals around them yourself.</li>
+  </ul>
+
+  <h2>Why this is harder than it was two years ago</h2>
+  <p>In 2023, "buy" meant a chatbot widget on your website. In 2026, "buy" can mean: a vertical SaaS with AI features baked in, a horizontal copilot, a no-code agent platform, a model API, or 47 startups in your inbox. "Build" used to mean training a model from scratch. Now it usually means orchestrating an API smartly. The lines have moved.</p>
+
+  <p>And the cost ratios have shifted. In 2023, building anything bespoke was 10× the cost of off-the-shelf. Today it's often 2–3× — and the gap shrinks every quarter as tooling matures. That changes the math.</p>
+
+  <h2>The 5 questions to answer before you decide</h2>
+
+  <h3>1. Is this AI capability a feature, a moat, or just an internal tool?</h3>
+  <p>If it's an <strong>internal tool</strong> (your team uses it, customers don't care how it works), strongly favour buy. Cursor, ChatGPT Enterprise, Claude for Work — pick one and let your team get on with their job.</p>
+  <p>If it's a <strong>customer-facing feature</strong> in a product you sell, build at least the orchestration. Slapping a third-party chatbot on your homepage screams "we don't get it" to your most savvy customers.</p>
+  <p>If it's a <strong>moat</strong> (the AI is the product, or your AI is meaningfully better than what's available off-the-shelf because of your data), build. The vendor lock-in risk of "buy" is highest here.</p>
+
+  <h3>2. How specific is your data and workflow?</h3>
+  <p>If the AI needs to know your customers, your products, your tone of voice, your compliance rules, your internal terminology — buying generic AI is going to disappoint. The generic AI will be 70% there and the last 30% is where your customers form their opinion.</p>
+  <p>Custom RAG over your data + a tuned system prompt closes most of that gap, and that's usually a 4–8 week build, not a 6-month one.</p>
+
+  <h3>3. What's the cost of being wrong?</h3>
+  <p>For a marketing draft that a human reviews? Off-the-shelf is fine. For a quote that auto-sends to a customer with your brand name on it? Build. For a finance summary that influences trading decisions? Build, and over-engineer the eval suite. <a href="case-havene.html">Like we did for Havéne</a> — finance is unforgiving, and the cost of one wrong number is bigger than the build cost difference.</p>
+
+  <h3>4. How integrated does it need to be?</h3>
+  <p>If your AI needs to read from your CRM, write to your invoicing system, look up customer order history, and post to Slack — you're already building something custom even if you started with a SaaS. At a certain point you've built more glue than the SaaS provides, and you'd be better off owning the whole thing.</p>
+
+  <h3>5. Do you have the team to maintain it?</h3>
+  <p>An AI system you build is a system you maintain. Prompts drift, models deprecate, evals need updating. If your team can't take ownership in month two, either buy something with a maintenance contract, or hire an agency on a retainer (this is what most clients hire us for — building once is easy; maintaining well is the hard part).</p>
+
+  <h2>Where buy wins (with examples)</h2>
+  <ul>
+    <li><strong>Generic writing assistance:</strong> ChatGPT Plus, Claude for Work, Notion AI. ~$20/user/month and your team writes faster.</li>
+    <li><strong>Meeting notes &amp; CRM auto-update:</strong> Fireflies, Gong, tl;dv. Solid out-of-the-box.</li>
+    <li><strong>Coding assistance:</strong> Cursor, Claude Code, Copilot. There is no in-house build that beats these.</li>
+    <li><strong>Customer support bots for simple FAQs:</strong> Intercom Fin, Ada, Drift if your support is mostly tier-0. (Caveat: most companies overestimate how much of their support is tier-0.)</li>
+    <li><strong>Image / video generation:</strong> Midjourney, Runway. No reason to build.</li>
+  </ul>
+
+  <h2>Where build wins (with examples)</h2>
+  <ul>
+    <li><strong>AI features inside a product you sell.</strong> If you're a SaaS adding AI, this is in your product, not bolted on. <a href="industry-software.html">See: industry · software</a>.</li>
+    <li><strong>Workflow agents specific to your operation.</strong> No SaaS understands your specific support taxonomy, your sales playbook, your invoicing rules. Built workflow agents earn back their cost in 3–6 months. <a href="case-operator.html">See: Operator.io</a>.</li>
+    <li><strong>Regulated industries.</strong> Finance, healthcare-adjacent, legal. Off-the-shelf vendors won't cover your compliance posture without you doing the same work anyway.</li>
+    <li><strong>Multi-tool workflows.</strong> Anything that touches 3+ of your internal systems. The integration work IS the project.</li>
+    <li><strong>Brand-voice critical writing.</strong> Newsletters, customer comms, public content. Off-the-shelf AI in your brand voice is mediocre. RAG over your past content + tuned prompt gets you 90% there. <a href="case-vigor.html">See: Vigor Beans</a>.</li>
+  </ul>
+
+  <h2>The hybrid path: build on top of bought engines</h2>
+  <p>This is what most "build" projects actually are in 2026. You're not training a model. You're using <strong>Claude or GPT-4o via API</strong> (the "buy"), and building the orchestration, prompts, RAG, integrations, evals, observability and UI yourself (the "build"). It looks like:</p>
+
+  <ul>
+    <li>Model: rented from Anthropic / OpenAI / Google ($-per-token)</li>
+    <li>Vector DB: pgvector inside your existing Postgres (free with your DB)</li>
+    <li>Orchestration: TypeScript or Python you wrote</li>
+    <li>Prompts: yours, tuned to your data</li>
+    <li>Evals: yours, against real production traffic</li>
+    <li>UI: in your product, or in Slack, or in your CRM</li>
+  </ul>
+
+  <p>The advantage: you get the model quality of frontier labs without the moat risk of being a Salesforce-AI tenant. The model can be swapped (Claude → GPT → Gemini) without touching the rest of your stack.</p>
+
+  <blockquote>
+    The strategic mistake we see most often: companies "buying" an AI SaaS because building seems intimidating — and then six months later they've built a Frankenstein of integrations <em>around</em> the SaaS that is more work than the build would have been.
+  </blockquote>
+
+  <h2>A simple decision tree</h2>
+  <ol>
+    <li>Is this AI capability core to your product, brand, or competitive moat? <br/>→ Yes: build (hybrid). No: continue.</li>
+    <li>Does it need to know your customers, products, or internal data? <br/>→ Yes: build (hybrid). No: continue.</li>
+    <li>Does it need to integrate with 3+ internal systems? <br/>→ Yes: build (hybrid). No: continue.</li>
+    <li>Is there a SaaS that does 90%+ of what you need today? <br/>→ Yes: buy. No: build (hybrid).</li>
+  </ol>
+
+  <h2>One more honest take</h2>
+  <p>Most "build vs buy" decisions are actually "build vs buy <em>vs hire an agency to build then hand off to us</em>". That third option exists because building your first AI system in-house has a learning curve, and the cost of a bad first build (in time and in trust) often exceeds the agency fee. We say this as an agency; we'd still tell you the same thing if we weren't one.</p>
+
+  <hr/>
+  <p><em>Not sure which path is right for your specific situation? <a href="index.html#contact">Book a 30-minute audit</a>. We'll go through your use case and give you an honest recommendation — including when the right answer is "buy this off-the-shelf product, don't hire us".</em></p>
+
+</article>
+
+<section class="related-posts">
+  <h3>More from the journal</h3>
+  <div class="related-posts__grid">
+    <a class="post" href="post-ai-agent-cost.html">
+      <span class="post__meta">May 2026 · Economics</span>
+      <h3>How much does an AI agent cost?</h3>
+      <p>Real cost breakdowns by agent type, monthly running costs, and ROI math from production builds.</p>
+      <span class="post__more">Read article <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></span>
+    </a>
+    <a class="post" href="post-stack.html">
+      <span class="post__meta">Mar 2026 · Build</span>
+      <h3>Our default 2026 AI stack</h3>
+      <p>The exact tools, models and infrastructure we reach for on day one of every project.</p>
+      <span class="post__more">Read article <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></span>
+    </a>
+    <a class="post" href="post-powerpoint.html">
+      <span class="post__meta">Apr 2026 · Strategy</span>
+      <h3>Why most AI projects die in PowerPoint</h3>
+      <p>The five reasons enterprise AI never ships — and the studio model that fixes them.</p>
+      <span class="post__more">Read article <svg viewBox="0 0 24 24"><use href="#arrow"/></svg></span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__top">
+    <a href="index.html" class="footer__brand"><svg class="footer__mark" viewBox="0 0 60 60"><use href="#mark"/></svg><span>GROWVATE</span></a>
+    <div class="footer__cols">
+      <div><span class="footer__h">Studio</span><a href="index.html#about">About</a><a href="index.html#services">Services</a><a href="index.html#process">Process</a></div>
+      <div><span class="footer__h">Work</span><a href="index.html#work">Portfolio</a><a href="resources.html">Resources</a><a href="blog.html">Blog</a><a href="index.html#contact">Contact</a></div>
+      <div><span class="footer__h">Industries</span><a href="industry-agriculture.html">Agriculture</a><a href="industry-software.html">Software</a><a href="industry-craftsman.html">Craftsman services</a><a href="industry-real-estate.html">Real estate</a><a href="industry-ecommerce.html">E-commerce</a><a href="industry-food.html">Food</a></div>
+      <div><span class="footer__h">Get in touch</span><a href="mailto:growvatestudio@gmail.com">growvatestudio@gmail.com</a><a href="index.html#contact">Book audit →</a></div>
+    </div>
+  </div>
+  <div class="footer__bottom"><span>© 2026 Growvate AI Studio.</span><span>Automating the boring. Quietly.</span></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.23/dist/lenis.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
