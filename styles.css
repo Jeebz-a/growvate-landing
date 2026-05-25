@@ -1546,6 +1546,27 @@ body {
 .contact__sent strong { font-family: var(--f-display); font-size: 15px; }
 .contact__sent span { font-size: 14px; opacity: .92; }
 
+/* honeypot — invisible to humans, irresistible to bots */
+.contact__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none; }
+
+/* sending + error states */
+.contact__form.is-sending { pointer-events: none; }
+.contact__form.is-sending input,
+.contact__form.is-sending select,
+.contact__form.is-sending textarea { opacity: .7; }
+.contact__error {
+  display: none;
+  margin-top: 4px; padding: 14px 16px; gap: 6px;
+  background: rgba(255, 90, 31, .08); border: 1px solid rgba(255, 90, 31, .35);
+  color: var(--ink); border-radius: 12px;
+  flex-direction: column;
+  font-size: 14px;
+}
+.contact__error[hidden] { display: none !important; }
+.contact__error:not([hidden]) { display: flex; }
+.contact__error strong { font-family: var(--f-display); font-size: 14px; color: var(--orange-deep, var(--orange)); }
+.contact__error a { color: var(--ink); text-decoration: underline; }
+
 /* calendar */
 .contact__calendar {
   background: var(--ink);

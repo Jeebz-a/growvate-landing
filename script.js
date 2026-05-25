@@ -515,8 +515,71 @@ function kickoff() {
   chart();
   calendarMock();
   resourceGate();
+  contactFormResend();
   // ensure any elements already in view get revealed immediately
   setTimeout(() => ScrollTrigger.refresh(), 60);
+}
+
+/* ───────── contact form → Resend ──────── */
+function contactFormResend() {
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+  const success = document.getElementById('formSent');
+  const errorEl = document.getElementById('formError');
+  const errorMsg = document.getElementById('formErrorMsg');
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const submitLabel = submitBtn ? submitBtn.querySelector('span') : null;
+  const originalLabel = submitLabel ? submitLabel.textContent : 'Send the brief';
+
+  const setError = (msg) => {
+    if (!errorEl) return;
+    if (msg && errorMsg) {
+      errorMsg.innerHTML = msg + ' Or email <a href="mailto:growvatestudio@gmail.com">growvatestudio@gmail.com</a> directly.';
+    }
+    errorEl.hidden = false;
+  };
+  const clearError = () => { if (errorEl) errorEl.hidden = true; };
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    clearError();
+
+    if (!form.reportValidity()) return;
+
+    const data = Object.fromEntries(new FormData(form));
+
+    if (submitBtn) submitBtn.disabled = true;
+    if (submitLabel) submitLabel.textContent = 'Sending…';
+    form.classList.add('is-sending');
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      let payload = {};
+      try { payload = await res.json(); } catch (_) { /* non-JSON */ }
+
+      if (!res.ok || !payload.ok) {
+        const reason = (payload && payload.error) ? payload.error : `Request failed (${res.status}).`;
+        throw new Error(reason);
+      }
+
+      form.style.opacity = '0.6';
+      if (success) success.hidden = false;
+      // collapse the form inputs into a quiet "received" state
+      form.querySelectorAll('input, select, textarea, button').forEach((el) => { el.disabled = true; });
+      console.log('[Growvate · brief sent]', payload.id || '');
+    } catch (err) {
+      console.error('[Growvate · brief send failed]', err);
+      setError(err && err.message ? String(err.message) : 'Please try again in a moment.');
+      if (submitBtn) submitBtn.disabled = false;
+      if (submitLabel) submitLabel.textContent = originalLabel;
+      form.classList.remove('is-sending');
+    }
+  });
 }
 
 nav();

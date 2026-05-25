@@ -776,7 +776,7 @@
 
   <div class="contact__grid">
     <!-- contact form -->
-    <form class="contact__form" id="contactForm" onsubmit="event.preventDefault(); document.getElementById('formSent').hidden=false; this.querySelector('button[type=submit]').disabled=true; this.style.opacity=.6;">
+    <form class="contact__form" id="contactForm" action="/api/contact" method="POST" novalidate>
       <div class="contact__row">
         <label>
           <span>Your name</span>
@@ -807,6 +807,12 @@
         <span>Tell us the rough brief</span>
         <textarea name="brief" rows="4" placeholder="What are you trying to do? Where's the pain? Any timeline?"></textarea>
       </label>
+      <!-- honeypot: real users don't see this, bots fill everything -->
+      <div class="contact__hp" aria-hidden="true">
+        <label>Leave this blank
+          <input type="text" name="website" tabindex="-1" autocomplete="off" />
+        </label>
+      </div>
       <div class="contact__bottom">
         <button type="submit" class="btn btn--primary">
           <span>Send the brief</span>
@@ -818,6 +824,10 @@
         <svg viewBox="0 0 24 24"><use href="#check"/></svg>
         <strong>Brief received.</strong>
         <span>We'll be in touch within 24h with two ROI ideas + a proposed call slot.</span>
+      </div>
+      <div class="contact__error" id="formError" hidden role="alert">
+        <strong>Couldn't send.</strong>
+        <span id="formErrorMsg">Please try again, or email <a href="mailto:growvatestudio@gmail.com">growvatestudio@gmail.com</a> directly.</span>
       </div>
     </form>
 
