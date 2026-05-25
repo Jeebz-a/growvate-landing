@@ -78,17 +78,19 @@
     <div class="hero__left">
       <span class="kicker reveal-up">
         <span class="kicker__dot"></span>
-        AI automation & implementation studio
+        AI automation & implementation studio · 30 days
       </span>
       <h1 class="hero__title">
-        <span class="split">Make your</span>
-        <span class="split">business</span>
-        <span class="split"><em>run itself.</em></span>
+        <span class="split">Stop spending</span>
+        <span class="split">30 hours a week</span>
+        <span class="split"><em>doing AI's work.</em></span>
       </h1>
       <p class="hero__lede reveal-up">
-        We ship production AI — <strong>automations, agents, and intelligent features</strong> —
-        directly into your operations and your product. Real systems. Real ROI.
-        Live in <span class="mark">30 days.</span>
+        Inbox triage, customer support, quoting, reports, follow-ups —
+        the work eating your team's days is exactly what production AI does best.
+        We wire it through your operation so the busywork quietly disappears.
+        <strong>40+ shipped builds.</strong> Live in <span class="mark">30 days</span>, not 18 months.
+        <span class="hero__lede-tease">See how it actually works ↓</span>
       </p>
       <div class="hero__cta reveal-up">
         <a href="#contact" class="btn btn--primary" data-link>
@@ -114,47 +116,98 @@
       </div>
     </div>
 
-    <!-- animated AI visual -->
+    <!-- animated workflow visualization: what we actually do -->
     <div class="hero__right" aria-hidden="true">
-      <div class="orbit">
-        <div class="orbit__ring orbit__ring--1"></div>
-        <div class="orbit__ring orbit__ring--2"></div>
-        <div class="orbit__ring orbit__ring--3"></div>
-        <div class="orbit__core">
-          <svg viewBox="0 0 60 60"><use href="#mark"/></svg>
-          <span>AI core</span>
-        </div>
-        <span class="orbit__node orbit__node--a">CRM</span>
-        <span class="orbit__node orbit__node--b">Email</span>
-        <span class="orbit__node orbit__node--c">Slack</span>
-        <span class="orbit__node orbit__node--d">DB</span>
-        <span class="orbit__node orbit__node--e">API</span>
-      </div>
+      <div class="hero-flow">
+        <svg class="hero-flow__svg" viewBox="0 0 700 760" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <!-- connection paths: inputs (left) → core (center) → outputs (right) -->
+          <path id="hfa" d="M200 130 L300 360" fill="none" stroke="rgba(13,13,13,.25)" stroke-width="1.5"/>
+          <path id="hfb" d="M200 290 L300 380" fill="none" stroke="rgba(13,13,13,.25)" stroke-width="1.5"/>
+          <path id="hfc" d="M200 450 L300 400" fill="none" stroke="rgba(13,13,13,.25)" stroke-width="1.5"/>
+          <path id="hfd" d="M400 360 L500 130" fill="none" stroke="rgba(13,13,13,.25)" stroke-width="1.5"/>
+          <path id="hfe" d="M400 380 L500 290" fill="none" stroke="rgba(13,13,13,.25)" stroke-width="1.5"/>
+          <path id="hff" d="M400 400 L500 450" fill="none" stroke="rgba(13,13,13,.25)" stroke-width="1.5"/>
+          <path id="hfg" d="M350 510 L350 660" fill="none" stroke="rgba(13,13,13,.18)" stroke-width="1" stroke-dasharray="4 4"/>
 
-      <div class="card card--main">
-        <div class="card__row">
-          <span class="dot dot--live"></span>
-          <span class="card__h">Live workflows</span>
-          <span class="card__num">12</span>
-        </div>
-        <div class="bars">
-          <div class="bar"><span style="--w:78%"></span><label>Inbox triage</label><b>2,841</b></div>
-          <div class="bar"><span style="--w:62%"></span><label>Quotes drafted</label><b>187</b></div>
-          <div class="bar"><span style="--w:91%"></span><label>Data sync</label><b>99.8%</b></div>
-          <div class="bar"><span style="--w:54%"></span><label>Reports built</label><b>34</b></div>
-        </div>
-      </div>
+          <!-- INPUTS (left column) -->
+          <g class="hf-node hf-input">
+            <rect x="20" y="98" width="180" height="64" rx="14" fill="rgba(255,255,255,.96)" stroke="var(--ink)" stroke-width="1.5"/>
+            <text x="110" y="126" text-anchor="middle" fill="var(--ink)" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="600">Customer message</text>
+            <text x="110" y="144" text-anchor="middle" fill="rgba(13,13,13,.6)" font-family="Inter,sans-serif" font-size="11">Email · WhatsApp · chat</text>
+          </g>
+          <g class="hf-node hf-input">
+            <rect x="20" y="258" width="180" height="64" rx="14" fill="rgba(255,255,255,.96)" stroke="var(--ink)" stroke-width="1.5"/>
+            <text x="110" y="286" text-anchor="middle" fill="var(--ink)" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="600">New lead</text>
+            <text x="110" y="304" text-anchor="middle" fill="rgba(13,13,13,.6)" font-family="Inter,sans-serif" font-size="11">Form · call · referral</text>
+          </g>
+          <g class="hf-node hf-input">
+            <rect x="20" y="418" width="180" height="64" rx="14" fill="rgba(255,255,255,.96)" stroke="var(--ink)" stroke-width="1.5"/>
+            <text x="110" y="446" text-anchor="middle" fill="var(--ink)" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="600">Routine work</text>
+            <text x="110" y="464" text-anchor="middle" fill="rgba(13,13,13,.6)" font-family="Inter,sans-serif" font-size="11">The 80% on your plate</text>
+          </g>
 
-      <div class="card card--mini card--mini--a">
-        <span class="card__h">Hours saved this week</span>
-        <strong>247h</strong>
-        <span class="trend">↑ 18%</span>
-      </div>
+          <!-- AI CORE -->
+          <g class="hf-core">
+            <circle cx="350" cy="380" r="135" fill="none" stroke="rgba(255,90,31,.25)" stroke-width="1" stroke-dasharray="4 4">
+              <animateTransform attributeName="transform" type="rotate" from="0 350 380" to="360 350 380" dur="40s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="350" cy="380" r="108" fill="none" stroke="rgba(255,90,31,.35)" stroke-width="1" stroke-dasharray="2 6">
+              <animateTransform attributeName="transform" type="rotate" from="360 350 380" to="0 350 380" dur="30s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="350" cy="380" r="80" fill="var(--ink)" stroke="var(--orange)" stroke-width="2.5"/>
+            <circle cx="350" cy="380" r="80" fill="none" stroke="var(--orange)" stroke-width="2">
+              <animate attributeName="r" values="80;100;80" dur="2.6s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values=".55;0;.55" dur="2.6s" repeatCount="indefinite"/>
+            </circle>
+            <text x="350" y="374" text-anchor="middle" fill="#fff" font-family="Space Grotesk,sans-serif" font-size="20" font-weight="700">Growvate AI</text>
+            <text x="350" y="396" text-anchor="middle" fill="var(--orange-soft)" font-family="Inter,sans-serif" font-size="11" letter-spacing="2">30-DAY SPRINT</text>
+          </g>
 
-      <div class="card card--mini card--mini--b">
-        <span class="card__h">Avg. response time</span>
-        <strong>1.2s</strong>
-        <span class="trend trend--good">−84%</span>
+          <!-- OUTPUTS (right column) -->
+          <g class="hf-node hf-output">
+            <rect x="500" y="98" width="180" height="64" rx="14" fill="var(--ink)" stroke="var(--orange)" stroke-width="1.5"/>
+            <text x="590" y="126" text-anchor="middle" fill="#fff" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="600">Auto-reply</text>
+            <text x="590" y="144" text-anchor="middle" fill="rgba(245,241,234,.7)" font-family="Inter,sans-serif" font-size="11">In your voice · in seconds</text>
+          </g>
+          <g class="hf-node hf-output">
+            <rect x="500" y="258" width="180" height="64" rx="14" fill="var(--ink)" stroke="var(--orange)" stroke-width="1.5"/>
+            <text x="590" y="286" text-anchor="middle" fill="#fff" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="600">Lead booked</text>
+            <text x="590" y="304" text-anchor="middle" fill="rgba(245,241,234,.7)" font-family="Inter,sans-serif" font-size="11">On your calendar</text>
+          </g>
+          <g class="hf-node hf-output">
+            <rect x="500" y="418" width="180" height="64" rx="14" fill="var(--ink)" stroke="var(--orange)" stroke-width="1.5"/>
+            <text x="590" y="446" text-anchor="middle" fill="#fff" font-family="Space Grotesk,sans-serif" font-size="14" font-weight="600">Hours saved</text>
+            <text x="590" y="464" text-anchor="middle" fill="rgba(245,241,234,.7)" font-family="Inter,sans-serif" font-size="11">20-40 · every week</text>
+          </g>
+
+          <!-- KPI strip below -->
+          <g class="hf-kpi">
+            <rect x="65" y="640" width="190" height="80" rx="14" fill="rgba(255,255,255,.96)" stroke="var(--line)" stroke-width="1.5"/>
+            <text x="160" y="668" text-anchor="middle" fill="rgba(13,13,13,.55)" font-family="Inter,sans-serif" font-size="10" letter-spacing="1.5">HOURS SAVED · THIS WEEK</text>
+            <text x="160" y="700" text-anchor="middle" fill="var(--ink)" font-family="Space Grotesk,sans-serif" font-size="28" font-weight="700">247h</text>
+            <text x="160" y="717" text-anchor="middle" fill="var(--orange)" font-family="Inter,sans-serif" font-size="11" font-weight="500">↑ 18%</text>
+          </g>
+          <g class="hf-kpi">
+            <rect x="265" y="640" width="170" height="80" rx="14" fill="rgba(255,255,255,.96)" stroke="var(--line)" stroke-width="1.5"/>
+            <text x="350" y="668" text-anchor="middle" fill="rgba(13,13,13,.55)" font-family="Inter,sans-serif" font-size="10" letter-spacing="1.5">LIVE WORKFLOWS</text>
+            <text x="350" y="700" text-anchor="middle" fill="var(--ink)" font-family="Space Grotesk,sans-serif" font-size="28" font-weight="700">12</text>
+            <text x="350" y="717" text-anchor="middle" fill="rgba(13,13,13,.5)" font-family="Inter,sans-serif" font-size="11">all green</text>
+          </g>
+          <g class="hf-kpi">
+            <rect x="445" y="640" width="190" height="80" rx="14" fill="rgba(255,255,255,.96)" stroke="var(--line)" stroke-width="1.5"/>
+            <text x="540" y="668" text-anchor="middle" fill="rgba(13,13,13,.55)" font-family="Inter,sans-serif" font-size="10" letter-spacing="1.5">AVG · RESPONSE TIME</text>
+            <text x="540" y="700" text-anchor="middle" fill="var(--ink)" font-family="Space Grotesk,sans-serif" font-size="28" font-weight="700">1.2s</text>
+            <text x="540" y="717" text-anchor="middle" fill="var(--orange)" font-family="Inter,sans-serif" font-size="11" font-weight="500">−84%</text>
+          </g>
+
+          <!-- animated dots (orange — match brand) -->
+          <circle r="6" fill="var(--orange)"><animateMotion dur="3s" repeatCount="indefinite" begin="0s"><mpath href="#hfa"/></animateMotion></circle>
+          <circle r="6" fill="var(--orange)"><animateMotion dur="3s" repeatCount="indefinite" begin="0.5s"><mpath href="#hfb"/></animateMotion></circle>
+          <circle r="6" fill="var(--orange)"><animateMotion dur="3s" repeatCount="indefinite" begin="1s"><mpath href="#hfc"/></animateMotion></circle>
+          <circle r="6" fill="var(--orange)"><animateMotion dur="3s" repeatCount="indefinite" begin="0.3s"><mpath href="#hfd"/></animateMotion></circle>
+          <circle r="6" fill="var(--orange)"><animateMotion dur="3s" repeatCount="indefinite" begin="0.8s"><mpath href="#hfe"/></animateMotion></circle>
+          <circle r="6" fill="var(--orange)"><animateMotion dur="3s" repeatCount="indefinite" begin="1.3s"><mpath href="#hff"/></animateMotion></circle>
+        </svg>
       </div>
     </div>
   </div>
