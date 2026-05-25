@@ -59,6 +59,7 @@ export default async function handler(req, res) {
   const email   = (body.email   || '').toString().trim().slice(0, 200);
   const company = (body.company || '').toString().trim().slice(0, 200);
   const need    = (body.need    || '').toString().trim().slice(0, 200);
+  const budget  = (body.budget  || '').toString().trim().slice(0, 100);
   const brief   = (body.brief   || '').toString().trim().slice(0, 5000);
   const referer = (req.headers['referer'] || '').toString().slice(0, 500);
   const ua      = (req.headers['user-agent'] || '').toString().slice(0, 500);
@@ -83,6 +84,7 @@ export default async function handler(req, res) {
     'Email:    ' + (email   || '—'),
     'Company:  ' + (company || '—'),
     'Need:     ' + (need    || '—'),
+    'Budget:   ' + (budget  || '— (not provided)'),
     '',
     'Brief:',
     brief || '(no brief provided)',
@@ -103,6 +105,7 @@ export default async function handler(req, res) {
         <tr><td style="padding:6px 0;color:#6b6b6b;width:90px;">Email</td><td style="padding:6px 0;"><a href="mailto:${esc(email)}" style="color:#0d0d0d;">${esc(email)}</a></td></tr>
         <tr><td style="padding:6px 0;color:#6b6b6b;">Company</td><td style="padding:6px 0;">${esc(company) || '—'}</td></tr>
         <tr><td style="padding:6px 0;color:#6b6b6b;">Need</td><td style="padding:6px 0;"><strong>${esc(need)}</strong></td></tr>
+        <tr><td style="padding:6px 0;color:#6b6b6b;">Budget</td><td style="padding:6px 0;">${budget ? `<strong>${esc(budget)}</strong>` : '<em style="color:#9a9a9a;">not provided</em>'}</td></tr>
       </table>
 
       ${brief ? `
