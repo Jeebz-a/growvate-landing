@@ -127,7 +127,7 @@ body {
    ============================================================ */
 .hero--split {
   position: relative;
-  padding: clamp(40px, 6vw, 96px) var(--gutter) clamp(60px, 8vw, 120px);
+  padding: clamp(24px, 3.5vw, 56px) var(--gutter) clamp(32px, 4vw, 64px);
   overflow: hidden;
   isolation: isolate;
 }
@@ -149,20 +149,20 @@ body {
 .hero__inner {
   max-width: var(--container); margin: 0 auto;
   display: grid; grid-template-columns: 1.05fr 1fr;
-  gap: clamp(32px, 5vw, 80px);
+  gap: clamp(24px, 4vw, 64px);
   align-items: center;
-  min-height: 78vh;
+  min-height: calc(100vh - 130px); /* viewport minus strip + nav, fits in fold */
 }
 @media (max-width: 1024px) {
-  .hero__inner { grid-template-columns: 1fr; min-height: auto; padding-top: 32px; }
+  .hero__inner { grid-template-columns: 1fr; min-height: auto; padding-top: 16px; }
 }
 
 .kicker {
   display: inline-flex; align-items: center; gap: 10px;
-  font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
-  color: var(--ink); padding: 8px 14px;
+  font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--ink); padding: 6px 12px;
   background: var(--paper-2); border: 1px solid var(--line);
-  border-radius: 100px; margin-bottom: 28px;
+  border-radius: 100px; margin-bottom: 18px;
 }
 .kicker__dot { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); animation: pulse 1.8s var(--ease) infinite; }
 @keyframes pulse { 0%,100% { transform: scale(1); opacity: 1;} 50% { transform: scale(1.6); opacity: .4;} }
@@ -170,10 +170,10 @@ body {
 .hero__title {
   font-family: var(--f-display);
   font-weight: 700;
-  font-size: clamp(48px, 8vw, 132px);
-  line-height: .94;
-  letter-spacing: -.035em;
-  margin: 0 0 28px;
+  font-size: clamp(38px, 5.4vw, 80px);
+  line-height: .98;
+  letter-spacing: -.03em;
+  margin: 0 0 18px;
   color: var(--ink);
 }
 .hero__title em { font-style: normal; color: var(--orange); }
@@ -181,14 +181,14 @@ body {
 .hero__title .split > span { display: block; }
 
 .hero__lede {
-  max-width: 560px;
-  font-size: clamp(16px, 1.3vw, 19px);
+  max-width: 540px;
+  font-size: clamp(15px, 1.1vw, 17px);
   line-height: 1.55;
   color: var(--ink-2);
-  margin: 0 0 36px;
+  margin: 0 0 24px;
 }
 .hero__lede strong { color: var(--ink); font-weight: 600; }
-.hero__lede-tease { display: block; margin-top: 14px; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--orange); font-family: var(--f-display); font-weight: 500; }
+.hero__lede-tease { display: block; margin-top: 10px; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--orange); font-family: var(--f-display); font-weight: 500; }
 .mark { background: var(--orange); color: var(--paper-2); padding: 1px 8px; border-radius: 4px; font-weight: 500; }
 
 /* ============================================================
@@ -197,7 +197,7 @@ body {
 .hero-flow {
   width: 100%;
   height: 100%;
-  min-height: 560px;
+  min-height: 460px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -205,12 +205,12 @@ body {
 .hero-flow__svg {
   width: 100%;
   height: auto;
-  max-height: 720px;
+  max-height: 560px;
   filter: drop-shadow(0 20px 40px rgba(13, 13, 13, .08));
 }
 @media (max-width: 1024px) {
-  .hero-flow { min-height: 480px; }
-  .hero-flow__svg { max-height: 600px; }
+  .hero-flow { min-height: 380px; }
+  .hero-flow__svg { max-height: 480px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-flow__svg * { animation: none !important; }
@@ -285,7 +285,7 @@ body {
   .hero__right { min-height: auto; margin-top: 8px; }
 }
 
-.hero__cta { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+.hero__cta { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
 .btn {
   display: inline-flex; align-items: center; gap: 12px;
   padding: 16px 26px; border-radius: 100px;
@@ -312,10 +312,10 @@ body {
 /* hero right — animated AI visual */
 .hero__right {
   position: relative;
-  min-height: 540px;
+  min-height: 460px;
   display: grid; place-items: center;
 }
-@media (max-width: 1024px) { .hero__right { min-height: 520px; } }
+@media (max-width: 1024px) { .hero__right { min-height: 400px; } }
 
 /* orbit / nodes */
 .orbit { position: absolute; inset: 0; display: grid; place-items: center; }
