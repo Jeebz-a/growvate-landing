@@ -142,24 +142,33 @@ function counters() {
 function painReveal() {
   const items = document.querySelectorAll('.pain__list li');
   if (!items.length) return;
-  gsap.from(items, {
-    x: 30, opacity: 0,
-    duration: .7,
-    stagger: .07,
-    ease: 'expo.out',
-    scrollTrigger: { trigger: '.pain__list', start: 'top 80%' },
-  });
+  // .fromTo with explicit end state — defensive against ScrollTrigger
+  // misfiring under Lenis. Even if trigger never fires, the items
+  // can't get stuck at opacity:0.
+  gsap.fromTo(items,
+    { x: 30, opacity: 0 },
+    {
+      x: 0, opacity: 1,
+      duration: .7,
+      stagger: .07,
+      ease: 'expo.out',
+      scrollTrigger: { trigger: '.pain__list', start: 'top 85%', once: true },
+    }
+  );
 }
 
 /* ───────── bento cells stagger ──────── */
 function bentoReveal() {
-  gsap.from('.bento__cell', {
-    y: 40, opacity: 0,
-    duration: .9,
-    stagger: .1,
-    ease: 'expo.out',
-    scrollTrigger: { trigger: '.bento', start: 'top 78%' },
-  });
+  gsap.fromTo('.bento__cell',
+    { y: 40, opacity: 0 },
+    {
+      y: 0, opacity: 1,
+      duration: .9,
+      stagger: .1,
+      ease: 'expo.out',
+      scrollTrigger: { trigger: '.bento', start: 'top 85%', once: true },
+    }
+  );
 }
 
 /* ───────── case parallax ──────── */
