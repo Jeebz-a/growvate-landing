@@ -42,8 +42,11 @@ We don't sell SaaS seats. We don't ship platforms. We don't write strategy decks
 
 ## Free resources
 
-- [50 AI Business Prompts To Steal](https://www.growvate.com/resources.html): The exact prompts our team and clients use to ship faster — 50 plug-and-play prompts across sales, marketing, ops, support, content, hiring, finance and product. Free PDF.
-- [Digital Foundation Guide](https://www.growvate.com/resources.html): The local business owner's guide to getting found, building trust, and winning customers in a digital-first world.
+All resources are free PDFs distilled from 40+ shipped Growvate AI projects. Each is available via a quick lead-capture form on the resources page, and the PDFs themselves are publicly served at the URLs below.
+
+- [50 AI Business Prompts To Steal](https://www.growvate.com/resources.html) — 50 plug-and-play prompts across sales, marketing, ops, support, content, hiring, finance and product. The exact prompts our team and clients use to ship faster. (PDF: https://www.growvate.com/resources/growvate-50-business-prompts.pdf)
+- [The AI Automation Guide](https://www.growvate.com/resources.html) — A plain-English primer on AI automation for ops leaders and founders. How to spot the 3 workflows worth automating first, the tools we'd reach for, and a build-vs-buy framework with real cost ranges. (PDF: https://www.growvate.com/resources/growvate-ai-automation-guide.pdf)
+- [Digital Foundation Guide](https://www.growvate.com/resources.html) — The local business owner's guide to getting found, building trust, and winning customers in a digital-first world. (PDF: https://www.growvate.com/resources/growvate-digital-foundation.pdf)
 
 ## How to contact
 
