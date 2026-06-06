@@ -1659,6 +1659,12 @@ body {
 }
 .contact__small { margin: 0; font-size: 13px; color: var(--muted); }
 
+/* Cloudflare Turnstile widget sits between the brief textarea and the
+   submit button. We hide the iframe wrapper's default border-radius
+   blowout and let it size naturally. */
+.contact__captcha { margin-top: 4px; min-height: 0; }
+.contact__captcha:empty { display: none; }  /* hide until widget renders */
+
 .contact__sent {
   display: none;
   margin-top: 4px; padding: 16px 18px; gap: 12px;
