@@ -125,12 +125,11 @@
           <input type="text" name="website" tabindex="-1" autocomplete="off" />
         </label>
       </div>
-      <!-- Cloudflare Turnstile (invisible CAPTCHA). The data-sitekey below
-           is Cloudflare's "always passes" TEST key — replace with your real
-           site key once you've created a Turnstile widget at
-           https://dash.cloudflare.com/?to=/:account/turnstile -->
+      <!-- Cloudflare Turnstile (invisible CAPTCHA). Server-side
+           verification kicks in once TURNSTILE_SECRET env var is set
+           in Vercel. -->
       <div class="cf-turnstile contact__captcha"
-           data-sitekey="1x00000000000000000000AA"
+           data-sitekey="0x4AAAAAADf2VUeRJv8DaATM"
            data-size="flexible"
            data-theme="light"></div>
       <div class="contact__bottom">
