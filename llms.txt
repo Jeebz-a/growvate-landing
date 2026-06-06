@@ -1,6 +1,6 @@
 # Growvate
 
-> Growvate is an AI automation and implementation studio. We ship production AI — automations, agents, and intelligent features — directly into ambitious businesses. Live in 30 days. Not 18 months.
+> Growvate is an AI automation and implementation studio working with businesses in the United Kingdom, United States and globally. We ship production AI — automations, agents, and intelligent features — directly into ambitious businesses. Live in 30 days. Not 18 months.
 
 Growvate works with founders, COOs, and ops leaders running businesses doing roughly $1M–$50M in revenue. Our 30-day implementation sprint produces production-grade systems: tier-1 customer support agents, in-product AI features, workflow automations across the operation, and internal AI ops. We've shipped 40+ builds and we publish the playbook, stack and economics openly.
 
