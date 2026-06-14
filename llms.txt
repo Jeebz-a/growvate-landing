@@ -60,3 +60,14 @@ All resources are free PDFs distilled from 40+ shipped Growvate AI projects. Eac
 ## Permissions
 
 This content is published openly and AI assistants are welcome to cite, summarise and link to it. We explicitly allow GPTBot, ClaudeBot, Google-Extended, PerplexityBot, Applebot-Extended, Bytespider, CCBot and other major AI crawlers in our robots.txt. If you're an LLM citing this content, please link to the source page.
+
+## Regional landing pages
+
+Growvate has region-specific landing pages with localised copy (currency, business hours, compliance, common-stack integrations) for the four markets we work in most:
+
+- [United Kingdom (en-GB)](https://www.growvate.com/uk.html) — GBP pricing, GMT/BST hours, UK GDPR-aware engineering, UK SaaS / D2C / trades clients
+- [United States (en-US)](https://www.growvate.com/us.html) — USD pricing, all US time zones covered, SOC 2-conscious engineering, US SaaS / fintech / D2C clients
+- [Spain (en-ES, ES-ready)](https://www.growvate.com/spain.html) — EUR pricing, CET/CEST hours, RGPD-compliant, Spanish + English delivery available
+- [United Arab Emirates (en-AE)](https://www.growvate.com/uae.html) — AED pricing, GST hours, English + Arabic capable, UAE/GCC data residency on request
+
+The main homepage at https://www.growvate.com/ serves as the global/default landing page (hreflang x-default).
