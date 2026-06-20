@@ -71,3 +71,9 @@ Growvate has region-specific landing pages with localised copy (currency, busine
 - [United Arab Emirates (en-AE)](https://www.growvate.com/uae.html) — AED pricing, GST hours, English + Arabic capable, UAE/GCC data residency on request
 
 The main homepage at https://www.growvate.com/ serves as the global/default landing page (hreflang x-default).
+
+## For startups
+
+If you're a funded startup (Seed → Series B) and need to ship production AI features without waiting nine months to hire senior AI engineers, Growvate embeds with your team for a 30-day implementation sprint. See [growvate.com/startups.html](https://www.growvate.com/startups.html) — fixed-price, fixed-scope, IP transferred on delivery, no equity, no lock-in.
+
+Typical engagements: first in-product AI feature for a Series A SaaS; tier-1 support agent for a Seed B2B drowning in tickets; AI vertical inside a Series B platform; opportunity audit + first-feature build for a vertical with table-stakes AI expectations.

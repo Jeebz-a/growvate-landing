@@ -30,6 +30,13 @@
   </url>
 
 
+  <url>
+    <loc>https://www.growvate.com/startups.html</loc>
+    <lastmod>2026-06-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
   <!-- Regional landing pages (UK/US/Spain/UAE) — for hreflang + regional SEO -->
   <url>
     <loc>https://www.growvate.com/uk.html</loc>
